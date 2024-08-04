@@ -16,7 +16,7 @@ function Contact() {
               <div className='card-content-button rounded-3xl cursor-pointer'>
                 <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
               </div>
-            </a>
+            </a> 
           </div>
         </div>      
 
