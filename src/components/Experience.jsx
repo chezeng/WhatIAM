@@ -1,6 +1,7 @@
 import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { FaHandsHelping, FaBookReader, FaMedal, FaChalkboardTeacher,  } from 'react-icons/fa';
+import Title from './Title';
 
 import 'react-vertical-timeline-component/style.min.css';
 
@@ -9,8 +10,8 @@ const timelineColor = 'rgb(3, 52, 110)';
 function Experience() {
     return (
     <section className='p-28 w-screen h-200rem'>
-      <h1 className="flex justify-center text-5xl font-bold mb-6">Experience</h1>
-        <VerticalTimeline>
+      <Title title='Experience'/>
+        <VerticalTimeline className='mt-24'>
           <VerticalTimelineElement
               className="mt-20"
               contentStyle={{ background: timelineColor, color: '#fff' }}

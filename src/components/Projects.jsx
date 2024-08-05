@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaAndroid, FaWix, FaImages } from 'react-icons/fa';
 import { SiTailwindcss, SiCreatereactapp, SiJetbrains, SiGodotengine, SiCanva, SiAdobeaftereffects} from "react-icons/si";
 import { ReactSVG } from 'react-svg';
+import Title from './Title';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -20,16 +21,16 @@ const Projects = () => {
 
   useEffect(() => {
     AOS.init({
-        duration: 500,
+        duration: 1000,
         once: false, 
     });
 }, []);
 
   return (
-    <section className='lg:p-48 w-screen'>
-      <h1 className="flex justify-center text-5xl font-bold">Projects</h1>   
-      <div className='grid sm:grid-cols-1 xl:grid-cols-2 items-center justify-items-center'>
-        <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+    <section data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-delay="150" className='sm:p-28 w-screen'>
+      <Title title="Projects"/>
+      <div className='grid sm:grid-cols-1 lg:grid-cols-2 items-center justify-items-center mt-16'>
+        <div  className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src="/src/assets/Music.png" alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
