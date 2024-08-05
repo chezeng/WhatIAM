@@ -42,22 +42,6 @@
     transform: translateY(-10px);
   }
 }
-/* 
-.list-with-dividers li {
-  position: relative; 
-  padding: 0 2%; 
-}
-
-.list-with-dividers li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: -10%; 
-  top: 50%;
-  width: 1px; 
-  height: 150px; 
-  background-color: white;
-  transform: translateY(-50%);
-} */
 
 @media (min-width: 768px) {
   .list-with-dividers li:not(:last-child)::after {
@@ -276,7 +260,7 @@ body {
   }
 
   .card-content-button {
-    @apply absolute left-[1.5px] top-[1.5px] h-[calc(100%-3px)] w-[calc(100%-3px)] rounded-2xl bg-gradient-to-b from-indigo-600 to-indigo-950;
+    @apply absolute left-[1.5px] top-[1.5px] h-[calc(100%-3px)] w-[calc(100%-3px)] rounded-2xl bg-gradient-to-r from-blue-600 to-blue-950;
   }
   
   .formContainer {
@@ -313,6 +297,11 @@ body {
 
 .floating {
   animation: floating 3s ease-in-out infinite;
+}
+
+.profileImg:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
 }
 
 @keyframes dotAnimation {

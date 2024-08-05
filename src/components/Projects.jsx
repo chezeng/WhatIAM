@@ -27,7 +27,7 @@ const Projects = () => {
 }, []);
 
   return (
-    <section data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-delay="150" className='sm:p-28 w-screen'>
+    <section data-aos="fade-up" data-aos-delay="150" className='sm:p-28 w-screen'>
       <Title title="Projects"/>
       <div className='grid sm:grid-cols-1 lg:grid-cols-2 items-center justify-items-center mt-16'>
         <div  className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
@@ -38,8 +38,8 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
                 <p className="text-slate-500 text-base mt-2">
-                Developed a dynamic portfolio website using React, integrating advanced libraries such as
-                Framer Motion and tools like TailwindCSS for enhanced visual effects.
+                Developed a dynamic portfolio website using React, integrating advanced libraries
+                and tools to enhance visual effects and improve user experience (UX).
                 </p>
               </div>
               <div className="flex mt-3">

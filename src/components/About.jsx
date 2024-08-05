@@ -20,7 +20,7 @@ const About = () => {
             continuously learning <span className="text-blue-500 font-bold">new software technologies</span>.
             My dream is to fully utilize <span className="text-blue-500 font-bold">AI + software applications</span> to create impact.
           </p>
-          <img data-aos="zoom-in" data-aos-delay="50" className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-12 xl:mt-24" src="/src/assets/Profile.jpg"></img>
+          <img className="profileImg floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-12 xl:mt-24" src="/src/assets/Profile.jpg"></img>
         </div> 
      
         <div data-aos="fade-up" className="flex justify-center sm:w-full md:w-1/2 lg:w-2/5 xl:-ml-6 -mt-16 lg:-mt-24 xl:-mt-60">

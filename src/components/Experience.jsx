@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { FaHandsHelping, FaBookReader, FaMedal, FaChalkboardTeacher,  } from 'react-icons/fa';
 import Title from './Title';
@@ -7,7 +7,8 @@ import 'react-vertical-timeline-component/style.min.css';
 
 const timelineColor = 'rgb(3, 52, 110)';
 
-function Experience() {
+const Experience = () => {
+
     return (
     <section className='p-28 w-screen h-200rem'>
       <Title title='Experience'/>
