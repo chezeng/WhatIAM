@@ -21,7 +21,7 @@ function Contact() {
         Feel free to contact me and I will respond as soon as possible.
       </h2>   
       
-      <div data-aos="zoom-in" data-aos-delay="50" className="flex justify-center mt-24 mb-96">
+      <div data-aos="zoom-in" data-aos-delay="50" className="flex justify-center mt-24">
         <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
           <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
             <div className='card-content-button rounded-3xl cursor-pointer'>

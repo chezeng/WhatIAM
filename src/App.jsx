@@ -5,8 +5,8 @@ import Intro from './components/Intro';
 import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import ParallaxText from './components/ParallaxText';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
       <Projects></Projects>
       <Experience></Experience>
       <Contact></Contact>
+      <Footer></Footer>
     </div>
   )
 }
