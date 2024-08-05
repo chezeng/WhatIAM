@@ -14,8 +14,10 @@ export default {
         '65': '16.25rem',
         '70': '17.5rem',
         '18': '4.25rem',
-        
+        'xl': '20rem',
+
       },
+
       keyframes: {
         'border-spin': {
           '100%': {

@@ -11,14 +11,14 @@ function Contact() {
       </h2>   
       <div className='flex bottom-96 justify-center opacity-25'><FaHandshake className="w-96 h-96"/></div>     
       <div className="flex justify-center -mt-70 mb-96">
-          <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out mt-28'>
-            <a href={'/src/assets/ChengResume.pdf'} target="_blank" rel="noopener noreferrer">
-              <div className='card-content-button rounded-3xl cursor-pointer'>
-                <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
-              </div>
-            </a> 
-          </div>
-        </div>      
+        <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out mt-28'>
+          <a href={'/src/assets/ChengResume.pdf'} target="_blank" rel="noopener noreferrer">
+            <div className='card-content-button rounded-3xl cursor-pointer'>
+              <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
+            </div>
+          </a> 
+        </div>
+      </div>      
 
     </section>
     );

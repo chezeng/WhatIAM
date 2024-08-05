@@ -13,8 +13,6 @@ function App() {
     <div className="bg-black w-screen">
       <NavBar></NavBar>
       <Intro></Intro>
-      <ParallaxText baseVelocity={-5}>A Little Bit</ParallaxText>
-      <ParallaxText baseVelocity={5}>About Me</ParallaxText>
       <About></About>
       <Projects></Projects>
       <Experience></Experience>

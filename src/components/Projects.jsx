@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaAndroid, FaWix, FaImages } from 'react-icons/fa';
 import { SiTailwindcss, SiCreatereactapp, SiJetbrains, SiGodotengine, SiCanva, SiAdobeaftereffects} from "react-icons/si";
 import { ReactSVG } from 'react-svg';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Projects = () => {
   const IconWithTooltip = ({ icon: Icon, label }) => {
@@ -14,6 +17,13 @@ const Projects = () => {
       </div>
     );
   };
+
+  useEffect(() => {
+    AOS.init({
+        duration: 500,
+        once: false, 
+    });
+}, []);
 
   return (
     <section className='lg:p-48 w-screen'>
