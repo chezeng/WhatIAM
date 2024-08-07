@@ -34,7 +34,7 @@ const NavBar = () => {
           </h1>
           <div className="hidden sm:flex space-x-8 mr-12 text-xl"> 
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('about')}>About</p>
-            <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('projects')}>Projects</p>
+            <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('projects')}>&nbsp;&nbsp;Projects</p>
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('contact')}>Contact</p>
           </div>
 

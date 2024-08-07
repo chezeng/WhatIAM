@@ -12,8 +12,11 @@ const titles = [
 ];
 
 const Intro = () => {
+    const text = `Hello! I'm Cheng!`;
+    const [charStyles, setCharStyles] = useState([]);
     const [titleIndex, setTitleIndex] = useState(0);
     const titleArray = useRef(titles); 
+
     const glitch = useGlitch({
         "timing": {
             "duration": 1500,
@@ -31,8 +34,6 @@ const Intro = () => {
         }
     });
 
-    const glitchRef = useRef(glitch.ref);
-
     useEffect(() => {
         const interval = setInterval(() => {
             setTitleIndex((prevIndex) => (prevIndex + 1) % titleArray.current.length);
@@ -41,10 +42,27 @@ const Intro = () => {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        const newCharStyles = text.split('').map( () => {
+          const delay = Math.random() * 0.5;
+          const duration = 0.5;
+          return {
+            animation: `flash ${duration}s ${delay}s forwards`
+          };
+        });
+        setCharStyles(newCharStyles);
+      }, [text]);
+
     return (
         <section id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/wallpaper2.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
-            <h1 className="relative top-60 flex justify-center
-         text-5xl md:text-7xl text-slate-200 font-bold">Hello! I'm Cheng!</h1>
+            <h1 className="relative top-60 flex justify-center text-5xl md:text-7xl text-slate-200 font-bold">
+                {text.split('').map((char, index) => (
+                <span key={index} style={charStyles[index]}>
+                    {char === ' ' ? '\u00A0' : char}
+                </span>
+                ))}
+            </h1>
+
             <h2 className="relative changing-title text-center top-65 md:text-5xl text-3xl font-bold" style={{
                 color: titleArray.current[titleIndex].color,
                 textShadow: titleArray.current[titleIndex].shadow
