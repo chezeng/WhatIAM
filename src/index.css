@@ -253,7 +253,7 @@ body {
   }
 
   @keyframes border-spin-button {
-    0.5% {
+    0.01% {
         transform: rotate(360deg);
     }
   }

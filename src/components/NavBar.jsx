@@ -34,7 +34,7 @@ const NavBar = () => {
           </h1>
           <div className="hidden sm:flex space-x-8 mr-12 text-xl"> 
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('about')}>About</p>
-            <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('projects')}>&nbsp;&nbsp;Projects</p>
+            <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('projects')}>&nbsp;Projects</p>
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('contact')}>Contact</p>
           </div>
 
@@ -44,7 +44,7 @@ const NavBar = () => {
             <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-510 ${toggle ? "rotate-90" : "top-5.5"}`} />
           </button>
           
-          <div className={`sm:hidwden absolute text-center flex-col items-center space-y-3 top-24 -right-24 w-28 px-5 py-3 rounded-xl bg-black border-white border-2 transition transform duration-300 ease-in-out ${!toggle ? 'translate-x-20' : '-translate-x-full'}`}>
+          <div className={`sm:hidden absolute text-center flex-col items-center space-y-3 top-24 -right-24 w-28 px-5 py-3 rounded-xl bg-black border-white border-2 transition transform duration-300 ease-in-out ${!toggle ? 'translate-x-20' : '-translate-x-full'}`}>
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 transition' onClick={() => scrollToSection('about')}>About</p>
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 transition' onClick={() => scrollToSection('projects')}>Projects</p>
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 transition' onClick={() => scrollToSection('contact')}>Contact</p>

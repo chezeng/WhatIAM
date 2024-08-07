@@ -54,7 +54,7 @@ const Intro = () => {
       }, [text]);
 
     return (
-        <section id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/wallpaper2.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
+        <section id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/Intro.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
             <h1 className="relative top-60 flex justify-center text-5xl md:text-7xl text-slate-200 font-bold">
                 {text.split('').map((char, index) => (
                 <span key={index} style={charStyles[index]}>
