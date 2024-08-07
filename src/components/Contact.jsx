@@ -13,7 +13,7 @@ function Contact() {
 }, []);
 
     return (
-    <section className='p-28 w-screen h-max'>
+    <section id='contact' className='p-28 w-screen h-max'>
       <Title title='Contact'/>
       <div className='flex justify-center opacity-15'><FaHandshake className="w-120 h-120"/></div>     
       <h2 data-aos="fade-up" data-aos-delay="50" className="text-center -mt-85 text-4xl">

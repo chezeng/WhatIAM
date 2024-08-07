@@ -18,7 +18,13 @@
 }
 
 .tech-icons {
-  @apply text-white w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out;
+  @apply text-white w-10 h-10 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out;
+}
+
+@media (max-width: 768px) {
+  .tech-icons {
+    @apply text-white w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out;
+  }
 }
 
 .changing-title {

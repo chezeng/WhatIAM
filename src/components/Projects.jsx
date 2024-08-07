@@ -27,7 +27,7 @@ const Projects = () => {
 }, []);
 
   return (
-    <section data-aos="fade-up" data-aos-delay="150" className='sm:p-28 w-screen'>
+    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='sm:p-28 w-screen'>
       <Title title="Projects"/>
       <div className='grid sm:grid-cols-1 lg:grid-cols-2 items-center justify-items-center mt-16'>
         <div  className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>

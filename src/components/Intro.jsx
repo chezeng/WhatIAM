@@ -42,7 +42,7 @@ const Intro = () => {
     }, []);
 
     return (
-        <section className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/wallpaper2.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
+        <section id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/wallpaper2.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
             <h1 className="relative top-60 flex justify-center
          text-5xl md:text-7xl text-slate-200 font-bold">Hello! I'm Cheng!</h1>
             <h2 className="relative changing-title text-center top-65 md:text-5xl text-3xl font-bold" style={{
