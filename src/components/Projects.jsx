@@ -33,7 +33,7 @@ const Projects = () => {
         <div  className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Music.png" alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src="/src/assets/WhatIAM.png" alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
@@ -62,7 +62,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Music.png" alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src="/src/assets/TheMathetia.png" alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">The Mathetia</div>
@@ -96,7 +96,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Music.png" alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src="/src/assets/Recyclable.png" alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Recyclable</div>
@@ -128,12 +128,12 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Music.png" alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src="/src/assets/XToolkit.png" alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">X-Toolkit</div>
                 <p className="text-slate-500 text-base mt-2">
-                Created an expense tracking system using DOM manipulation and event listeners,
+                Created several front-end applications using DOM manipulation and event listeners,
                 with component-based architecture and props to manage data flow.
                 </p>
               </div>
@@ -154,7 +154,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Music.png" alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src="/src/assets/AndroidPack.png" alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Android-Pack</div>
@@ -181,7 +181,7 @@ const Projects = () => {
         <div className='card-wrapper-strange h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Music.png" alt="?" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src="/src/assets/ToBeContinued.png" alt="?" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">?</div>

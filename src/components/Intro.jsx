@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { FaArrowDown } from 'react-icons/fa';
 import { useGlitch } from 'react-powerglitch';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const titles = [
     { text: "Software Developer", color: "#FF0000", shadow: "0 0 10px #FF0000" },
@@ -19,7 +21,7 @@ const Intro = () => {
 
     const glitch = useGlitch({
         "timing": {
-            "duration": 1500,
+            "duration": 2000,
             "easing": "ease-in-out"
         },
         "glitchTimeSpan": {
@@ -37,10 +39,17 @@ const Intro = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setTitleIndex((prevIndex) => (prevIndex + 1) % titleArray.current.length);
-        }, 1500);
+        }, 2000);
 
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        AOS.init({
+            duration: 500,
+            once: false, 
+        });
+      }, []);
 
     useEffect(() => {
         const newCharStyles = text.split('').map( () => {
@@ -54,7 +63,7 @@ const Intro = () => {
       }, [text]);
 
     return (
-        <section id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/Intro.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.5)"}}>
+        <section data-aos="zoom-out" data-aos-delay="100" id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(/src/assets/wall3.png)`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
             <h1 className="relative top-60 flex justify-center text-5xl md:text-7xl text-slate-200 font-bold">
                 {text.split('').map((char, index) => (
                 <span key={index} style={charStyles[index]}>

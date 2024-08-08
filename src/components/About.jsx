@@ -46,7 +46,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20 " src="/src/assets/Profile.jpg"></img>
+          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src="/src/assets/Profile.jpg"></img>
         </div> 
      
         
