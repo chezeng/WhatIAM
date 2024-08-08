@@ -23,6 +23,7 @@ const About = () => {
               continuously learning <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">new software technologies</span>.
               My dream is to fully utilize <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">AI + software applications</span> to create impact.
             </p>
+
             <div className="flex justify-center md:justify-start space-x-8"> 
                 <a href="https://www.linkedin.com/in/cz5/" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="tech-icons"/>
@@ -47,6 +48,7 @@ const About = () => {
           </div>
         
           <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src="/src/assets/Profile.jpg"></img>
+          
         </div>  
       </section>
     );
