@@ -309,11 +309,6 @@ body {
   animation: floating 3s ease-in-out infinite;
 }
 
-.profileImg:hover {
-  transform: scale(1.1);
-  transition: transform 0.5s;
-}
-
 @keyframes dotAnimation {
   0% {
     opacity: 0;

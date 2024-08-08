@@ -5,7 +5,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Title from './Title';
 
-
 const About = () => {
   useEffect(() => {
     AOS.init({
@@ -46,10 +45,9 @@ const About = () => {
               </div>
             </div>
           </div>
-          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src="/src/assets/Profile.jpg"></img>
-        </div> 
-     
         
+          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src="/src/assets/Profile.jpg"></img>
+        </div>  
       </section>
     );
 }
