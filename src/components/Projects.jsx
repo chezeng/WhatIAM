@@ -35,10 +35,10 @@ const Projects = () => {
 }, []);
 
   return (
-    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28 w-screen h-full'>
+    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28 '>
       <Title title="Projects"/>
-      <div className='grid sm:grid-cols-1 lg:grid-cols-2 items-center justify-items-center'>
-        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
+      <div className='grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center md:ml-0 -ml-21'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={WhatIAM} alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
@@ -69,7 +69,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={TheMathetia} alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
@@ -103,7 +103,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 '>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={Recyclable} alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
@@ -111,8 +111,8 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Recyclable</div>
                 <p className="text-slate-500 text-base mt-2">
-                Gained experience in 8-month Android app development using Java and Figma. 
-                This collaboration enhanced understanding of professional software development.
+                Gained experience in 8-month Android app development using Java and Figma, 
+                enhanced my understanding of professional software development.
                 </p>
               </div>
               <div className="flex mt-3">
@@ -135,7 +135,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 '>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={XToolKit} alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
@@ -161,7 +161,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 '>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={AndroidPack} alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
@@ -187,7 +187,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
+        {/* <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={ToBeContinued} alt="?" className="object-cover w-full h-full rounded-t-2xl" />
@@ -204,7 +204,7 @@ const Projects = () => {
                 </button></a>
               </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
     </section>

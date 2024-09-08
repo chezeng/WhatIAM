@@ -9,9 +9,9 @@ const timelineColor = 'rgb(3, 52, 110)';
 
 const Experience = () => {
     return (
-    <section className='p-28 w-screen h-200rem '>
+    <section className='p-28 w-screen h-200rem'>
       <Title title='Experience'/>
-        <VerticalTimeline className='mt-24 w-96 right-20 md:right-0 sm:w-full'>
+        <VerticalTimeline className='mt-24 w-85 right-24 md:right-0 sm:w-full'>
           <VerticalTimelineElement
               className="mt-20"
               contentStyle={{ background: timelineColor, color: '#fff' }}
@@ -52,10 +52,11 @@ const Experience = () => {
             contentArrowStyle={{ borderRight: `7px solid ${timelineColor}` }}
             iconStyle={{ background: timelineColor, color: '#fff' }}
             icon={<FaHandsHelping />}>
-            <h3 className="font-bold text-2xl"><span className='italic'>Richmond Public Library</span> - Team Ambassador</h3>
-            <h4 className="italic paragraph text-xl">Sept. 2021 - Jan. 2024</h4>
-            <ul className='space-y-2 text-lg mt-7'>
-              <li>Since Grade 10, I have been actively involved in the Richmond Public Library's community involvement program,
+            <h3 className="font-bold text-3xl mt-2 paragraph">Richmond Public Library Team Ambassador</h3>
+            <h4 className="italic paragraph text-xl mt-2">Sept. 2021 - Jan. 2024</h4>
+            <ul className='space-y-4 text-md md:text-lg mb-2'>
+              <br></br>
+              <li>— Since Grade 10, I have been actively involved in the Richmond Public Library's community involvement program,
             which boosted my empathy with others and fostered a sense of community.</li>
             </ul>
           </VerticalTimelineElement>
@@ -66,10 +67,11 @@ const Experience = () => {
             contentArrowStyle={{ borderRight: `7px solid ${timelineColor}` }}
             iconStyle={{ background: timelineColor, color: '#fff' }}
             icon={<FaBookReader />}>
-            <h3 className="font-bold text-2xl"><span className='italic'>Simon Fraser University</span> - Teaching Assistant</h3>
-            <h4 className="italic paragraph text-xl">Jul. 2022 - Aug. 2022</h4>
-            <ul className='space-y-2 text-lg mt-7'>
-              <li>As an assistant teacher at SFU, I gained deep insights into engaging people effectively and responsibility
+            <h3 className="font-bold text-3xl mt-2 paragraph">Simon Fraser University Teaching Assistant</h3>
+            <h4 className="italic paragraph text-xl mt-2">Jul. 2022 - Aug. 2022</h4>
+            <ul className='space-y-4 text-md md:text-lg mb-2'>
+              <br></br>
+              <li>— As an assistant teacher at SFU, I gained deep insights into engaging people effectively and responsibility
             to ensure the maintainability the projects while regularly updating my progress to instructors.</li>
             </ul>
           </VerticalTimelineElement>
