@@ -13,6 +13,7 @@ import Recyclable from "/src/assets/Recyclable.png";
 import XToolKit from "/src/assets/XToolkit.png";
 import AndroidPack from "/src/assets/AndroidPack.png";
 import ToBeContinued from "/src/assets/ToBeContinued.png";
+import ChatGPT from "/src/assets/ChatGPT.svg";
 
 const Projects = () => {
   const IconWithTooltip = ({ icon: Icon, label }) => {
@@ -87,7 +88,7 @@ const Projects = () => {
                     <IconWithTooltip icon={SiGodotengine} label="GdScript" />
                     <IconWithTooltip icon={FaImages} label="Stable Diffusion" />
                     <div className="relative group flex items-center mx-1">
-                      <ReactSVG src="/src/assets/ChatGPT.svg" className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
+                      <ReactSVG src={ChatGPT} className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
                       <span className="absolute left-1/2 transform -translate-x-1/2 mt-8 w-max text-white text-xs font-medium p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                         ChatGPT
                       </span>
