@@ -5,6 +5,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Title from './Title';
 
+import profileImage from '/src/assets/Profile.jpg';
+import resumePdf from '/src/assets/ChengResume.pdf';
+
 const About = () => {
   useEffect(() => {
     AOS.init({
@@ -38,7 +41,7 @@ const About = () => {
 
             <div className="flex justify-center md:justify-start">
               <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out'>
-                <a href={'/src/assets/ChengResume.pdf'} target="_blank" rel="noopener noreferrer">
+                <a href={resumePdf} target="_blank" rel="noopener noreferrer">
                   <div className='card-content-button rounded-3xl cursor-pointer'>
                     <p className="text-center text-xl font-bold mt-6">Check my resume</p>
                   </div>
@@ -47,7 +50,7 @@ const About = () => {
             </div>
           </div>
         
-          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src="/src/assets/Profile.jpg"></img>
+          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src={profileImage}></img>
           
         </div>  
       </section>

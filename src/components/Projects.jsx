@@ -7,6 +7,13 @@ import Title from './Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+import WhatIAM from '/src/assets/WhatIAM.png';
+import TheMathetia from "/src/assets/TheMathetia.png";
+import Recyclable from "/src/assets/Recyclable.png";
+import XToolKit from "/src/assets/XToolkit.png";
+import AndroidPack from "/src/assets/AndroidPack.png";
+import ToBeContinued from "/src/assets/ToBeContinued.png";
+
 const Projects = () => {
   const IconWithTooltip = ({ icon: Icon, label }) => {
     return (
@@ -33,7 +40,7 @@ const Projects = () => {
         <div  className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/WhatIAM.png" alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={WhatIAM} alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
@@ -62,7 +69,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/TheMathetia.png" alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={TheMathetia} alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">The Mathetia</div>
@@ -96,7 +103,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/Recyclable.png" alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={Recyclable} alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Recyclable</div>
@@ -128,7 +135,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/XToolkit.png" alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={XToolKit} alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">X-Toolkit</div>
@@ -154,7 +161,7 @@ const Projects = () => {
         <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/AndroidPack.png" alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={AndroidPack} alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Android-Pack</div>
@@ -181,7 +188,7 @@ const Projects = () => {
         <div className='card-wrapper-strange h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src="/src/assets/ToBeContinued.png" alt="?" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={ToBeContinued} alt="?" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">?</div>
