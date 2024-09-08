@@ -121,7 +121,7 @@ const Projects = () => {
                   <div className="flex ml-2 mt-1.5">
                     <IconWithTooltip icon={FaJava} label="Java" />
                     <div className="relative group flex items-center mx-1">
-                      <ReactSVG src="/src/assets/ChatGPT.svg" className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
+                      <ReactSVG src={ChatGPT} className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
                       <span className="absolute left-1/2 transform -translate-x-1/2 mt-8 w-max text-white text-xs font-medium p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                         ChatGPT
                       </span>
