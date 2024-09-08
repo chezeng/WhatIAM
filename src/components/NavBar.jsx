@@ -28,7 +28,7 @@ const NavBar = () => {
   
     return (
         <nav className={`z-10 w-screen h-20 flex items-center justify-between bg-black fixed transition-transform duration-300 ${visible ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
-          <h1 className="text-white text-2xl ml-10 font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition duration-100 ease-out" 
+          <h1 className="text-white text-xl md:text-2xl ml-10 font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition duration-100 ease-out" 
           onClick={() => scrollToSection('intro')}> 
               Cheng Zeng
           </h1>
@@ -38,7 +38,7 @@ const NavBar = () => {
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('contact')}>Contact</p>
           </div>
 
-          <button className="sm:hidden absolute w-7 h-7 cursor-pointer right-7" onClick={() => setToggle(!toggle)}>
+          <button className="sm:hidden absolute w-7 h-7 cursor-pointer right-10" onClick={() => setToggle(!toggle)}>
             <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-500 ${toggle ? "rotate-90" : "top-1.5"}`} />
             <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-505 ${toggle ? "rotate-90" : "top-3.5"}`} />
             <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-510 ${toggle ? "rotate-90" : "top-5.5"}`} />

@@ -172,7 +172,7 @@ body {
       transparent 80deg
     );
 
-    @apply absolute left-[-36%] top-[-36%] h-[175%] w-[175%];
+    @apply absolute left-[-100%] top-[-50%] h-[200%] w-[300%];
   }
 
   /* Hover Gradient (rainbow animation) */

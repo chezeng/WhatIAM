@@ -66,7 +66,7 @@ const Intro = () => {
 
     return (
         <section data-aos="zoom-out" data-aos-delay="100" id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(${WallPaper})`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
-            <h1 className="relative top-60 flex justify-center text-5xl md:text-7xl text-slate-200 font-bold">
+            <h1 className="relative top-60 flex justify-center text-4xl md:text-7xl text-slate-200 font-bold">
                 {text.split('').map((char, index) => (
                 <span key={index} style={charStyles[index]}>
                     {char === ' ' ? '\u00A0' : char}
@@ -74,7 +74,7 @@ const Intro = () => {
                 ))}
             </h1>
 
-            <h2 className="relative changing-title text-center top-65 md:text-5xl text-3xl font-bold" style={{
+            <h2 className="relative changing-title text-center top-64 text-2xl md:text-5xl font-bold" style={{
                 color: titleArray.current[titleIndex].color,
                 textShadow: titleArray.current[titleIndex].shadow
             }}>

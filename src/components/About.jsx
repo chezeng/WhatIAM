@@ -20,7 +20,7 @@ const About = () => {
       <section id='about' className='p-28 w-screen h-full'>
         <Title title="About Me"></Title>
         <div data-aos="fade-up" data-aos-delay="100" className="flex flex-col md:flex-row mt-14 lg:px-20 xl:px-28 items-center">
-          <div className='space-y-10 mt-10'>
+          <div className='space-y-10 mt-0 md:mt-10'>
             <p className="text-center md:text-left text-xl md:text-3xl lg:w-3/4">
               I am a <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">Computer Science</span> student at the University of Waterloo, 
               continuously learning <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">new software technologies</span>.
@@ -49,9 +49,11 @@ const About = () => {
               </div>
             </div>
           </div>
-        
-          <img className="floating rounded-3xl w-70 h-70 lg:w-2/5 lg:h-2/5 mt-20" src={profileImage}></img>
-          
+
+          <div className='hover:scale-105 transition ease-in-out duration-300'>
+            <img className="floating rounded-3xl w-50 h-50 md:w-2/5 mt-20" src={profileImage}></img>
+          </div>
+
         </div>  
       </section>
     );

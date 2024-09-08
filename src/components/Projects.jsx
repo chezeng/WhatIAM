@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaAndroid, FaWix, FaImages } from 'react-icons/fa';
-import { SiTailwindcss, SiCreatereactapp, SiJetbrains, SiGodotengine, SiCanva, SiAdobeaftereffects} from "react-icons/si";
+import { SiVite, SiVercel, SiTailwindcss, SiCreatereactapp, SiJetbrains, SiGodotengine, SiCanva, SiAdobeaftereffects} from "react-icons/si";
 import { ReactSVG } from 'react-svg';
 import Title from './Title';
 
@@ -35,10 +35,10 @@ const Projects = () => {
 }, []);
 
   return (
-    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='sm:p-28 w-screen'>
+    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28 w-screen h-full'>
       <Title title="Projects"/>
-      <div className='grid sm:grid-cols-1 lg:grid-cols-2 items-center justify-items-center mt-16'>
-        <div  className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+      <div className='grid sm:grid-cols-1 lg:grid-cols-2 items-center justify-items-center'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={WhatIAM} alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
@@ -55,19 +55,21 @@ const Projects = () => {
                   <button className="bg-blue-500 hover:bg-blue-700 hover:transition hover:ease-in-out text-white font-normal py-2 px-4 ml-5 rounded transition ease-in-out">
                     Read More
                   </button></a>
-                  <div className="flex ml-2 mt-1.5">
+                  <div className="grid grid-cols-4 ml-4 -mt-3">
                     <IconWithTooltip icon={FaHtml5} label="HTML" />
                     <IconWithTooltip icon={FaCss3Alt} label="CSS" />
                     <IconWithTooltip icon={FaJs} label="JavaScript" />
                     <IconWithTooltip icon={FaReact} label="React" />
                     <IconWithTooltip icon={FaNodeJs} label="NodeJs" />
                     <IconWithTooltip icon={SiTailwindcss} label="TailwindCSS" />
+                    <IconWithTooltip icon={SiVercel} label="Vercel" />
+                    <IconWithTooltip icon={SiVite} label="Vite" />
                   </div>
               </div>
           </div>
         </div>
 
-        <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={TheMathetia} alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
@@ -84,7 +86,7 @@ const Projects = () => {
                   <button className="bg-blue-500 hover:bg-blue-700 hover:transition hover:ease-in-out text-white font-normal py-2 px-4 ml-5 rounded transition ease-in-out">
                     Read More
                   </button></a>
-                  <div className="flex ml-2 mt-1.5">
+                  <div className="grid grid-cols-4 ml-4 -mt-3">
                     <IconWithTooltip icon={SiGodotengine} label="GdScript" />
                     <IconWithTooltip icon={FaImages} label="Stable Diffusion" />
                     <div className="relative group flex items-center mx-1">
@@ -101,7 +103,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={Recyclable} alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
@@ -118,7 +120,7 @@ const Projects = () => {
                   <button className="bg-blue-500 hover:bg-blue-700 hover:transition hover:ease-in-out text-white font-normal py-2 px-4 ml-5 rounded transition ease-in-out">
                     Read More
                   </button></a>
-                  <div className="flex ml-2 mt-1.5">
+                  <div className="grid grid-cols-4 ml-4 -mt-3">
                     <IconWithTooltip icon={FaJava} label="Java" />
                     <div className="relative group flex items-center mx-1">
                       <ReactSVG src={ChatGPT} className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
@@ -133,7 +135,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={XToolKit} alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
@@ -150,7 +152,7 @@ const Projects = () => {
                   <button className="bg-blue-500 hover:bg-blue-700 hover:transition hover:ease-in-out text-white font-normal py-2 px-4 ml-5 rounded transition ease-in-out">
                     Read More
                   </button></a>
-                  <div className="flex ml-2 mt-1.5">
+                  <div className="grid grid-cols-4 ml-4 -mt-3">
                     <IconWithTooltip icon={FaReact} label="React" />
                     <IconWithTooltip icon={FaNodeJs} label="NodeJs" />
                     <IconWithTooltip icon={SiCreatereactapp} label="Create React App" />
@@ -159,7 +161,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className='card-wrapper h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={AndroidPack} alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
@@ -176,17 +178,16 @@ const Projects = () => {
                   <button className="bg-blue-500 hover:bg-blue-700 hover:transition hover:ease-in-out text-white font-normal py-2 px-4 ml-5 rounded transition ease-in-out">
                     Read More
                   </button></a>
-                  <div className="flex ml-2 mt-1.5">
+                  <div className="grid grid-cols-4 ml-4 -mt-3">
                     <IconWithTooltip icon={FaJava} label="Java" />
                     <IconWithTooltip icon={SiJetbrains} label="JetBrains"/>
                     <IconWithTooltip icon={FaAndroid} label="Android" />
-
                   </div>
               </div>
           </div>
         </div>
 
-        <div className='card-wrapper-strange h-[30rem] w-[24rem] hover:scale-105 transition ease-in-out mt-20'>
+        <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 right-10 md:right-0'>
           <div className='card-content'>
               <div className="relative h-56">
                 <img src={ToBeContinued} alt="?" className="object-cover w-full h-full rounded-t-2xl" />

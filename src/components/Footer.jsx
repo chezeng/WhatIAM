@@ -22,7 +22,6 @@ const Footer = () => {
         <>
         <div className='flex justify-center'>{isExploding && <ConfettiExplosion height={2000} width={2000} />}</div>
         <footer className="w-screen space-y-5 bg-slate-950 p-6 h-36">
-        <p className='absolute right-10 mt-5 text-gray-400'><a target="_blank" href="" className="hover:underline">Link to My World</a></p>
             <ul className="flex text-sm text-gray-400 space-x-3 md:space-x-7 lg:space-x-10 mt-3 ml-6 -mb-2">
                 <li><a target="_blank" href="https://www.linkedin.com/in/cz5/" rel="noopener noreferrer" className="hover:underline">LinkedIn</a></li>
                 <li><a target="_blank" href="https://github.com/ch3ngz" className="hover:underline">GitHub</a></li>
