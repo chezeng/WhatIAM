@@ -44,7 +44,7 @@ const TitleAnimationComponent = ({ title }) => {
       <div ref={dotRef} className="absolute bg-white rounded-full z-10 mt-4 md:mt-9" style={{ width: '10px', height: '10px' }}></div>
       <div ref={leftLineRef} className="absolute h-[2px] bg-white mr-5 mt-4 md:mt-9" style={{ width: '0', right: 'calc(50% + 5px)' }}></div>
       <div ref={rightLineRef} className="absolute h-[2px] bg-white ml-5 mt-4 md:mt-9" style={{ width: '0', left: 'calc(50% + 5px)' }}></div>
-      <h1 ref={titleRef} className="absolute -top-18 text-5xl md:text-6xl font-bold opacity-0 transition-all duration-500">{title}</h1>
+      <h1 ref={titleRef} className="absolute -top-12 md:-top-18 text-3xl md:text-6xl font-bold opacity-0 transition-all duration-500">{title}</h1>
     </div>
   );
 };
