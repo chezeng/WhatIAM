@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
         Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold inline font-bold'>as soon as possible</span>. <br></br>
       </h2>   
       
-{/*       <div className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full">
+      <div className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full">
         <h1 className="text-3xl font-bold paragraph text-white mb-8">Let's Craft Something Extraordinary!</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -142,8 +142,9 @@ const handleSubmit = async (e) => {
             {successMessage}
           </div>
         )}
-      </div> */}
-      <div className="flex items-center justify-between p-24">
+      </div>
+      
+{/*       <div className="flex items-center justify-between p-24">
         <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
             <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
               <div className='card-content-button rounded-3xl cursor-pointer'>
@@ -151,7 +152,7 @@ const handleSubmit = async (e) => {
               </div>
             </a> 
           </div>
-      </div>
+      </div> */}
 
       <div className='absolute bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
