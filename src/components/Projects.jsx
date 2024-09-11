@@ -77,8 +77,7 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">The Mathetia</div>
                 <p className="text-slate-500 text-base mt-2">
-                Used GDscript and AI technologies to create a solo game demo as my capstone project within ONE year.
-                The project encouraged me to explore AI's potential and its ethical use.
+                Used GDscript and AI technologies to create a solo game demo to discover AI's potential and ethical use within ONE year.
                 </p>
               </div>
               <div className="flex mt-3">
