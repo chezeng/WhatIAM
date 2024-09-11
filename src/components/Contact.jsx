@@ -143,14 +143,15 @@ const handleSubmit = async (e) => {
           </div>
         )}
       </div> */}
-
-      <div className='flex items-center justify-between p-24 card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
-          <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
-            <div className='card-content-button rounded-3xl cursor-pointer'>
-              <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
-            </div>
-          </a> 
-        </div>
+      <div className="flex items-center justify-between p-24">
+        <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
+            <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
+              <div className='card-content-button rounded-3xl cursor-pointer'>
+                <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
+              </div>
+            </a> 
+          </div>
+      </div>
 
       <div className='absolute bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
