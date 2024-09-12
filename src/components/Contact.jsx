@@ -49,20 +49,22 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   if (validateForm()) {
     try {
-      const response = await fetch('http://localhost:5000/submit-form', {
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-      if (response.ok) {
-        setSuccessMessage('Message received! I\'ll be in touch as soon as possible.');
-        setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setSuccessMessage(''), 5000);
-      } else {
-        throw new Error('Failed to submit form');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
+      const data = await response.json();
+      setSuccessMessage(data.message || 'Message received! I\'ll be in touch as soon as possible.');
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setSuccessMessage(''), 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setErrors({ submit: 'Oops! Something went wrong. Please try again later.' });
@@ -134,7 +136,7 @@ const handleSubmit = async (e) => {
         )}
       </div>
       
-{/*       <div className="flex items-center justify-between p-24">
+      {/* <div className="flex items-center justify-between mt-48 ">
         <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
             <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
               <div className='card-content-button rounded-3xl cursor-pointer'>
@@ -144,7 +146,7 @@ const handleSubmit = async (e) => {
           </div>
       </div> */}
 
-      <div className='absolute bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
+      <div className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
       </div>
     </section>
