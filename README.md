@@ -2,7 +2,7 @@
 
 ## Welcome! If you want to explore my project in detail, please:
 
-### 0. Directly access the website: [Cheng Zeng's Portfolio Website] (https://www.chengzeng.dev/)
+### 0. Directly access the website: [Cheng Zeng's Portfolio Website](https://www.chengzeng.dev/)
 
 ### 1. Clone the project
 
