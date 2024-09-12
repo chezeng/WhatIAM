@@ -23,26 +23,16 @@ const [successMessage, setSuccessMessage] = useState('');
 const validateForm = () => {
   let newErrors = {};
   if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
-    newErrors.name = 'Oops! Names usually don\'t include numbers or symbols. Try again?';
+    newErrors.name = 'Please provide a name without numbers or special characters.';
   }
   if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-    newErrors.email = 'Hmm, that email looks a bit off. Double-check it for me?';
+    newErrors.email = 'The email seems incorrect. Could you please verify it?';
   }
   if (formData.message.trim().length < 30) {
-    newErrors.message = 'Your message is a bit shy. Can you coax it to be at least 30 characters?';
-  }
-  if (detectMumboJumbo(formData.message)) {
-    newErrors.message = 'This message seems a bit... random. Want to try expressing your thoughts more clearly?';
+    newErrors.message = 'Your message is kind of brief. Could you expand it to 30 characters or more?';
   }
   setErrors(newErrors);
   return Object.keys(newErrors).length === 0;
-};
-
-const detectMumboJumbo = (text) => {
-  // This is a simple implementation. You might want to refine this further.
-  const words = text.split(' ');
-  const uniqueChars = new Set(text.replace(/\s/g, '').toLowerCase());
-  return words.length > 5 && uniqueChars.size < 10;
 };
 
 const handleChange = (e) => {
@@ -67,7 +57,7 @@ const handleSubmit = async (e) => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        setSuccessMessage('Message received! I\'ll be in touch faster than you can say "React"!');
+        setSuccessMessage('Message received! I\'ll be in touch as soon as possible.');
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setSuccessMessage(''), 5000);
       } else {
@@ -98,7 +88,7 @@ const handleSubmit = async (e) => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="What shall I call you, creative genius?"
+              placeholder="How may I address you?"
               className={`w-full px-4 py-2 rounded-md bg-gray-800 bg-opacity-50 border ${errors.name ? 'border-red-500' : 'border-gray-700'} text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200`}
             />
             {errors.name && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.name}</p>}
@@ -111,7 +101,7 @@ const handleSubmit = async (e) => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Where shall I send my digital carrier pigeon?"
+              placeholder="How would you like me to contact you?"
               className={`w-full px-4 py-2 rounded-md bg-gray-800 bg-opacity-50 border ${errors.email ? 'border-red-500' : 'border-gray-700'} text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200`}
             />
             {errors.email && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.email}</p>}
@@ -124,7 +114,7 @@ const handleSubmit = async (e) => {
               value={formData.message}
               onChange={handleChange}
               rows="4"
-              placeholder="Paint me a picture with your words. What's on your mind?"
+              placeholder="I would love to hear your ideas; please feel free to share!"
               className={`w-full px-4 py-2 rounded-md bg-gray-800 bg-opacity-50 border ${errors.message ? 'border-red-500' : 'border-gray-700'} text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200`}
             ></textarea>
             {errors.message && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.message}</p>}
@@ -143,6 +133,16 @@ const handleSubmit = async (e) => {
           </div>
         )}
       </div>
+      
+{/*       <div className="flex items-center justify-between p-24">
+        <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
+            <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
+              <div className='card-content-button rounded-3xl cursor-pointer'>
+                <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
+              </div>
+            </a> 
+          </div>
+      </div> */}
 
       <div className='absolute bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
