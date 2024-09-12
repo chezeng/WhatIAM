@@ -1,8 +1,8 @@
-# WhatIAM - Cheng Zeng's personal portfolio Website
+# WhatIAM - Cheng Zeng's Personal Website
 
 ## Welcome! If you want to explore my project in detail, please:
 
-### 0. Directly access the website: [Cheng Zeng's Portfolio Website](https://www.chengzeng.dev/)
+### 0. Directly access the website: [Cheng Zeng's Personal Website](https://www.chengzeng.dev/)
 
 ### 1. Clone the project
 
