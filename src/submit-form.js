@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
-    
+
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     try {
       await client.connect();
-      const database = client.db('your_database_name');
+      const database = client.db('whatiam');
       const collection = database.collection('form_submissions');
 
       await collection.insertOne({
