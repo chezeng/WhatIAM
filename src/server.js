@@ -2,24 +2,31 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import cors from 'cors';
 import 'dotenv/config';
-import path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 5173;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.VITE_FRONTEND_URL || 'http://localhost:5173'
+}));
 app.use(express.json());
-
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 // MongoDB URI and Client Setup
 const uri = process.env.MONGODB_URI;
 let client;
 
+// Connect to MongoDB
+async function connectToDatabase() {
+  if (!client) {
+    client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+  }
+  return client.db('whatiam');
+}
+
 // Handle form submissions
-app.post('/api/submit-form', async (req, res) => {
+app.post('/submit-form', async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
@@ -27,12 +34,7 @@ app.post('/api/submit-form', async (req, res) => {
   }
 
   try {
-    if (!client) {
-      client = new MongoClient(uri, { useUnifiedTopology: true });
-      await client.connect();
-    }
-
-    const database = client.db('whatiam');
+    const database = await connectToDatabase();
     const collection = database.collection('form_submissions');
 
     await collection.insertOne({ name, email, message, createdAt: new Date() });
@@ -42,12 +44,6 @@ app.post('/api/submit-form', async (req, res) => {
     console.error('Error submitting form:', error);
     res.status(500).json({ error: 'Error submitting form' });
   }
-});
-
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 // Start the server
