@@ -7,70 +7,70 @@ import 'aos/dist/aos.css';
 const Contact = () => {
   useEffect(() => {
     AOS.init({
-        duration: 500,
-        once: false, 
+      duration: 500,
+      once: false, 
     });
-}, []);
+  }, []);
 
-const [formData, setFormData] = useState({
-  name: '',
-  email: '',
-  message: ''
-});
-const [errors, setErrors] = useState({});
-const [successMessage, setSuccessMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
 
-const validateForm = () => {
-  let newErrors = {};
-  if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
-    newErrors.name = 'Please provide a name without numbers or special characters.';
-  }
-  if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-    newErrors.email = 'The email seems incorrect. Could you please verify it?';
-  }
-  if (formData.message.trim().length < 30) {
-    newErrors.message = 'Your message is kind of brief. Could you expand it to 30 characters or more?';
-  }
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
+  const validateForm = () => {
+    let newErrors = {};
+    // if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
+    //   newErrors.name = 'Please provide a name without numbers or special characters.';
+    // }
+    // if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+    //   newErrors.email = 'The email seems incorrect. Could you please verify it?';
+    // }
+    // if (formData.message.trim().length < 30) {
+    //   newErrors.message = 'Your message is kind of brief. Could you expand it to 30 characters or more?';
+    // }
+    // setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFormData(prevState => ({
-    ...prevState,
-    [name]: value
-  }));
-  // Clear error for this field as user types
-  setErrors(prev => ({ ...prev, [name]: '' }));
-};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+    // Clear error for this field as user types
+    setErrors(prev => ({ ...prev, [name]: '' }));
+  };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (validateForm()) {
-    try {
-      const response = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        const response = await fetch('http://localhost:5173/submit-form', {  // Updated to match Express route
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setSuccessMessage(data.message || 'Message received! I\'ll be in touch as soon as possible.');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSuccessMessage(''), 5000);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setErrors({ submit: 'Oops! Something went wrong. Please try again later.' });
       }
-      
-      const data = await response.json();
-      setSuccessMessage(data.message || 'Message received! I\'ll be in touch as soon as possible.');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setSuccessMessage(''), 5000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setErrors({ submit: 'Oops! Something went wrong. Please try again later.' });
     }
-  }
-};
+  };
 
   return (
     <section id='contact' className='py-28 px-10 md:px-28 w-full relative'>
@@ -82,6 +82,8 @@ const handleSubmit = async (e) => {
       <div className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full">
         <h1 className="text-3xl font-bold paragraph text-white mb-8">Let's Craft Something Extraordinary!</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Form Fields */}
+          {/* Name Field */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
             <input
@@ -95,6 +97,7 @@ const handleSubmit = async (e) => {
             />
             {errors.name && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.name}</p>}
           </div>
+          {/* Email Field */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
             <input
@@ -108,6 +111,7 @@ const handleSubmit = async (e) => {
             />
             {errors.email && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.email}</p>}
           </div>
+          {/* Message Field */}
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Your Message</label>
             <textarea
@@ -121,6 +125,7 @@ const handleSubmit = async (e) => {
             ></textarea>
             {errors.message && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.message}</p>}
           </div>
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200 transform hover:scale-105"
@@ -135,24 +140,8 @@ const handleSubmit = async (e) => {
           </div>
         )}
       </div>
-      
-      {/* <div className="flex items-center justify-between mt-48 ">
-        <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
-            <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
-              <div className='card-content-button rounded-3xl cursor-pointer'>
-                <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
-              </div>
-            </a> 
-          </div>
-      </div> */}
-
-      <div className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
-        <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
-      </div>
     </section>
-    );
+  );
 }
-
-
 
 export default Contact;
