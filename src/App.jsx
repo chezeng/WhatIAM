@@ -1,24 +1,28 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
-import Intro from './components/Intro';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import HomePage from './HomePage';
+import BlogNavBar from './BlogComponents/BlogNavBar';
+import BlogPage from './BlogComponents/BlogPage';
+import CommentsPage from './BlogComponents/CommentsPage';
+import MusicPlayer from './BlogComponents/MusicPlayer';
+import ArticlePage from './BlogComponents/ArticlePage';  
 
-function App() {
+const App = () => {
   return (
-    <div className="bg-black">
-      <NavBar></NavBar>
-      <Intro></Intro>
-      <About></About>
-      <Projects></Projects>
-      <Experience></Experience>
-      <Contact></Contact>
-      <Footer></Footer>
-    </div>
+    <>
+      <Router>
+      <BlogNavBar />
+      <MusicPlayer />
+        <Routes>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/blog" element={<BlogPage />}/>
+          <Route path="/comments" element={<CommentsPage />} />
+          <Route path="/articles/:id" element={<ArticlePage />} />
+        </Routes>
+      </Router>
+    </>
+    
   )
 }
 

@@ -36,6 +36,7 @@ export default {
       },
       animation: {
         'border-spin': 'border-spin 7s linear infinite',
+        'spin-slow': 'spin 7s linear infinite',
       },
 
     },
