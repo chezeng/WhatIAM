@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
+import MusicPlayer from './MusicPlayer';
 
 function BlogPage() {
   const [quote, setQuote] = useState(null);
@@ -74,6 +75,7 @@ function BlogPage() {
 
   return (
     <div className="min-h-screen bg-gray-800 text-white">
+            <MusicPlayer />
       {/* Profile section */}
       <div id='intro' className="container mx-auto p-16 pt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
         <aside className="space-y-8 col-span-1">
