@@ -22,6 +22,10 @@ const NavBar = () => {
           window.removeEventListener('scroll', handleScroll);
         };
       }, [y]);
+
+    const scrollToSection = (id) => {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    };
   
     return (
         <nav className={`z-10 w-screen h-20 flex items-center justify-between bg-black fixed transition-transform duration-300 ${visible ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
