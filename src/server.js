@@ -1,74 +1,46 @@
-// import { connect, Schema, model } from 'mongoose';
-
-// connect('mongodb://localhost:5173/', {
-//     dbName: 'WhatIAM',
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }, err => err ? console.log(err) : 
-//     console.log('Connected to WhatIAM database'));
-
-// // Schema for users of app
-// const UserSchema = new Schema({
-//     name: {
-//         type: String,
-//         required: true,
-//     },
-//     email: {
-//         type: String,
-//         required: true,
-//         unique: true,
-//     },
-//     message: {
-//         type: String,
-//         required: true,
-//     },
-// });
-// const User = model('users', UserSchema);
-// User.createIndexes();
-
-// // For backend and express
-// import express, { json } from 'express';
-
-// const app = express();
-// import cors from "cors";
-// console.log("App listen at port 5173");
-// app.use(json());
-// app.use(cors());
-
-// app.get("/", (req, resp) => {
-//     resp.send("App is Working");
-// });
-
-// app.post("/submit", async (req, res) => {
-//   const { name, email, message } = req.body;
-
-//   if (!name || !email || !message) {
-//     return res.status(400).json({ error: 'Missing required fields' });
-//   }
-
-//   try {
-//     const database = await connectToDatabase();
-//     const collection = client.db('form_submissions');
-
-//     await collection.insertOne({ name, email, message, createdAt: new Date() });
-
-//     res.status(200).json({ message: 'Form submitted successfully' });
-//   } catch (error) {
-//     console.error('Error submitting form:', error);
-//     res.status(500).json({ error: 'Error submitting form' });
-//   }
-
-// });
-
-// app.listen(5173);
-
-
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+dotenv.config();
 
-app.listen(5173, () => console.log('App listen at port 5173'));
+const MONGODB_URI = "mongodb+srv://Cheng:Cheng0125@whatiam.gyg9d.mongodb.net/?retryWrites=true&w=majority&appName=WhatIAM";
+
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
+
+// Define the schema for contact form submissions
+const ContactSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  message: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+// Create a model based on the schema
+const Contact = mongoose.model('Contact', ContactSchema);
+
+// Route to handle form submissions
+app.post('/api/submit-form', async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    const newContact = new Contact({ name, email, message });
+    await newContact.save();
+    res.status(200).json({ message: 'Message received! I\'ll be in touch as soon as possible.' });
+  } catch (error) {
+    console.error('Error saving contact form:', error);
+    res.status(500).json({ message: 'An error occurred while submitting the form.' });
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '127.0.0.1', () => {
+  console.log(`Server running on http://127.0.0.1:${PORT}`);
+});
+
+export default app;

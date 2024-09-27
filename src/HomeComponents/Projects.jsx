@@ -83,7 +83,7 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
                 <p className="text-slate-500 text-base mt-2">
-                A dynamic portfolio and blog website using React, Express.js and MongoDB with advanced libraries
+                A dynamic personal portfolio and blog website using React, Express.js and MongoDB with numerous advanced libraries
                 and RESTful APIs to improve user experience.
                 </p>
               </div>
