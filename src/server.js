@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import path from 'path'; 
-import __dirname from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 
@@ -38,7 +38,9 @@ app.post('/api/submit-form', async (req, res) => {
   }
 });
 
-const __dirname = path.resolve(); 
+const __filename = fileURLToPath(import.meta.url); 
+const __dirname = path.dirname(__filename); 
+
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', (req, res) => {
