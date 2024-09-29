@@ -2,8 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path'; 
+import __dirname from 'path';
 
-dotenv.config(); 
+dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -34,6 +36,13 @@ app.post('/api/submit-form', async (req, res) => {
     console.error('Error saving contact form:', error);
     res.status(500).json({ message: 'An error occurred while submitting the form.' });
   }
+});
+
+const __dirname = path.resolve(); 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5173;
