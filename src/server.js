@@ -3,10 +3,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+dotenv.config(); 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-dotenv.config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -14,7 +15,6 @@ mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 
-// Define the schema for contact form submissions
 const ContactSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -22,10 +22,8 @@ const ContactSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// Create a model based on the schema
 const Contact = mongoose.model('Contact', ContactSchema);
 
-// Route to handle form submissions
 app.post('/api/submit-form', async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -38,9 +36,9 @@ app.post('/api/submit-form', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`Server running on http://127.0.0.1:${PORT}`);
+const PORT = process.env.PORT || 5173;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 export default app;
