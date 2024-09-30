@@ -3,10 +3,23 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import fs from 'fs/promises'; 
+import { fileURLToPath } from 'url';
+import { path, dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin: 'https://server.chengzeng.dev',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }
+));
 app.use(express.json());
 
 const MONGODB_URI = process.env.MONGODB_URI;
