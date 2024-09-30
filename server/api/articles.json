@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "A Profound Dialogue with ChatGPT",
+    "image": "https://example.com/images/react.png",
+    "date": "2024-07-14",
+    "preview": "Please take on the role of a professional mental counselor and help me with my confusion...",
+    "content": "*Please take on the role of a professional mental counselor and help me with my confusion. Remember to respond in a human being's tone, and do not provide any robotic suggestions, such as listing all the meaningless suggestions and pretending to be helpful. I don't need that. I only need your human-like, sincere response.*\n >This is my hypothesis: Stimulating the brain equals achieving happiness. A successful life equals achieving happiness. Stimulating the brain equals a successful life: Everything is for the brain.",
+    "labels": ["Philosophy"]
+  },
+  {
+    "id": 2,
+    "title": "Getting Started with Node.js",
+    "image": "https://example.com/images/nodejs.png",
+    "date": "2023-08-07",
+    "preview": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine...",
+    "content": "## What is Node.js?\n\nNode.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js lets developers use JavaScript to write server-side code. This allows for building scalable network applications using a single programming language...",
+    "labels": ["Software"]
+  },
+  {
+    "id": 3,
+    "title": "Introduction to Express.js",
+    "image": "https://example.com/images/express.png",
+    "date": "2023-08-06",
+    "preview": "Express is a minimal and flexible Node.js web application framework...",
+    "content": "Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node.js applications...",
+    "labels": ["Software", "Philosophy"]
+  }
+]
