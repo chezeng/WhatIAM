@@ -1,12 +1,12 @@
 import React from 'react'
 
-import NavBar from './HomeComponents/NavBar';
-import Intro from './HomeComponents/Intro';
-import About from './HomeComponents/About';
-import Experience from './HomeComponents/Experience';
-import Projects from './HomeComponents/Projects';
-import Contact from './HomeComponents/Contact';
-import Footer from './HomeComponents/Footer';
+import NavBar from './components/NavBar';
+import Intro from './components/Intro';
+import About from './components/About';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 const App = () => {
   return (

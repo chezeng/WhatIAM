@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     const [visible, setVisible] = useState(true);
@@ -28,9 +27,10 @@ const NavBar = () => {
     };
   
     return (
-        <nav className={`z-10 w-screen h-20 flex items-center justify-between bg-black fixed transition-transform duration-300 ${visible ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
+        <nav className={`z-10 w-screen h-20 flex items-center justify-between bg-black fixed transition-transform duration-300 ${visible ? 'transform translate-y-0' : 'transform -translate-y-full'}`
+        } onClick={() => scrollToSection('intro')}>
           <h1 className="text-white text-xl md:text-2xl ml-10 font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition duration-100 ease-out" > 
-            <Link to="/Blog" target="_blank" rel="noopener noreferrer">Cheng Zeng</Link>
+            Cheng Zeng
           </h1>
           <div className="hidden sm:flex space-x-8 mr-12 text-xl"> 
             <p className='text-white font-bold cursor-pointer hover:text-blue-500 hover:scale-110 transition' onClick={() => scrollToSection('about')}>About</p>
