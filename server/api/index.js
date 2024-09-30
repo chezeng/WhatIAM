@@ -1,11 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-
 import fs from 'fs/promises'; 
+import path from 'path';
+import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-import { path, dirname } from 'path';
+import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,17 +13,17 @@ const __dirname = dirname(__filename);
 dotenv.config();
 
 const app = express();
-app.use(cors(
-  {
-    origin: 'https://server.chengzeng.dev',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-  }
-));
+const PORT = process.env.PORT; 
+
+app.use(cors({
+  origin: ['https://server.chengzeng.dev', 'https://blog.chengzeng.dev'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 const MONGODB_URI = process.env.MONGODB_URI;
-
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
@@ -32,9 +32,8 @@ const ContactSchema = new mongoose.Schema({
   name: String,
   email: String,
   message: String,
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
 });
-
 const Contact = mongoose.model('Contact', ContactSchema);
 
 app.post('/api/submit-form', async (req, res) => {
@@ -49,9 +48,64 @@ app.post('/api/submit-form', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5173;
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the blog API' });
+});
+
+app.get('/api/quotes', async (req, res) => {
+  try {
+    const data = await fs.readFile(path.join(__dirname, 'data/quotes.json'), 'utf8'); 
+    const quotes = JSON.parse(data);
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    res.json(quotes[randomIndex]);
+  } catch (err) {
+    console.error('Error reading quotes file:', err);
+    res.status(500).json({ message: 'Error reading quotes file' });
+  }
+});
+
+app.get('/api/articles', async (req, res) => {
+  try {
+    const data = await fs.readFile(path.join(__dirname, 'data/articles.json'), 'utf8');
+    const articles = JSON.parse(data);
+    res.json(articles);
+  } catch (err) {
+    console.error('Error reading articles file:', err);
+    res.status(500).json({ message: 'Error reading articles file' });
+  }
+});
+
+app.get('/api/articles/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await fs.readFile(path.join(__dirname, 'data/articles.json'), 'utf8');
+    const articles = JSON.parse(data);
+    const article = articles.find(article => article.id === parseInt(id));
+    if (article) {
+      res.json(article);
+    } else {
+      res.status(404).json({ message: 'Article not found' });
+    }
+  } catch (err) {
+    console.error('Error reading articles file:', err);
+    res.status(500).json({ message: 'Error reading articles file' });
+  }
+});
+
+app.get('/api/music', async (req, res) => {
+  try {
+    const data = await fs.readFile(path.join(__dirname, 'data/music.json'), 'utf8');
+    const songs = JSON.parse(data);
+    res.json(songs);
+  } catch (err) {
+    console.error('Error reading music file:', err);
+    res.status(500).json({ message: 'Error reading music file' });
+  }
+});
+
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on ${PORT}`);
 });
 
 export default app;
