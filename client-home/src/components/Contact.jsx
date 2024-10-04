@@ -22,15 +22,15 @@ const [successMessage, setSuccessMessage] = useState('');
 
 const validateForm = () => {
   let newErrors = {};
-  // if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
-  //   newErrors.name = 'Please provide a name without numbers or special characters.';
-  // }
-  // if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-  //   newErrors.email = 'The email seems incorrect. Could you please verify it?';
-  // }
-  // if (formData.message.trim().length < 30) {
-  //   newErrors.message = 'Your message is kind of brief. Could you expand it to 30 characters or more?';
-  // }
+  if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
+    newErrors.name = 'Please provide a name without numbers or special characters.';
+  }
+  if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+    newErrors.email = 'The email seems incorrect. Could you please verify it?';
+  }
+  if (formData.message.trim().length < 30) {
+    newErrors.message = 'Your message is kind of brief. Could you expand it to 30 characters or more?';
+  }
   setErrors(newErrors);
   return Object.keys(newErrors).length === 0;
 };

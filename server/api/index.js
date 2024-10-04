@@ -32,20 +32,20 @@ const ContactSchema = new mongoose.Schema({
 });
 const Contact = mongoose.model('Contact', ContactSchema);
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
+});
+
 app.post('/api/submit-form', async (req, res) => {
   try {
     const { name, email, message } = req.body;
     const newContact = new Contact({ name, email, message });
     await newContact.save();
-    res.status(200).json({ message: 'Message received! I\'ll be in touch as soon as possible.' });
+    res.status(200).json({ message: 'Message is successfully sent; created at: ' + newContact.createdAt });
   } catch (error) {
     console.error('Error saving contact form:', error);
     res.status(500).json({ message: 'An error occurred while submitting the form.' });
   }
-});
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the blog API' });
 });
 
 app.get('/api/quotes', async (req, res) => {
