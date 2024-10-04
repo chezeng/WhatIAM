@@ -3,6 +3,7 @@ import { FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-icons/fa"
 import Title from './Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Highlighter from "react-highlnpight-words";
 
 const Contact = () => {
   useEffect(() => {
@@ -41,7 +42,6 @@ const handleChange = (e) => {
     ...prevState,
     [name]: value
   }));
-  // Clear error for this field as user types
   setErrors(prev => ({ ...prev, [name]: '' }));
 };
 
@@ -58,7 +58,8 @@ const handleSubmit = async (e) => {
       });
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
       
       const data = await response.json();
@@ -66,8 +67,12 @@ const handleSubmit = async (e) => {
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setSuccessMessage(''), 5000);
     } catch (error) {
+      if (error.message.includes('Too many requests')) {
+        setErrors({ submit: 'You\'re sending messages too quickly. Please wait a minute before trying again.' });
+      } else {
+        setErrors({ submit: 'Oops! Something went wrong. Please try again later.' });
+      }
       console.error('Error submitting form:', error);
-      setErrors({ submit: 'Oops! Something went wrong. Please try again later.' });
     }
   }
 };
@@ -76,10 +81,10 @@ const handleSubmit = async (e) => {
     <section id='contact' className='py-28 px-10 md:px-28 w-full relative'>
       <Title title='Contact'/>
       <h2 data-aos="fade-up" data-aos-delay="50" className="text-center mt-20 text-lg md:text-4xl">
-        Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold inline font-bold'>as soon as possible</span>. <br></br>
+        Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent inline font-bold'>as soon as possible</span>. <br></br>
       </h2>   
       
-      <div data-aos="fade-up" data-aos-delay="50" className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full">
+      <div data-aos="fade-up" data-aos-delay="50" className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full contact-form">
         <h1 className="text-3xl font-bold paragraph text-white mb-8">Let's Craft Something Extraordinary!</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -136,8 +141,8 @@ const handleSubmit = async (e) => {
         )}
       </div>
 
-      <div className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
-        <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
+      <div className='absolute bottom-2/3 left-0 w-full flex justify-center opacity-20 pointer-events-none'>
+        <FaHandshake className="w-40 h-40 md:w-80 md:h-80 lg:h-100" />
       </div>
     </section>
     );

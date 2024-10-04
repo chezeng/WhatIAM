@@ -6,6 +6,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import rateLimit from 'express-rate-limit';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,9 +15,7 @@ dotenv.config();
 
 const app = express();
 const PORT = 3000; 
-
 app.use(cors());
-
 app.use(express.json());
 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -30,18 +29,29 @@ const ContactSchema = new mongoose.Schema({
   message: String,
   createdAt: { type: Date, default: Date.now },
 });
+
 const Contact = mongoose.model('Contact', ContactSchema);
+
+const contactFormLimiter = rateLimit({
+  windowMs: 60 * 1000, 
+  max: 2, 
+  message: {
+    message: 'Too many requests from this IP, please try again after a minute.'
+  },
+  standardHeaders: true, 
+  legacyHeaders: false, 
+});
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
 });
 
-app.post('/api/submit-form', async (req, res) => {
+app.post('/api/submit-form', contactFormLimiter, async (req, res) => {
   try {
     const { name, email, message } = req.body;
     const newContact = new Contact({ name, email, message });
     await newContact.save();
-    res.status(200).json({ message: 'Message is successfully sent; created at: ' + newContact.createdAt });
+    res.status(200).json({ message: 'Form submitted successfully!' });
   } catch (error) {
     console.error('Error saving contact form:', error);
     res.status(500).json({ message: 'An error occurred while submitting the form.' });
