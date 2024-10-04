@@ -13,13 +13,9 @@ const __dirname = dirname(__filename);
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT; 
+const PORT = process.env.PORT || 3000; 
 
-app.use(cors({
-  origin: ['https://server.chengzeng.dev', 'https://blog.chengzeng.dev'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
+app.use(cors());
 
 app.use(express.json());
 
