@@ -26,10 +26,10 @@ const validateForm = () => {
     newErrors.name = 'Please provide a name without numbers or special characters.';
   }
   if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-    newErrors.email = 'The email seems incorrect. Could you please verify it?';
+    newErrors.email = 'Please provide a valid email address.'; 
   }
   if (formData.message.trim().length < 30) {
-    newErrors.message = 'Your message is kind of brief. Could you expand it to 30 characters or more?';
+    newErrors.message = 'Please provide a message with at least 30 characters.';
   }
   setErrors(newErrors);
   return Object.keys(newErrors).length === 0;
@@ -79,7 +79,7 @@ const handleSubmit = async (e) => {
         Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold inline font-bold'>as soon as possible</span>. <br></br>
       </h2>   
       
-      <div className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full">
+      <div data-aos="fade-up" data-aos-delay="50" className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full">
         <h1 className="text-3xl font-bold paragraph text-white mb-8">Let's Craft Something Extraordinary!</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -135,18 +135,8 @@ const handleSubmit = async (e) => {
           </div>
         )}
       </div>
-      
-      {/* <div className="flex items-center justify-between mt-48 ml-21 md:ml-60 lg:ml-96 xl:ml-110">
-        <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out -mt-10'>
-            <a href="mailto:virtualstar0125@gmail.com" target="_blank" rel="noopener noreferrer">
-              <div className='card-content-button rounded-3xl cursor-pointer'>
-                <p className="text-center text-2xl font-bold mt-5">Contact Me</p>
-              </div>
-            </a> 
-          </div>
-      </div> */}
 
-      <div className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
+      <div data-aos="fade-up" data-aos-delay="50" className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
       </div>
     </section>
