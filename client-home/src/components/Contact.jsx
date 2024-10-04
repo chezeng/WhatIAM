@@ -136,7 +136,7 @@ const handleSubmit = async (e) => {
         )}
       </div>
 
-      <div data-aos="fade-up" data-aos-delay="50" className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
+      <div className='absolute bottom-1/3 md:bottom-1/2 left-0 w-full flex justify-center opacity-10 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-120 md:h-120" />
       </div>
     </section>
