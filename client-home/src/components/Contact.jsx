@@ -3,7 +3,6 @@ import { FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-icons/fa"
 import Title from './Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Highlighter from "react-highlnpight-words";
 
 const Contact = () => {
   useEffect(() => {
