@@ -19,14 +19,14 @@ function BlogPage() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/quotes')
+    fetch('https://server.chengzeng.dev/api/quotes')
       .then(response => response.json())
       .then(data => setQuote(data))
       .catch(error => console.error('Error fetching quote:', error));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/articles')
+    fetch('https://server.chengzeng.dev/api/articles')
       .then(response => response.json())
       .then(data => {
         setArticles(data);
