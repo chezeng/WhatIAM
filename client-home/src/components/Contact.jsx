@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   if (validateForm()) {
     try {
-      const response = await fetch('http://localhost:3000/api/submit-form' || 'https://server.chengzeng.dev/api/submit-form', {
+      const response = await fetch('https://server.chengzeng.dev/api/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
