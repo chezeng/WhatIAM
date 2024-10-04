@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; 
+const PORT = 3000; 
 
 app.use(cors());
 
@@ -97,11 +97,6 @@ app.get('/api/music', async (req, res) => {
     console.error('Error reading music file:', err);
     res.status(500).json({ message: 'Error reading music file' });
   }
-});
-
-
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
 });
 
 export default app;
