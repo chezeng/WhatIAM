@@ -7,6 +7,9 @@ export default {
   theme: {
     extend: {
       screens: {
+        'ssm': '320px',
+        'iphone': '375px',
+        'galaxy': '344px',
         'xl': '1200px', 
       },
       
@@ -15,6 +18,11 @@ export default {
         '3.5': '0.875rem',
         '5.5': '1.375rem',
         '21': '5.25rem',
+        '22': '5.5rem',
+        '23': '5.75rem',
+        '24': '6rem',
+        '25': '6.25rem',
+        '26': '6.5rem',
         '29': '7.25rem',
         '30': '7.5rem',
         '65': '16.25rem',

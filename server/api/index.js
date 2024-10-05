@@ -8,6 +8,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import rateLimit from 'express-rate-limit';
 
+import { put } from "@vercel/blob";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 

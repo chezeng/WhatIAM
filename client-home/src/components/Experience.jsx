@@ -11,7 +11,7 @@ const Experience = () => {
     return (
     <section className='p-28 w-screen h-200rem'>
       <Title title='Experience'/>
-        <VerticalTimeline className='mt-24 w-85 right-10 sm:right-6 md:right-0 sm:w-full'>
+        <VerticalTimeline className='mt-24 w-85 right-26 iphone:right-22 md:right-0  sm:w-full'>
           <VerticalTimelineElement
               className="mt-20"
               contentStyle={{ background: timelineColor, color: '#fff' }}
