@@ -3,6 +3,8 @@ import { FaTimes, FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-
 import Title from './Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Typewriter from 'typewriter-effect';
+import FancyButton from './FancyButton';
 
 const Contact = () => {
   useEffect(() => {
@@ -20,6 +22,7 @@ const [formData, setFormData] = useState({
 const [errors, setErrors] = useState({});
 const [successMessage, setSuccessMessage] = useState('');
 const [errorMessage, setErrorMessage] = useState('');
+const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
 const validateForm = () => {
   let newErrors = {};
@@ -77,15 +80,45 @@ const handleSubmit = async (e) => {
   }
 };
 
+const handleMouseMove = (e) => {
+  const x = e.pageX - e.currentTarget.offsetLeft;
+  const y = e.pageY - e.currentTarget.offsetTop;
+  setCursorPosition({ x, y });
+};
+
+const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", "Efficient", "Performant", "User-friendly", "Elegant", "Optimized" ]
+
   return (
-    <section id='contact' className='py-28 px-10 md:px-28 w-full relative'>
+    <section id='contact' className='py-28 px-10 md:px-28 w-full relative'
+      style={{
+        '--x': `${cursorPosition.x}px`,
+        '--y': `${cursorPosition.y}px`,
+      }}
+      onMouseMove={handleMouseMove}>
       <Title title='Contact'/>
       <h2 data-aos="fade-up" data-aos-delay="50" className="text-center mt-20 text-lg md:text-4xl">
         Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent inline font-bold'>as soon as possible</span>. <br></br>
       </h2>   
       
       <div data-aos="fade-up" data-aos-delay="50" className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full contact-form">
-        <h1 className="text-3xl font-bold paragraph text-white mb-8">Let's Craft Something Extraordinary!</h1>
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-3xl"
+          style={{
+            background: `radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.3), transparent)`,
+            opacity: 0.5,
+            transition: '0.5s',
+          }}></div>
+        <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold paragraph text-white mb-8">Let's Craft Something
+        <span className="sm:inline-block ml-2">
+          <Typewriter
+            options={{
+              strings: titles,
+              autoStart: true,
+              loop: true,
+              deleteSpeed: 15,
+              delay: 75,
+              pauseFor: 2000,
+            }}
+          /></span></h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
@@ -126,12 +159,8 @@ const handleSubmit = async (e) => {
             ></textarea>
             {errors.message && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.message}</p>}
           </div>
-          <button
-            type="submit"
-            className="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200 transform hover:scale-105"
-          >
-            SEND IT OFF!
-          </button>
+
+          <FancyButton color="cyan">SEND ME OFF!</FancyButton>
         </form>
         {successMessage && (
           <div className="mt-4 p-3 bg-green-600 text-white rounded-md flex items-center">

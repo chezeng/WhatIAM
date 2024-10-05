@@ -1,0 +1,51 @@
+.fancy-button {
+  position: relative;
+  text-decoration: none;
+  color: gray;
+  padding: 20px 60px;
+  border-radius: 45px;
+  background-color: black;
+  transition: .5s;
+  letter-spacing: .1em;
+  overflow: hidden;
+  margin: 10px 0;
+  display: inline-block;
+}
+
+.fancy-button:hover {
+  color: var(--clr);
+  text-shadow: 0 0 15px var(--clr),
+               0 0 40px var(--clr);
+}
+
+.fancy-button::before {
+  content: '';
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(var(--clr), transparent, transparent);
+  opacity: 0;
+  transition: opacity .5s, top 0s, left 0s;
+}
+
+.fancy-button span {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fancy-button:hover::before {
+  opacity: 1;
+}
+
+.fancy-button::after {
+  content: '';
+  background-color: rgb(26, 26, 26);
+  position: absolute;
+  inset: 3px;
+  border-radius: 45px;
+  opacity: 0.8;
+}
