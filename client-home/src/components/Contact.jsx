@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-icons/fa";
+import { FaTimes, FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-icons/fa";
 import Title from './Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -19,6 +19,7 @@ const [formData, setFormData] = useState({
 });
 const [errors, setErrors] = useState({});
 const [successMessage, setSuccessMessage] = useState('');
+const [errorMessage, setErrorMessage] = useState('');
 
 const validateForm = () => {
   let newErrors = {};
@@ -61,13 +62,13 @@ const handleSubmit = async (e) => {
         throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
       
-      const data = await response.json();
-      setSuccessMessage(data.message || 'Message received! I\'ll be in touch as soon as possible.');
+      setSuccessMessage('Message received! I\'ll be in touch as soon as possible.');
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setSuccessMessage(''), 5000);
     } catch (error) {
       if (error.message.includes('Too many requests')) {
-        setErrors({ submit: 'You\'re sending messages too quickly. Please wait a minute before trying again.' });
+        setErrors({ submit: 'Messages are sent too quickly.' });
+        setErrorMessage('You\'re sending messages too quickly. Please wait a minute before trying again.');
       } else {
         setErrors({ submit: 'Oops! Something went wrong. Please try again later.' });
       }
@@ -136,6 +137,13 @@ const handleSubmit = async (e) => {
           <div className="mt-4 p-3 bg-green-600 text-white rounded-md flex items-center">
             <FaCheckCircle size={20} className="mr-2" />
             {successMessage}
+          </div>
+        )}
+
+        {errorMessage && (
+          <div className="mt-4 p-3 bg-red-600 text-white rounded-md flex items-center">
+            <FaTimes size={20} className="mr-2" />
+            {errorMessage}
           </div>
         )}
       </div>

@@ -36,7 +36,7 @@ const Contact = mongoose.model('Contact', ContactSchema);
 
 const contactFormLimiter = rateLimit({
   windowMs: 60 * 1000, 
-  max: 2, 
+  max: 1, 
   message: {
     message: 'Too many requests from this IP, please try again after a minute.'
   },
