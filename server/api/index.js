@@ -8,7 +8,6 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import rateLimit from 'express-rate-limit';
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -73,29 +72,24 @@ app.get('/api/quotes', async (req, res) => {
 
 app.get('/api/articles', async (req, res) => {
   try {
-    const data = await fs.readFile(path.join(__dirname, 'data/articles.json'), 'utf8');
-    const articles = JSON.parse(data);
+    const articles = await Article.find();  // 从 MongoDB 获取所有文章
     res.json(articles);
   } catch (err) {
-    console.error('Error reading articles file:', err);
-    res.status(500).json({ message: 'Error reading articles file' });
+    console.error('Error fetching articles from MongoDB:', err);
+    res.status(500).json({ message: 'Error fetching articles' });
   }
 });
 
 app.get('/api/articles/:id', async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = await fs.readFile(path.join(__dirname, 'data/articles.json'), 'utf8');
-    const articles = JSON.parse(data);
-    const article = articles.find(article => article.id === parseInt(id));
-    if (article) {
-      res.json(article);
-    } else {
-      res.status(404).json({ message: 'Article not found' });
+    const article = await Article.findById(req.params.id);
+    if (!article) {
+      return res.status(404).json({ message: 'Article not found' });
     }
+    res.json(article);
   } catch (err) {
-    console.error('Error reading articles file:', err);
-    res.status(500).json({ message: 'Error reading articles file' });
+    console.error('Error fetching article from MongoDB:', err);
+    res.status(500).json({ message: 'Error fetching article' });
   }
 });
 
