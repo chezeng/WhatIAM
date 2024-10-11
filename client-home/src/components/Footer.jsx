@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 
 const Footer = () => {

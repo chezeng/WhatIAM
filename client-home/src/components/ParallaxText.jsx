@@ -1,7 +1,12 @@
-import React from 'react';
 import { useRef } from "react";
+import PropTypes from 'prop-types';
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame} from "framer-motion";
 import { wrap } from "@motionone/utils";
+
+ParallaxText.propTypes = {
+  children: PropTypes.node.isRequired,
+  baseVelocity: PropTypes.number
+};
 
 const ParallaxText = ({ children, baseVelocity = 100 }) => {
   const baseX = useMotionValue(0);

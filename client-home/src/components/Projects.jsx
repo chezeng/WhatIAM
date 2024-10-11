@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react';
 import { FaFigma, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaAndroid, FaWix, FaImages } from 'react-icons/fa';
-import { SiExpress, SiKotlin, SiPostman, SiFlask, SiPython, SiVite, SiVercel, SiTailwindcss, SiCreatereactapp, SiJetbrains, SiGodotengine, SiCanva, SiAdobeaftereffects, SiMongodb, SiJavascript, SiHtml5} from "react-icons/si";
+import { SiExpress, SiKotlin, SiPostman, SiFlask, SiPython, SiVite, SiVercel, SiTailwindcss, SiCreatereactapp, SiGodotengine, SiCanva, SiAdobeaftereffects, SiMongodb, SiJavascript} from "react-icons/si";
 import { ReactSVG } from 'react-svg';
 import Title from './Title';
 
@@ -12,7 +14,7 @@ import TheMathetia from "/src/assets/TheMathetia.png";
 import Recyclable from "/src/assets/Recyclable.png";
 import XToolKit from "/src/assets/XToolkit.png";
 import AndroidPack from "/src/assets/AndroidPack.png";
-import ToBeContinued from "/src/assets/ToBeContinued.png";
+// import ToBeContinued from "/src/assets/ToBeContinued.png";
 import Timeless from "/src/assets/Timeless.png";
 import ChatGPT from "/src/assets/ChatGPT.svg";
 
