@@ -1,5 +1,5 @@
-import React from 'react';
 import './FancyButton.css';
+import PropTypes from 'prop-types';
 
 const FancyButton = ({ color, children }) => {
   const onMouseMove = (e) => {
@@ -21,6 +21,11 @@ const FancyButton = ({ color, children }) => {
     </a>
     </button>
   );
+};
+
+FancyButton.propTypes = {
+  color: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default FancyButton;

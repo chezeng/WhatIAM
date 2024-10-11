@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/no-unescaped-entities */
+import { useState, useEffect } from 'react';
 import { FaTimes, FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-icons/fa";
 import Title from './Title';
 import AOS from 'aos';
