@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
 dotenv.config();
-// test
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
 const __filename = fileURLToPath(import.meta.url);

@@ -72,7 +72,7 @@ app.get('/api/quotes', async (req, res) => {
 
 app.get('/api/articles', async (req, res) => {
   try {
-    const articles = await Article.find();  // 从 MongoDB 获取所有文章
+    const articles = await Article.find(); 
     res.json(articles);
   } catch (err) {
     console.error('Error fetching articles from MongoDB:', err);
