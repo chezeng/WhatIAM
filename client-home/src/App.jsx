@@ -12,7 +12,6 @@ const App = () => {
   return (
     <div className="bg-black">
       {inject}
-      <Analytics/>
       <NavBar></NavBar>
       <Intro></Intro>
       <About></About>
