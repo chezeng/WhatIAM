@@ -5,6 +5,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Title from './Title';
 import profileImage from '/src/assets/Profile.jpg';
+import resume from '/src/assets/ChengResume.pdf';
 
 const About = () => {
   useEffect(() => {
@@ -39,7 +40,7 @@ const About = () => {
 
             <div className="flex justify-center md:justify-start">
               <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out'>
-                <a href='https://plx7p8bqu2ak2ffc.public.blob.vercel-storage.com/ChengResume-yLCbQHJSQGNGaqGS4iPKgC71r3ThN5.pdf' target="_blank" rel="noopener noreferrer">
+                <a href={resume} target="_blank" rel="noopener noreferrer">
                   <div className='card-content-button rounded-3xl cursor-pointer'>
                     <p className="text-center text-xl font-bold mt-6">Check my resume</p>
                   </div>
