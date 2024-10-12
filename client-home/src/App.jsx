@@ -1,5 +1,5 @@
 import React from 'react'
-import { Analytics } from "@vercel/analytics/react"
+import { inject } from "@vercel/analytics"
 import NavBar from './components/NavBar';
 import Intro from './components/Intro';
 import About from './components/About';
@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 const App = () => {
   return (
     <div className="bg-black">
+      {inject}
       <Analytics/>
       <NavBar></NavBar>
       <Intro></Intro>
