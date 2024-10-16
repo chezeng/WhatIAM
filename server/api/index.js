@@ -72,21 +72,20 @@ app.get('/api/quotes', async (req, res) => {
 
 app.get('/api/articles', async (req, res) => {
   try {
-    const files = await fs.readdir(articlesPath);
-    const articles = await Promise.all(
-      files.map(async (file) => {
-        const filePath = path.join(articlesPath, file);
-        const content = await fs.readFile(filePath, 'utf-8');
-        const { data, content: markdownContent } = matter(content);
+    const articlePromises = articles.map(async (filename) => {
+      const url = `${GITHUB_RAW_BASE_URL}/${filename}`;
+      const response = await axios.get(url);
+      const { data, content: markdownContent } = matter(response.data);
 
-        return {
-          ...data, // include title, date, labels, image, preview
-          content: marked(markdownContent), 
-          id: path.parse(file).name,
-        };
-      })
-    );
-    res.json(articles);
+      return {
+        ...data,
+        content: marked(markdownContent),
+        id: filename.replace('.md', ''),
+      };
+    });
+
+    const allArticles = await Promise.all(articlePromises);
+    res.json(allArticles);
   } catch (error) {
     console.error('Error fetching articles:', error);
     res.status(500).json({ message: 'Error fetching articles' });
