@@ -2,7 +2,7 @@
 
 ### - Created at Aug. 21st, 2024
 
-![Image Alt Text](https://plx7p8bqu2ak2ffc.public.blob.vercel-storage.com/Brain%20in%20a%20Vat-3YE3pyf0oDyjK1fIj9Gbhzzro8ck9e.webp)
+![Image Alt Text](https://chezeng.github.io/Media/WhatIAM/Brain.jpg)
 
 *“Please take on the role of a professional mental counselor and help me with my confusion. Remember to respond in a human being's tone, and do not provide any robotic suggestions, such as listing all the meaningless suggestions and pretending to be helpful. I don't need that. I only need your human-like, sincere response.”*
 

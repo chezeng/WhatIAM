@@ -2,10 +2,7 @@
 
 ### - Created at Oct. 04th, 2024
 
-![Image Alt Text](https://plx7p8bqu2ak2ffc.public.blob.vercel-storage.com/Frutiger-Hq51kKj9pLeC1yvtyWxbyn8x8nc1yO.jpg)
-
-
-![Audio](https://plx7p8bqu2ak2ffc.public.blob.vercel-storage.com/LEASE-RiXqxucdWhqSbyOqI5cUs3kYNgnQbf.mp3)
+![Image Alt Text](https://chezeng.github.io/Media/WhatIAM/Frutiger.jpg)
 
 *As I sit here, bathed in the glow of my computer screen, I can't help but be transported back to the dawn of the new millennium. It was a time of unbridled optimism, a world poised on the brink of unprecedented technological advancement, yet still clinging to the comforting embrace of tradition. We stood at the crossroads of centuries, one foot in the past, one in the future, our hearts full of hope and wonder.*
 
