@@ -79,7 +79,7 @@ function BlogPage() {
         <aside className="space-y-8 col-span-1">
           <div className="bg-gray-700 p-6 rounded-lg text-center space-y-4 ml-5 md:m-auto">
             <div className="w-24 h-24 mx-auto">
-              <img className='rounded-full' src='/src/assets/Profile.jpg' alt="Profile" />
+              <img className='rounded-full' src='https://chezeng.github.io/Media/WhatIAM/Profile.jpg' alt="Profile" />
             </div>
             <h2 className="text-xl font-semibold">Cheng Zeng</h2>
             <p>"An Artistic Engineer."</p>

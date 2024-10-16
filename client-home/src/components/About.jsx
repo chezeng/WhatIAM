@@ -4,8 +4,6 @@ import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Title from './Title';
-import profileImage from '/src/assets/Profile.jpg';
-import resume from '/src/assets/ChengResume.pdf';
 
 const About = () => {
   useEffect(() => {
@@ -40,7 +38,7 @@ const About = () => {
 
             <div className="flex justify-center md:justify-start">
               <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out'>
-                <a href={resume} target="_blank" rel="noopener noreferrer">
+                <a href={'https://chezeng.github.io/Media/WhatIAM/ChengResume.pdf'} target="_blank" rel="noopener noreferrer">
                   <div className='card-content-button rounded-3xl cursor-pointer'>
                     <p className="text-center text-xl font-bold mt-6">Check my resume</p>
                   </div>
@@ -50,7 +48,7 @@ const About = () => {
           </div>
 
           <div className='hover:scale-105 transition ease-in-out duration-300'>
-            <img className="floating rounded-3xl w-50 h-50 md:w-4/5 md:h-4/5 mt-10 ml-0 md:ml-20 lg:ml-40" src={profileImage}></img>
+            <img className="floating rounded-3xl w-50 h-50 md:w-4/5 md:h-4/5 mt-10 ml-0 md:ml-20 lg:ml-40" src='https://chezeng.github.io/Media/WhatIAM/Profile.jpg'></img>
           </div>
 
         </div>  

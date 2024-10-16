@@ -9,15 +9,6 @@ import Title from './Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import WhatIAM from '/src/assets/WhatIAM.png';
-import TheMathetia from "/src/assets/TheMathetia.png";
-import Recyclable from "/src/assets/Recyclable.png";
-import XToolKit from "/src/assets/XToolkit.png";
-import AndroidPack from "/src/assets/AndroidPack.png";
-// import ToBeContinued from "/src/assets/ToBeContinued.png";
-import Timeless from "/src/assets/Timeless.png";
-import ChatGPT from "/src/assets/ChatGPT.svg";
-
 const Projects = () => {
   const IconWithTooltip = ({ icon: Icon, label }) => {
     return (
@@ -44,7 +35,7 @@ const Projects = () => {
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src={Timeless} alt="Timeless" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={'https://chezeng.github.io/Media/WhatIAM/Timeless.png'} alt="Timeless" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Timeless</div>
@@ -66,7 +57,7 @@ const Projects = () => {
                     <IconWithTooltip icon={SiMongodb} label="MongoDB" />
                     <IconWithTooltip icon={SiVite} label="Vite" />
                     <div className="relative group flex items-center mx-1">
-                      <ReactSVG src={ChatGPT} className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
+                      <ReactSVG src='https://chezeng.github.io/Media/WhatIAM/ChatGPT.svg' className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
                       <span className="absolute left-1/2 transform -translate-x-1/2 mt-8 w-max text-white text-xs font-medium p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                         ChatGPT
                       </span>
@@ -80,7 +71,7 @@ const Projects = () => {
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src={WhatIAM} alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={'https://chezeng.github.io/Media/WhatIAM/WhatIAM.png'} alt="WhatIAM" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
@@ -111,7 +102,7 @@ const Projects = () => {
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src={TheMathetia} alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={'https://chezeng.github.io/Media/WhatIAM/TheMathetia.png'} alt="The Mathetia" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">The Mathetia</div>
@@ -138,7 +129,7 @@ const Projects = () => {
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 '>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src={Recyclable} alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={'https://chezeng.github.io/Media/WhatIAM/Recyclable.png'} alt="Recyclable" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Recyclable</div>
@@ -156,7 +147,7 @@ const Projects = () => {
                     <IconWithTooltip icon={FaJava} label="Java" />
                     <IconWithTooltip icon={SiKotlin} label="Kotlin" />
                     <div className="relative group flex items-center mx-1">
-                      <ReactSVG src={ChatGPT} className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
+                      <ReactSVG src='https://chezeng.github.io/Media/WhatIAM/ChatGPT.svg' className="text-3xl mb-3 group-hover:text-blue-500 transition-colors" />
                       <span className="absolute left-1/2 transform -translate-x-1/2 mt-8 w-max text-white text-xs font-medium p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                         ChatGPT
                       </span>
@@ -170,7 +161,7 @@ const Projects = () => {
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 '>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src={XToolKit} alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={'https://chezeng.github.io/Media/WhatIAM/XToolkit.png'} alt="X-Toolkit" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">X-Toolkit</div>
@@ -197,7 +188,7 @@ const Projects = () => {
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20 '>
           <div className='card-content'>
               <div className="relative h-56">
-                <img src={AndroidPack} alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
+                <img src={'https://chezeng.github.io/Media/WhatIAM/AndroidPack.png'} alt="Android-Pack" className="object-cover w-full h-full rounded-t-2xl" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Android-Pack</div>
