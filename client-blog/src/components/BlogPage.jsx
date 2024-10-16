@@ -85,11 +85,11 @@ function BlogPage() {
             <p>"An Artistic Engineer."</p>
             <hr className="border-t border-gray-500 my-4" />
             <div className="flex justify-center space-x-4">
-              <a href="https://www.linkedin.com/in/cz5/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="text-white w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out"/></a>
-              <a href="https://github.com/ch3ngz" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/chezeng" target="_blank" rel="noopener noreferrer">
                 <FaGithub className="text-white w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out"/></a>
-              <a href="https://www.youtube.com/@c3z05" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.youtube.com/@chezeng" target="_blank" rel="noopener noreferrer">
                 <FaYoutube className="text-white w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out"/></a>
             </div>
           </div>

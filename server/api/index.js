@@ -72,10 +72,23 @@ app.get('/api/quotes', async (req, res) => {
 
 app.get('/api/articles', async (req, res) => {
   try {
-    const articles = await Article.find(); 
+    const files = await fs.readdir(articlesPath);
+    const articles = await Promise.all(
+      files.map(async (file) => {
+        const filePath = path.join(articlesPath, file);
+        const content = await fs.readFile(filePath, 'utf-8');
+        const { data, content: markdownContent } = matter(content);
+
+        return {
+          ...data, // include title, date, labels, image, preview
+          content: marked(markdownContent), 
+          id: path.parse(file).name,
+        };
+      })
+    );
     res.json(articles);
-  } catch (err) {
-    console.error('Error fetching articles from MongoDB:', err);
+  } catch (error) {
+    console.error('Error fetching articles:', error);
     res.status(500).json({ message: 'Error fetching articles' });
   }
 });

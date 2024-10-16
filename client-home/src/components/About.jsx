@@ -27,13 +27,13 @@ const About = () => {
             </p>
 
             <div className="flex justify-center md:justify-start space-x-8"> 
-                <a href="https://www.linkedin.com/in/cz5/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="tech-icons"/>
                 </a>
-                <a href="https://github.com/ch3ngz" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/chezeng" target="_blank" rel="noopener noreferrer">
                     <FaGithub className="tech-icons"/>
                 </a>
-                <a href="https://www.youtube.com/@c3z05" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.youtube.com/@chezeng" target="_blank" rel="noopener noreferrer">
                     <FaYoutube className="tech-icons"/>
                 </a>
             </div>
