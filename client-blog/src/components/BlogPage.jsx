@@ -12,7 +12,7 @@ function BlogPage() {
   const labelColors = {
     "Software": "bg-blue-500",
     "Audio-Visual": "bg-red-500",
-    "Music Critique": "bg-purple-500",
+    "Music": "bg-purple-500",
     "Philosophy": "bg-green-500",
     "Gaming": "bg-yellow-500",
     "Experience": "bg-teal-500",
@@ -40,12 +40,12 @@ function BlogPage() {
     }
   };
 
-  // useEffect(() => {
-  //   fetch(`${API_BASE_URL}/api/quotes`)
-  //     .then(response => response.json())
-  //     .then(data => setQuote(data))
-  //     .catch(error => console.error('Error fetching quote:', error));
-  // }, []);
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/quotes`)
+      .then(response => response.json())
+      .then(data => setQuote(data))
+      .catch(error => console.error('Error fetching quote:', error));
+  }, []);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/articles`)
@@ -65,7 +65,6 @@ function BlogPage() {
       })
       .catch(error => {
         console.error('Error fetching articles:', error);
-        setError(error.message); 
       });
   }, [API_BASE_URL]);
 
