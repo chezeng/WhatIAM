@@ -18,22 +18,10 @@ function BlogPage() {
     "Experience": "bg-teal-500",
   };
 
-  useEffect(() => {
-    fetch('https://server.chengzeng.dev/api/quotes')
-      .then(response => response.json())
-      .then(data => setQuote(data))
-      .catch(error => console.error('Error fetching quote:', error));
-  }, []);
-
-  useEffect(() => {
-    fetch('https://server.chengzeng.dev/api/articles')
-      .then(response => response.json())
-      .then(data => {
-        setArticles(data);
-        setFilteredArticles(data);
-      })
-      .catch(error => console.error('Error fetching articles:', error));
-  }, []);
+  const API_BASE_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:3000'
+      : 'https://server.chengzeng.dev';
 
   // Get the number of articles for each label
   const labelCounts = articles.reduce((acc, article) => {
@@ -51,6 +39,35 @@ function BlogPage() {
       setSelectedLabels([...selectedLabels, label]);
     }
   };
+
+  // useEffect(() => {
+  //   fetch(`${API_BASE_URL}/api/quotes`)
+  //     .then(response => response.json())
+  //     .then(data => setQuote(data))
+  //     .catch(error => console.error('Error fetching quote:', error));
+  // }, []);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/articles`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (Array.isArray(data)) {
+          setArticles(data);
+          setFilteredArticles(data);
+        } else {
+          throw new Error('Received data is not an array');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching articles:', error);
+        setError(error.message); 
+      });
+  }, [API_BASE_URL]);
 
   useEffect(() => {
     const filterByLabels = (articles) => {

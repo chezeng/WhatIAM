@@ -1,22 +1,95 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import fs from 'fs/promises'; 
-import path from 'path';
-import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import rateLimit from 'express-rate-limit';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import dotenv from 'dotenv';
+import matter from 'gray-matter';
+import axios from 'axios';
+import { marked } from 'marked';
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000; 
+const port = 3000;
 app.use(cors());
 app.use(express.json());
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+async function getArticleFileNames() {
+  try {
+    const response = await axios.get(`https://chezeng.github.io/Media/WhatIAM/articles/articles.json`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching article filenames:', error);
+    return [];
+  }
+}
+
+// Helper function to fetch and parse individual markdown files
+async function getArticleContent(filename) {
+  try {
+    const url = `https://chezeng.github.io/Media/WhatIAM/articles/${filename}.md`;
+    const response = await axios.get(url);
+
+    if (response.status !== 200) {
+      throw new Error(`Failed to fetch article: ${filename}`);
+    }
+
+    const fileContent = response.data;
+    const { data: metadata, content } = matter(fileContent); 
+    return {
+      ...metadata,
+      content: marked.parse(content), 
+    };
+  } catch (error) {
+    console.error('Error fetching article content:', error);
+    throw new Error(`Error fetching article: ${filename}`);
+  }
+}
+
+// API to fetch all articles and metadata
+app.get('/api/articles', async (req, res) => {
+  try {
+    const filenames = await getArticleFileNames();
+    if (!filenames || filenames.length === 0) {
+      return res.status(404).json({ message: 'No articles found' });
+    }
+
+    const articlePromises = filenames.map(filename => getArticleContent(filename));
+    const articles = await Promise.all(articlePromises);
+    res.json(articles); 
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    res.status(500).json({ message: 'Error fetching articles' });
+  }
+});
+
+// API to fetch quotes from GitHub
+app.get('/api/quotes', async (req, res) => {
+  try {
+    const response = await axios.get(`https://chezeng.github.io/Media/WhatIAM/quotes/quotes.json`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching quotes:', error);
+    res.status(500).json({ message: 'Error fetching quotes' });
+  }
+});
+
+// API to fetch music from GitHub
+app.get('/api/music', async (req, res) => {
+  try {
+    const response = await axios.get(`https://chezeng.github.io/Media/WhatIAM/music/music.json`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching music:', error);
+    res.status(500).json({ message: 'Error fetching music' });
+  }
+});
+
+
 
 const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI)
@@ -42,10 +115,6 @@ const contactFormLimiter = rateLimit({
   legacyHeaders: false, 
 });
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
-});
-
 app.post('/api/submit-form', contactFormLimiter, async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -55,64 +124,6 @@ app.post('/api/submit-form', contactFormLimiter, async (req, res) => {
   } catch (error) {
     console.error('Error saving contact form:', error);
     res.status(500).json({ message: 'An error occurred while submitting the form.' });
-  }
-});
-
-app.get('/api/quotes', async (req, res) => {
-  try {
-    const data = await fs.readFile(path.join(__dirname, 'data/quotes.json'), 'utf8'); 
-    const quotes = JSON.parse(data);
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    res.json(quotes[randomIndex]);
-  } catch (err) {
-    console.error('Error reading quotes file:', err);
-    res.status(500).json({ message: 'Error reading quotes file' });
-  }
-});
-
-app.get('/api/articles', async (req, res) => {
-  try {
-    const articlePromises = articles.map(async (filename) => {
-      const url = `${GITHUB_RAW_BASE_URL}/${filename}`;
-      const response = await axios.get(url);
-      const { data, content: markdownContent } = matter(response.data);
-
-      return {
-        ...data,
-        content: marked(markdownContent),
-        id: filename.replace('.md', ''),
-      };
-    });
-
-    const allArticles = await Promise.all(articlePromises);
-    res.json(allArticles);
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-    res.status(500).json({ message: 'Error fetching articles' });
-  }
-});
-
-app.get('/api/articles/:id', async (req, res) => {
-  try {
-    const article = await Article.findById(req.params.id);
-    if (!article) {
-      return res.status(404).json({ message: 'Article not found' });
-    }
-    res.json(article);
-  } catch (err) {
-    console.error('Error fetching article from MongoDB:', err);
-    res.status(500).json({ message: 'Error fetching article' });
-  }
-});
-
-app.get('/api/music', async (req, res) => {
-  try {
-    const data = await fs.readFile(path.join(__dirname, 'data/music.json'), 'utf8');
-    const songs = JSON.parse(data);
-    res.json(songs);
-  } catch (err) {
-    console.error('Error reading music file:', err);
-    res.status(500).json({ message: 'Error reading music file' });
   }
 });
 
