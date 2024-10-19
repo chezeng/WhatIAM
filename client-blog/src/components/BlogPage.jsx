@@ -18,11 +18,6 @@ function BlogPage() {
     "Experience": "bg-teal-500",
   };
 
-  const API_BASE_URL =
-    window.location.hostname === 'localhost'
-      ? 'http://localhost:3000'
-      : 'https://server.chengzeng.dev';
-
   // Get the number of articles for each label
   const labelCounts = articles.reduce((acc, article) => {
     article.labels.forEach(label => {
@@ -42,7 +37,7 @@ function BlogPage() {
 
   // Fetch and set a random quote
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/quotes`)
+    fetch(`https://server.chengzeng.dev/api/quotes`)
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
@@ -56,7 +51,7 @@ function BlogPage() {
   }, []);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/articles`)
+    fetch(`https://server.chengzeng.dev/api/articles`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -74,7 +69,7 @@ function BlogPage() {
       .catch(error => {
         console.error('Error fetching articles:', error);
       });
-  }, [API_BASE_URL]);
+  }, []);
 
   useEffect(() => {
     const filterByLabels = (articles) => {
@@ -172,20 +167,23 @@ function BlogPage() {
                   <div className="flex space-x-2 mt-2">
                     {article.labels.map((label, index) => (
                       <span key={index} 
-                      className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-white' : ''}`}
-                      onClick={() => handleLabelClick(label)}>
+                        className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-white' : ''}`}
+                        onClick={() => handleLabelClick(label)}>
                         {label}
                       </span>
                     ))}
                   </div>
                   <p className="mt-2">{article.preview}</p>
-                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block">Read more</Link>
+                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block">
+                    Read more
+                  </Link>
                 </article>
               ))
             ) : (
               <p>No articles found...</p>
             )}
           </div>
+
           
         </main>
       </div>

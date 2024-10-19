@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 function ArticlePage() {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
+  const [articleContent, setArticleContent] = useState('');
   const labelColors = {
     "Software": "bg-blue-500",
     "Audio-Visual": "bg-red-500",
@@ -15,10 +16,17 @@ function ArticlePage() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/articles/${id}`)
+    fetch(`https://server.chengzeng.dev/api/articles/${id}`)
       .then(response => response.json())
-      .then(data => setArticle(data))
-      .catch(error => console.error('Error fetching quote:', error));
+      .then(data => {
+        setArticle(data);
+      })
+      .catch(error => console.error('Error fetching article:', error));
+
+    fetch(`https://chezeng.github.io/Media/WhatIAM/articles/${id}.md`)
+      .then(response => response.text())
+      .then(data => setArticleContent(data))
+      .catch(error => console.error('Error fetching article content:', error));
   }, [id]);
 
   if (!article) return <div>Loading...</div>;
@@ -28,7 +36,7 @@ function ArticlePage() {
       <div className="flex space-x-2 mt-2 mb-4">
         {article.labels.map((label, index) => (
           <span key={index} 
-          className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer ${labelColors[label]}`}>
+            className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer ${labelColors[label]}`}>
             {label}
           </span>
         ))}
@@ -36,7 +44,7 @@ function ArticlePage() {
       <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
       <p className="text-gray-500 mb-8">{article.date}</p>
       <img src={article.image} alt={article.title} className="mb-8 w-full h-auto" />
-      <ReactMarkdown>{article.content}</ReactMarkdown>
+      <ReactMarkdown>{articleContent}</ReactMarkdown>
     </div>
   );
 }

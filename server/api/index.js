@@ -3,7 +3,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
-import matter from 'gray-matter';
 import axios from 'axios';
 import { marked } from 'marked';
 

@@ -26,7 +26,7 @@ const MusicPlayer = () => {
   const render = (data) => {
     if (audioRef.current) {
       // Update the audio source with the absolute URL
-      audioRef.current.src = `https://chezeng.github.io/Media/WhatIAM/music/${encodeURIComponent(data.name)}.mp3`;
+      audioRef.current.src = `https://chezeng.github.io/Media/WhatIAM/music/${encodeURIComponent(data.id)}.mp3`;
     }
   };
 
