@@ -11,7 +11,6 @@ const MusicPlayer = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    // Fetch the music list from your JSON file
     fetch('https://chezeng.github.io/Media/WhatIAM/music/music.json')
       .then((response) => response.json())
       .then((data) => {
