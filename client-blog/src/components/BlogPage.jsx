@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 function BlogPage() {
-  const [quote, setQuote] = useState(null);
+  const [quote, setQuote] = useState(null);  // 将 quote 状态设置为单个 quote 对象
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
@@ -40,10 +40,19 @@ function BlogPage() {
     }
   };
 
+  // Fetch and set a random quote
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/quotes`)
       .then(response => response.json())
-      .then(data => setQuote(data))
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          // 随机选择一个 quote
+          const randomQuote = data[Math.floor(Math.random() * data.length)];
+          setQuote(randomQuote);
+        } else {
+          throw new Error('Received data is not an array or is empty');
+        }
+      })
       .catch(error => console.error('Error fetching quote:', error));
   }, []);
 

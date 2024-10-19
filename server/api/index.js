@@ -52,15 +52,19 @@ async function getArticleContent(id) {
     }
 
     const fileContent = response.data;
-    const { data: content } = matter(fileContent);
     return {
-      content: marked.parse(content),
+      content: marked.parse(fileContent),
     };
   } catch (error) {
     console.error('Error fetching article content:', error);
     throw error;
   }
 }
+
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
+});
 
 // API endpoints
 app.get('/api/articles', async (req, res) => {
