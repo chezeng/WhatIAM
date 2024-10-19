@@ -11,17 +11,22 @@ const MusicPlayer = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    fetch('')
+    // Fetch the music list from your JSON file
+    fetch('https://chezeng.github.io/Media/WhatIAM/music/music.json')
       .then((response) => response.json())
       .then((data) => {
-        setMusicList(data);
-        render(data[0]);
+        setMusicList(data);  // Store the music list
+        render(data[0]);     // Render the first song initially
+      })
+      .catch((error) => {
+        console.error('Error fetching music list:', error);
       });
   }, []);
 
   const render = (data) => {
     if (audioRef.current) {
-      audioRef.current.src = data.audio_url;
+      // Update the audio source with the absolute URL
+      audioRef.current.src = `https://chezeng.github.io/Media/WhatIAM/music/${encodeURIComponent(data.name)}.mp3`;
     }
   };
 
@@ -124,7 +129,7 @@ const MusicPlayer = () => {
           animate={{ opacity: 1, x: isExpanded ? 0 : '100%' }}
           transition={{ type: 'spring', stiffness: 100 }}
         >
-          <div className="flex items-center wjustify-between">
+          <div className="flex items-center justify-between">
             <div className="relative cover w-24 h-24 bg-white rounded-full border-4 border-white mx-auto mt-[-60px]">
               <img
                 src={musicList[currentIndex]?.cover || ''}

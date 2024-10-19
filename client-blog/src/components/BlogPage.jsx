@@ -46,7 +46,6 @@ function BlogPage() {
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
-          // 随机选择一个 quote
           const randomQuote = data[Math.floor(Math.random() * data.length)];
           setQuote(randomQuote);
         } else {
