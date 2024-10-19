@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 function BlogPage() {
-  const [quote, setQuote] = useState(null);  // 将 quote 状态设置为单个 quote 对象
+  const [quote, setQuote] = useState(null); 
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
