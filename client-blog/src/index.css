@@ -17,6 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-
+.markdown > * {
+  all: revert;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
