@@ -26,12 +26,12 @@ const Footer = () => {
             <div className="flex justify-between items-center ml-6 -mb-2">
                 <ul className="flex text-sm text-gray-400 space-x-3 md:space-x-7 lg:space-x-10 mt-5">
                 <li>
-                    <a target="_blank" href="https://www.linkedin.com/in/cz5/" rel="noopener noreferrer" className="hover:underline">
+                    <a target="_blank" href="https://www.linkedin.com/in/chezeng" rel="noopener noreferrer" className="hover:underline">
                     LinkedIn
                     </a>
                 </li>
                 <li>
-                    <a target="_blank" href="https://github.com/ch3ngz" className="hover:underline">
+                    <a target="_blank" href="https://github.com/chezeng" className="hover:underline">
                     GitHub
                     </a>
                 </li>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </li>
                 </ul>
 
-                <a href="https://blog.chengzeng.dev" className="text-sm text-gray-400 hover:underline font-bold mt-5 mr-6">
+                <a href="https://blog.chengzeng.dev" className="text-sm text-gray-400 hover:underline font-bold mt-5 mr-6" rel="noopener noreferrer" className="hover:underline">
                   【My World】
                 </a>
             </div>
