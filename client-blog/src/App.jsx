@@ -6,6 +6,7 @@ import AboutPage from './components/AboutPage';
 import CommentsPage from './components/CommentsPage';
 import MusicPlayer from './components/MusicPlayer';
 import ArticlePage from './components/ArticlePage';  
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/comments" element={<CommentsPage />} />
         <Route path="/articles/:id" element={<ArticlePage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

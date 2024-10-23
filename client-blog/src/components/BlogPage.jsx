@@ -92,9 +92,9 @@ function BlogPage() {
   }, [selectedLabels, searchQuery, articles]);
 
   return (
-    <div className="min-h-screen bg-gray-800 text-white">
+    <div className="min-h-screen  gradient bg-gradient-to-b from-gray-700 to-black  text-white">
       {/* Profile section */}
-      <div id='intro' className="container mx-auto p-16 pt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div id='top' className="container mx-auto p-16 pt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
         <aside className="space-y-8 col-span-1">
           <div className="bg-gray-700 p-6 rounded-lg text-center space-y-4 ml-5 md:m-auto">
             <div className="w-24 h-24 mx-auto">
@@ -146,13 +146,13 @@ function BlogPage() {
         {/* Main Articles */}
         <main className="col-span-2 space-y-8">
           {/* Search Bar */}
-          <div className="bg-gray-700 p-4 rounded-lg">
+          <div className="bg-gray-700 p-4 rounded-lg ">
             <input 
               type="text" 
               placeholder="Search..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full p-2 bg-gray-600 rounded-lg focus:outline-none"
+              className="w-full p-2 bg-gray-600 rounded-lg focus:outline-none focus:ring-2 ring-white"
             />
           </div>
 
@@ -161,8 +161,20 @@ function BlogPage() {
             {filteredArticles.length > 0 ? (
               filteredArticles.map(article => (
                 <article key={article.id} className="bg-gray-700 p-6 rounded-lg">
-                  <img src={article.image} alt={article.title} className="w-full h-48 object-cover rounded-lg mb-4" />
-                  <h2 className="text-xl font-semibold">{article.title}</h2>
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center filter blur-xl opacity-20 -z-10"
+                    style={{ backgroundImage: `url(${article.image})` }}
+                  ></div>
+
+                  <div className="relative w-full h-48 overflow-hidden rounded-lg cursor-pointer">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105"
+                      onClick={() => window.open(`/articles/${article.id}`)} 
+                    />
+                  </div>
+                  <h2 className="mt-3 text-2xl font-semibold">{article.title}</h2>
                   <p className="text-gray-400">{article.date}</p>
                   <div className="flex space-x-2 mt-2">
                     {article.labels.map((label, index) => (
@@ -174,7 +186,7 @@ function BlogPage() {
                     ))}
                   </div>
                   <p className="mt-2">{article.preview}</p>
-                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block">
+                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block " target="_blank" rel="noopener noreferrer">
                     Read more
                   </Link>
                 </article>

@@ -22,7 +22,7 @@ const Footer = () => {
         <>
         <div className='flex justify-center'>{isExploding && <ConfettiExplosion height={2000} width={2000} />}</div>
         
-        <footer className="w-screen space-y-5 bg-slate-950 p-6 h-36">
+        <footer className="w-screen space-y-5 bg-black p-6 h-36">
             <div className="flex justify-between items-center ml-6 -mb-2">
                 <ul className="flex text-sm text-gray-400 space-x-3 md:space-x-7 lg:space-x-10 mt-5">
                 <li>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </li>
                 </ul>
 
-                <a href="https://blog.chengzeng.dev" className="text-sm text-gray-400 hover:underline font-bold mt-5 mr-6" rel="noopener noreferrer" className="hover:underline">
+                <a href="https://blog.chengzeng.dev" className="text-sm text-gray-400 font-bold mt-6 mr-6 hover:underline" rel="noopener noreferrer">
                   【My World】
                 </a>
             </div>

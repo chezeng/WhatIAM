@@ -31,7 +31,7 @@ const NavBar = () => {
     return(
         <nav className={`z-10 w-screen h-14 flex items-center justify-between bg-black fixed transition-transform duration-300 ${visible ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
             <h1 className="text-white text-xl ml-10 font-bold cursor-pointer hover:text-blue-500 hover:scale-105 transition duration-100 ease-out" 
-            onClick={() => scrollToSection('intro')}> 
+            onClick={() => scrollToSection('top')}> 
                 Cheng Zeng's Blogs
             </h1>
             <div className="hidden sm:flex space-x-8 mr-12 text-lg align-middle"> 
