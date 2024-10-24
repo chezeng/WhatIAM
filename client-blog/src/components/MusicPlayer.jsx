@@ -223,6 +223,7 @@ const MusicPlayer = () => {
                   </li>
                 ))}
               </ul>
+              <p className='text-slate-300 italic mt-5 ml-14'>Originated by Cheng</p>
             </motion.div>
           )}
         </motion.div>

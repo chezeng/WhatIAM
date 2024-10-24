@@ -9,12 +9,18 @@ export default {
       spacing: {
         5.5: '1.375rem',
       },
+
+      scale: {
+        102: '1.02',
+      },
       
       animation: {
         'spin-slow': 'spin 7s linear infinite',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
-const Footer = () => {
+const Footer = ({ gradients, random }) => {
+    const [theme, setTheme] = useState(random);
     let delay = 3000;
     let lastClick = 0;
     const [isExploding, setIsExploding] = useState(false);
@@ -22,7 +23,7 @@ const Footer = () => {
     return (
         <>
         <div className='flex justify-center'>{isExploding && <ConfettiExplosion height={2000} width={2000} />}</div>
-        <footer className="space-y-5 bg-black p-6 h-36">
+        <footer style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})` }} className={` bg-opacity-70 p-6 h-36 space-y-5 backdrop-blur-lg shadow-lg`}>
             <div className="flex justify-center items-center ml-6 -mb-2">
                 <ul className="flex justify-center text-3xl space-x-3 md:space-x-7 mt-5">
                 <li>

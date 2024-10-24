@@ -36,7 +36,7 @@ function ArticlePage() {
   if (!article) return <div>Loading...</div>;
 
   return (
-    <div id='top' className="px-8 md:px-14 xl:px-40 py-20 gradient bg-gradient-to-b from-gray-800 to-black">
+    <div id='top' className="px-8 md:px-14 xl:px-40 py-20 gradient bg-gradient-to-tl from-pink-100 to-purple-200">
       <div className="space-x-2 mt-2 mb-4">
         {article.labels && article.labels.map((label, index) => (
           <span key={index} 
@@ -46,9 +46,9 @@ function ArticlePage() {
         ))}
       </div>
       <hr className='h-[2px]'></hr>
-      
-      <ReactMarkdown className='markdown'>{articleContent}</ReactMarkdown>
-
+      <div class="prose lg:prose-xl">
+        <ReactMarkdown>{articleContent}</ReactMarkdown>
+      </div>
     </div>
   );
 }
