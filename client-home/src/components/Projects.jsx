@@ -76,7 +76,7 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
                 <p className="text-slate-500 text-base mt-2">
-                A dynamic personal portfolio and blog website using MERN stack with advanced libraries and RESTful APIs.
+                A dynamic personal portfolio and blog website using MERN stack with RESTful APIs, advanced libraries and user-friendly interface.
                 </p>
               </div>
               <div className="flex mt-3">
