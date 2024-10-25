@@ -96,7 +96,7 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
       }}
       onMouseMove={handleMouseMove}>
       <Title title='Contact'/>
-      <h2 data-aos="fade-up" data-aos-delay="50" className="text-center mt-20 text-lg md:text-4xl">
+      <h2 data-aos="fade-up" data-aos-delay="50" className="text-center mt-10 md:mt-20 text-lg md:text-4xl">
         Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent inline font-bold'>as soon as possible</span>. <br></br>
       </h2>   
       

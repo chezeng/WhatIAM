@@ -15,6 +15,9 @@ export default {
         's400': '400px',
         's450': '450px',
         's500': '500px',
+        's550': '550px',
+        's600': '600px',
+        's650': '650px',
         'xl': '1200px', 
       },
       
@@ -37,7 +40,10 @@ export default {
         '85': '21.25rem',
         '100': '25rem',
         '110': '27.5rem',
-        '120': '30rem',
+        '125': '31.25rem',
+        '150': '37.5rem',
+        '200': '50rem',
+        '250': '62.5rem',
       },
 
       keyframes: {
@@ -47,6 +53,11 @@ export default {
           },
         },
       },
+
+      scale: {
+        102: '1.02',
+      },
+
       animation: {
         'border-spin': 'border-spin 7s linear infinite',
         'spin-slow': 'spin 7s linear infinite',

@@ -14,7 +14,7 @@ const About = () => {
   }, []);
 
     return (
-      <section id='about' className='p-28 w-screen h-full'>
+      <section id='about' className='px-16 md:p-28 w-screen h-full'>
         <Title title="About Me"></Title>
         <div data-aos="fade-up" data-aos-delay="100" className="flex flex-col md:flex-row mt-14 lg:px-20 xl:px-28 items-center">
           <div className='space-y-10 mt-0 md:mt-10'>
