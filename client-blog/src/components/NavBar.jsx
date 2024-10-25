@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ( { theme }) => {
     const [visible, setVisible] = useState(true);
     const [y, setY] = useState(window.scrollY);
     const [toggle, setToggle] = useState(false);
@@ -27,17 +27,16 @@ const NavBar = () => {
         document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     };
 
-    
     return(
         <nav className={`z-10 w-screen h-14 flex items-center justify-between bg-transparent fixed transition-transform duration-300 ${visible ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
-            <h1 className="text-black text-xl ml-10 font-bold cursor-pointer hover:hover:text-blue-500 hover:scale-105 transition duration-100 ease-out" 
+            <h1 className={`hover:text-black ${theme.card.text} text-xl ml-10 font-bold cursor-pointer hover:scale-105 transition duration-200 ease-out`} 
             onClick={() => scrollToSection('top')}> 
                 Cheng Zeng's Blogs
             </h1>
             <div className="hidden sm:flex space-x-8 mr-12 text-lg align-middle"> 
-                <p className="text-black font-bold cursor-pointer hover:text-blue-500 hover:scale-105 transition"><Link to="/">Home</Link></p>
-                <p className="text-black font-bold cursor-pointer hover:text-blue-500 hover:scale-105 transition"><Link to="/About">About</Link></p>
-                <p className="text-black font-bold cursor-pointer hover:text-blue-500 hover:scale-105 transition"><Link to="/Comments">Comments</Link></p>
+                <p className={`hover:text-black font-bold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/">Home</Link></p>
+                <p className={`font-bold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/About">About</Link></p>
+                <p className={`font-bold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/Comments">Comments</Link></p>
             </div>
 
             <button className="sm:hidden absolute w-7 h-7 cursor-pointer right-7" onClick={() => setToggle(!toggle)}>
@@ -47,9 +46,9 @@ const NavBar = () => {
             </button>
 
             <div className={`sm:hidden absolute text-center flex-col items-center space-y-3 top-24 -right-24 w-32 px-3 py-5 rounded-xl bg-white border-black border-2 transition transform duration-300 ease-in-out ${!toggle ? 'translate-x-20' : '-translate-x-full'}`}>
-                <p className="text-black font-bold cursor-pointer hover:text-blue-500 transition"><Link to="/">Home</Link></p>
-                <p className="text-black font-bold cursor-pointer hover:text-blue-500 transition"><Link to="/About">About</Link></p>
-                <p className="text-black font-bold cursor-pointer hover:text-blue-500 transition"><Link to="/Comments">Comments</Link></p>
+                <p className={`text-black font-bold cursor-pointer hover:${theme.card.text} hover:scale-105 transition`}><Link to="/">Home</Link></p>
+                <p className={`text-black font-bold cursor-pointer hover:${theme.card.text} hover:scale-105 transition`}><Link to="/About">About</Link></p>
+                <p className={`text-black font-bold cursor-pointer hover:${theme.card.text} hover:scale-105 transition`}><Link to="/Comments">Comments</Link></p>
             </div>        
         </nav>
     );

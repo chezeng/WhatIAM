@@ -11,13 +11,12 @@ const labelColors = {
   "Experience": "bg-teal-500",
 };
 
-function BlogPage({ gradients, random }) {
+function BlogPage({ theme }) {
   const [quote, setQuote] = useState(null); 
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [theme, setTheme] = useState(random);
 
   // Get the number of articles for each label
   const labelCounts = articles.reduce((acc, article) => {
@@ -94,7 +93,6 @@ function BlogPage({ gradients, random }) {
 
   return (
     <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`, color: '#1a1a1a', }}>
-      {/* Profile section */}
       <div id='top' className="container mx-auto p-16 pt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
         <aside className="space-y-8 col-span-1">
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
@@ -106,11 +104,11 @@ function BlogPage({ gradients, random }) {
             <hr className="border-t border-black my-4" />
             <div className="flex justify-center space-x-4">
               <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin className={` hover:text-blue-500 text-gray-700 w-7 h-7 hover:scale-110 transition duration-100 ease-out`}/></a>
+                <FaLinkedin className={` hover:text-black text-gray-600 w-7 h-7 hover:scale-110 transition duration-100 ease-out`}/></a>
               <a href="https://github.com/chezeng" target="_blank" rel="noopener noreferrer">
-                <FaGithub className={`text-gray-700 w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out`}/></a>
+                <FaGithub className={`text-gray-600 w-7 h-7 hover:text-black hover:scale-110 transition duration-100 ease-out`}/></a>
               <a href="https://www.youtube.com/@chezeng" target="_blank" rel="noopener noreferrer">
-                <FaYoutube className="text-gray-700 w-7 h-7 hover:text-blue-500 hover:scale-110 transition duration-100 ease-out"/></a>
+                <FaYoutube className="text-gray-600 w-7 h-7 hover:text-black hover:scale-110 transition duration-100 ease-out"/></a>
             </div>
           </div>
 
@@ -168,12 +166,11 @@ function BlogPage({ gradients, random }) {
                   ></div>
 
                   <div className="relative w-full h-48 overflow-hidden rounded-lg cursor-pointer">
-                    <img
+                  <Link to={`/articles/${article.id}`}><img
                       src={article.image}
                       alt={article.title}
-                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105"
-                      onClick={() => window.open(`/articles/${article.id}`)} 
-                    />
+                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105" 
+                    ></img></Link>
                   </div>
                   <h2 className="mt-3 text-2xl font-semibold">{article.title}</h2>
                   <p className="text-gray-400">{article.date}</p>
@@ -187,7 +184,7 @@ function BlogPage({ gradients, random }) {
                     ))}
                   </div>
                   <p className="mt-2">{article.preview}</p>
-                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block " target="_blank" rel="noopener noreferrer">
+                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block ">
                     Read more
                   </Link>
                 </article>

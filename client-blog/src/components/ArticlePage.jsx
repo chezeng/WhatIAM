@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-function ArticlePage() {
+function ArticlePage( { theme }) {
   const { id } = useParams(); 
   const [article, setArticle] = useState(null);  
   const [articleContent, setArticleContent] = useState(''); 
@@ -36,7 +36,7 @@ function ArticlePage() {
   if (!article) return <div>Loading...</div>;
 
   return (
-    <div id='top' className="px-8 md:px-14 xl:px-40 py-20 gradient bg-gradient-to-tl from-pink-100 to-purple-200">
+    <div style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}} id='top' className="px-8 md:px-14 xl:px-40 py-20 gradient bg-gradient-to-tl from-pink-100 to-purple-200">
       <div className="space-x-2 mt-2 mb-4">
         {article.labels && article.labels.map((label, index) => (
           <span key={index} 
@@ -45,8 +45,8 @@ function ArticlePage() {
           </span>
         ))}
       </div>
-      <hr className='h-[2px]'></hr>
-      <div class="prose lg:prose-xl">
+      <hr className='h-[3px] bg-black mb-6'></hr>
+      <div className="prose lg:prose-xl">
         <ReactMarkdown>{articleContent}</ReactMarkdown>
       </div>
     </div>

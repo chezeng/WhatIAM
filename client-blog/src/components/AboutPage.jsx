@@ -1,7 +1,7 @@
-function AboutPage() {
+function AboutPage({ theme }) {
 
   return (
-    <div className="min-h-screen bg-gray-800 text-white">
+    <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}}>
       
     </div>
   );
