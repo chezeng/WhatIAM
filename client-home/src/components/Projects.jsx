@@ -29,9 +29,9 @@ const Projects = () => {
 }, []);
 
   return (
-    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28 '>
+    <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28'>
       <Title title="Projects"/>
-      <div className='grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center md:ml-0 iphone:-ml-18 -ml-24'>
+      <div className='grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center md:ml-0 iphone:-ml-18 galaxy:-ml-20 -ml-24'>
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
@@ -40,7 +40,7 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">Timeless</div>
                 <p className="text-slate-500 text-base mt-2">
-                  An AI-powered app to provide immersive experiences by generating personalized audios and visuals with APIs such as Cohere, Groq, DELL-3, Luma and Suno AI.
+                  An AI-powered app to provide immersive experiences by generating personalized audiovisuals with Cohere, Luma and Suno AI APIs.
                 </p>
               </div>
               <div className="flex mt-3">
@@ -76,8 +76,7 @@ const Projects = () => {
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mt-2">WhatIAM</div>
                 <p className="text-slate-500 text-base mt-2">
-                A dynamic personal portfolio and blog website using React, Express.js and MongoDB with numerous advanced libraries
-                and RESTful APIs to improve user experience.
+                A dynamic personal portfolio and blog website using MERN stack with RESTful APIs, advanced libraries and user-friendly interface.
                 </p>
               </div>
               <div className="flex mt-3">
