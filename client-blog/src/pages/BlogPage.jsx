@@ -99,8 +99,8 @@ function BlogPage({ theme }) {
             <div className="w-24 h-24 mx-auto">
               <img className='rounded-full' src='https://chezeng.github.io/Media/WhatIAM/Profile.jpg' alt="Profile" />
             </div>
-            <h2 className={`${theme.card.text} mt-4 mb-2 text-2xl font-bold`}>Cheng Zeng</h2>
-            <p className='italic text-lg'>"An Artistic Engineer."</p>
+            <h2 className={`${theme.card.text} mt-4 mb-2 text-2xl font-extrabold`}>Cheng Zeng</h2>
+            <p className='italic font-bold text-lg'>"An Artistic Engineer."</p>
             <hr className="border-t border-black my-4" />
             <div className="flex justify-center space-x-4">
               <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer">
@@ -116,7 +116,7 @@ function BlogPage({ theme }) {
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             {quote ? (
               <div>
-                <p>"{quote.text}"</p>
+                <p className='italic'>"{quote.text}"</p>
                 <br></br>
                 <p className="italic font-bold">- {quote.author}</p>
               </div>
@@ -190,7 +190,7 @@ function BlogPage({ theme }) {
                 </article>
               ))
             ) : (
-              <p>Loading articles...</p>
+              <p>No articles found...</p>
             )}
           </div>
 

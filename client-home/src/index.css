@@ -270,7 +270,7 @@ body {
   }
 
   .card-content-button {
-    @apply absolute left-[1.5px] top-[1.5px] h-[calc(100%-3px)] w-[calc(100%-3px)] rounded-2xl bg-gradient-to-r from-blue-600 to-blue-950;
+    @apply absolute left-[2px] top-[2px] h-[calc(100%-5px)] w-[calc(100%-5px)] rounded-2xl bg-gradient-to-br from-blue-700 to-blue-950;
   }
   
   .formContainer {

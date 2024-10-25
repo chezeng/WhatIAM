@@ -17,7 +17,7 @@ const FancyButton = ({ color, children }) => {
     <a className="fancy-button w-full px-10 py-3 hover:scale-105 cursor-pointer"
       style={{ '--clr': color }} 
       onMouseMove={onMouseMove}>
-      <span className='flex justify-center '>{children}</span>
+      <span className='flex justify-center'>{children}</span>
     </a>
     </button>
   );

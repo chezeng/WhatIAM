@@ -19,9 +19,9 @@ const About = () => {
         <div data-aos="fade-up" data-aos-delay="100" className="flex flex-col md:flex-row mt-14 lg:px-20 xl:px-28 items-center">
           <div className='space-y-10 mt-0 md:mt-10'>
             <p className="text-center md:text-left text-xl md:text-3xl">
-              I am a <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">Computer Science</span> student at the University of Waterloo, 
-              continuously learning <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">new software technologies</span>.
-              My dream is to fully utilize <span className="gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent font-bold">AI + software applications</span> to create impact.
+              I am a <span className="gradient bg-gradient-to-b from-blue-300 to-blue-700 bg-clip-text text-transparent font-bold">Computer Science</span> student at the University of Waterloo, 
+              continuously learning <span className="gradient bg-gradient-to-b from-blue-300 to-blue-700 bg-clip-text text-transparent font-bold">new software technologies</span>.
+              My dream is to fully utilize <span className="gradient bg-gradient-to-b from-blue-300 to-blue-700 bg-clip-text text-transparent font-bold">AI + software applications</span> to create impact.
             </p>
 
             <div className="flex justify-center md:justify-start space-x-8"> 
@@ -37,11 +37,11 @@ const About = () => {
             </div>
 
             <div className="flex justify-center md:justify-start">
-              <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out'>
+              <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out duration-500'>
                 <a href={'https://chezeng.github.io/Media/WhatIAM/ChengResume.pdf'} target="_blank" rel="noopener noreferrer">
-                  <div className='card-content-button rounded-3xl cursor-pointer'>
-                    <p className="text-center text-xl font-bold mt-6">Check my resume</p>
-                  </div>
+                  <button className='card-content-button rounded-3xl cursor-pointer'>
+                    <p className="text-center text-xl font-bold">Check my resume</p>
+                  </button>
                 </a> 
               </div>
             </div>

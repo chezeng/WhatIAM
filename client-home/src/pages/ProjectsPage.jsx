@@ -173,7 +173,7 @@ const Projects = () => {
                     Read More
                   </button></a>
                   <div className="grid grid-cols-4 ml-4 mt-1">
-                    <IconWithTooltip icon={SiCreatereactapp} label="Create React App" />
+                    <IconWithTooltip icon={SiCreatereactapp} label="React" />
                     <IconWithTooltip icon={FaHtml5} label="HTML" />
                     <IconWithTooltip icon={FaCss3Alt} label="CSS" />
                     <IconWithTooltip icon={FaJs} label="JavaScript" />

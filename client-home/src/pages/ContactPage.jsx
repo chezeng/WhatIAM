@@ -160,8 +160,16 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
             {errors.message && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.message}</p>}
           </div>
 
-          <FancyButton color="cyan">SEND ME OFF!</FancyButton>
+          {/* <FancyButton color="cyan">SEND ME OFF!</FancyButton> */}
+          <div className="flex justify-center md:justify-start">
+              <div className='card-wrapper-button font-bold h-[4rem] w-[15rem] hover:scale-105 transition ease-in-out duration-500'>
+                  <button className='card-content-button rounded-3xl cursor-pointer'>
+                    <p className="text-center text-xl lg:text-2xl font-bold">Send me off!</p>
+                  </button>  
+              </div>
+            </div>
         </form>
+
         {successMessage && (
           <div className="mt-4 p-3 bg-green-600 text-white rounded-md flex items-center">
             <FaCheckCircle size={20} className="mr-2" />

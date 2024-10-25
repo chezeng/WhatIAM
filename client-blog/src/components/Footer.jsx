@@ -23,13 +23,12 @@ const Footer = ({ theme }) => {
         <div className={`${theme.card.footer} bg-opacity-70 backdrop-blur-lg shadow-lg pb-6 bg-blend-multiply`}>
         <div className='flex justify-center'>{isExploding && <ConfettiExplosion height={2000} width={2000} />}</div>
         <footer className={` p-6 h-36 space-y-5`}>
-            <div className="flex justify-center items-center ml-6 -mb-2 ">
-                <ul className="flex justify-center text-3xl space-x-3 md:space-x-7 mt-5">
+            <ul className="flex justify-center text-3xl space-x-3 md:space-x-7 mt-5 -mb-2">
                 <li>
                     <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer" className='text-gray-600 hover:text-4xl hover:scale-105 hover:text-black transition-all duration-300 ease-in-out'>
                         <FaLinkedin className="tech-icons"/>
                     </a>
-                </li>
+                </li>   
                 <li>
                     <a href="https://github.com/chezeng" target="_blank" rel="noopener noreferrer" className='text-gray-600 hover:text-4xl hover:scale-105 hover:text-black transition-all duration-300 ease-in-out'>
                         <FaGithub className="tech-icons"/>
@@ -40,11 +39,10 @@ const Footer = ({ theme }) => {
                         <FaYoutube className="tech-icons"/>
                     </a>
                 </li>
-                </ul>
+            </ul>
 
-            </div>
             <hr className=" border-black" />
-            <p onClick={handleConfetti} className={`font-bold ml-5 ${theme.card.text} text-center hover:underline cursor-pointer`}>Proudly Designed by Cheng Zeng</p>
+            <p onClick={handleConfetti} className={`font-extrabold ${theme.card.text} text-center hover:underline cursor-pointer italic`}>Proudly Designed by Cheng Zeng</p>
             </footer>
 
         </div>
