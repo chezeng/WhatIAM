@@ -50,60 +50,61 @@ function CommentsPage( { theme }) {
   };
 
   return (
+    <></>
     // <div className="h-svh grid grid-rows-2 md:space-y-40 lg:space-y-0 sm:grid-cols-2 px-20 items-center pt-20 sm:pt-48" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}}>
-      <div className="comments-page">
-        <div className="comments-container" ref={commentContainerRef}>
-          {comments.map((comment) => (
-            <div
-              key={comment.id}
-              className="comment-bubble"
-              style={{
-                color: comment.color,
-                animationDuration: `${comment.speed}s`,
-              }}
-            >
-              <img src={comment.avatar} alt="avatar" className="avatar" />
-              <div className="comment-content">
-                <div className="username">{comment.username}</div>
-                <div className="content">{comment.content}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+    //   <div className="comments-page">
+    //     <div className="comments-container" ref={commentContainerRef}>
+    //       {comments.map((comment) => (
+    //         <div
+    //           key={comment.id}
+    //           className="comment-bubble"
+    //           style={{
+    //             color: comment.color,
+    //             animationDuration: `${comment.speed}s`,
+    //           }}
+    //         >
+    //           <img src={comment.avatar} alt="avatar" className="avatar" />
+    //           <div className="comment-content">
+    //             <div className="username">{comment.username}</div>
+    //             <div className="content">{comment.content}</div>
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </div>
 
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="设置您的名字"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="file"
-            onChange={handleAvatarUpload}
-            accept="image/*"
-          />
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value={speed}
-            onChange={(e) => setSpeed(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="输入弹幕（最多30个词）"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <button onClick={handleSend}>发送</button>
-        </div>
-    </div>
+    //     <div className="input-container">
+    //       <input
+    //         type="text"
+    //         placeholder="Name"
+    //         value={username}
+    //         onChange={(e) => setUsername(e.target.value)}
+    //       />
+    //       <input
+    //         type="file"
+    //         onChange={handleAvatarUpload}
+    //         accept="image/*"
+    //       />
+    //       <input
+    //         type="color"
+    //         value={color}
+    //         onChange={(e) => setColor(e.target.value)}
+    //       />
+    //       <input
+    //         type="range"
+    //         min="1"
+    //         max="10"
+    //         value={speed}
+    //         onChange={(e) => setSpeed(e.target.value)}
+    //       />
+    //       <input
+    //         type="text"
+    //         placeholder=""
+    //         value={content}
+    //         onChange={(e) => setContent(e.target.value)}
+    //       />
+    //       <button onClick={handleSend}>Send</button>
+    //     </div>
+    // </div>
   );
 }
 

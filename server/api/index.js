@@ -15,9 +15,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/api/comments', commentsRoute);
-app.use('/api/upload-avatar', uploadAvatarRoute);
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// app.use('/api/comments', commentsRoute);
+// app.use('/api/upload-avatar', uploadAvatarRoute);
 
 app.use(cors());
 app.use(express.json());
