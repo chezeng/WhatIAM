@@ -1,52 +1,54 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import BlogPage from './components/BlogPage';
-import AboutPage from './components/AboutPage';
-import CommentsPage from './components/CommentsPage';
 import MusicPlayer from './components/MusicPlayer';
-import ArticlePage from './components/ArticlePage';  
 import Footer from './components/Footer';
+
+import BlogPage from './pages/BlogPage';
+import AboutPage from './pages/AboutPage';
+import CommentsPage from './pages/CommentsPage';
+import ArticlePage from './pages/ArticlePage';  
+
 import { useState } from 'react';
 
 const allGradients = [
   {
     from: '#FFDEE9',
-    to: '#B5FFFC',  // 1
+    to: '#B5FFFC', 
     card: { bg: 'bg-pink-50', ring: 'ring-pink-200', text: 'text-pink-800', footer: 'bg-[#B5FFFC]' }
   },
   {
     from: '#A9C9FF',
-    to: '#FFBBEC',  // 2
+    to: '#FFBBEC',
     card: { bg: 'bg-blue-50', ring: 'ring-blue-200', text: 'text-blue-800', footer: 'bg-[#FFBBEC]' }
   },
   {
     from: '#FAACA8',
-    to: '#DDD6F3',  // 3
+    to: '#DDD6F3', 
     card: { bg: 'bg-rose-50', ring: 'ring-rose-200', text: 'text-rose-800', footer: 'bg-[#DDD6F3]' }
   },
   {
     from: '#8EC5FC',
-    to: '#E0C3FC',  // 4
+    to: '#E0C3FC', 
     card: { bg: 'bg-indigo-50', ring: 'ring-indigo-200', text: 'text-indigo-800', footer: 'bg-[#E0C3FC]' }
   },
   {
     from: '#EE9CA7',
-    to: '#FFDDE1',  // 6
+    to: '#FFDDE1', 
     card: { bg: 'bg-pink-50', ring: 'ring-pink-200', text: 'text-pink-800', footer: 'bg-[#FFDDE1]' }
   },
   {
     from: '#02AABD',
-    to: '#00CDAC',  // 7
+    to: '#00CDAC',  
     card: { bg: 'bg-teal-50', ring: 'ring-teal-200', text: 'text-teal-800', footer: 'bg-[#00CDAC]' }
   },
   {
     from: '#FFECD2',
-    to: '#FCB69F',  // 11
+    to: '#FCB69F',
     card: { bg: 'bg-orange-50', ring: 'ring-orange-200', text: 'text-orange-800', footer: 'bg-[#FCB69F]' }
   },
   {
     from: '#A1C4FD',
-    to: '#C2E9FB',  // 12
+    to: '#C2E9FB', 
     card: { bg: 'bg-sky-50', ring: 'ring-sky-200', text: 'text-sky-800', footer: 'bg-[#C2E9FB]' }
   }
 ];

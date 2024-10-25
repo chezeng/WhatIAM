@@ -1,11 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react';
 import { FaTimes, FaHandshake, FaExclamationCircle, FaCheckCircle } from "react-icons/fa";
-import Title from './Title';
+import Title from '../components/Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Typewriter from 'typewriter-effect';
-import FancyButton from './FancyButton';
+import FancyButton from '../components/FancyButton';
 
 const Contact = () => {
   useEffect(() => {

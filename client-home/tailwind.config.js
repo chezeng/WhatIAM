@@ -10,6 +10,10 @@ export default {
         'ssm': '320px',
         'iphone': '375px',
         'galaxy': '344px',
+        's375': '375px',
+        's400': '400px',
+        's450': '450px',
+        's500': '500px',
         'xl': '1200px', 
       },
       

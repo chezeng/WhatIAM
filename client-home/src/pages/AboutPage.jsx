@@ -3,7 +3,7 @@ import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Title from './Title';
+import Title from '../components/Title';
 
 const About = () => {
   useEffect(() => {

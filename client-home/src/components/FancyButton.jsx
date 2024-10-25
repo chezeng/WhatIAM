@@ -1,4 +1,4 @@
-import './FancyButton.css';
+import '../styles/FancyButton.css';
 import PropTypes from 'prop-types';
 
 const FancyButton = ({ color, children }) => {

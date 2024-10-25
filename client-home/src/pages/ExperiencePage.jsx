@@ -1,8 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { FaHandsHelping, FaBookReader, FaMedal, FaChalkboardTeacher,  } from 'react-icons/fa';
-import Title from './Title';
+import Title from '../components/Title';
 
 import 'react-vertical-timeline-component/style.min.css';
 

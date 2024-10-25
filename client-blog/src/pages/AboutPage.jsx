@@ -1,5 +1,6 @@
-function AboutPage({ theme }) {
+import { cn } from "../libs/utils";
 
+function AboutPage({ theme }) {
   return (
     <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}}>
       

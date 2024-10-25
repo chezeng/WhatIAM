@@ -1,10 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { FaFigma, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaAndroid, FaWix, FaImages } from 'react-icons/fa';
 import { SiExpress, SiKotlin, SiPostman, SiFlask, SiPython, SiVite, SiVercel, SiTailwindcss, SiCreatereactapp, SiGodotengine, SiCanva, SiAdobeaftereffects, SiMongodb, SiJavascript} from "react-icons/si";
 import { ReactSVG } from 'react-svg';
-import Title from './Title';
+import Title from '../components/Title';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -31,7 +29,7 @@ const Projects = () => {
   return (
     <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28'>
       <Title title="Projects"/>
-      <div className='grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center md:ml-0 iphone:-ml-18 galaxy:-ml-20 -ml-24'>
+      <div className='-ml-28 galaxy:-ml-24 iphone:-ml-21 s400:-ml-16 s450:-ml-8 s500:-ml-2 s550:ml-0 grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center'>
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
