@@ -83,14 +83,14 @@ const MusicPlayer = () => {
     <div>
       {/* Player Container */}
       <motion.div
-        className="fixed top-48 md:top-12 right-5 xl:right-1 z-50 flex items-center "
+        className="fixed top-48 md:top-12 ssm:right-0 s400:right-4 xl:right-1 z-50 flex items-center"
         initial={{ x: 'calc(100% - 3rem)', opacity: 1 }}
         animate={{ x: isExpanded ? 0 : 'calc(100% - 3rem)' }}
         transition={{ type: 'spring', stiffness: 50 }}
       >
         {/* Arrow Button */}
         <motion.div
-          className="flex justify-center items-center bg-slate-200 transition ease-in-out hover:bg-white text-gray-700 cursor-pointer p-2 shadow-lg rounded-xl opacity-80 mr-3"
+          className="flex justify-center items-center bg-slate-200 transition ease-in-out hover:bg-white text-gray-700 cursor-pointer p-2 shadow-lg rounded-xl opacity-80 iphone:mr-3 ssm:mr-0"
           onClick={togglePlayer}
           transition={{
             type: 'spring',

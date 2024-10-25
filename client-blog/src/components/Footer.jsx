@@ -43,7 +43,7 @@ const Footer = ({ theme }) => {
                 </ul>
 
             </div>
-            <hr className=" dark:border-slate-700" />
+            <hr className=" border-black" />
             <p onClick={handleConfetti} className={`font-bold ml-5 ${theme.card.text} text-center hover:underline cursor-pointer`}>Proudly Designed by Cheng Zeng</p>
             </footer>
 
