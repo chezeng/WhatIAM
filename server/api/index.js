@@ -4,18 +4,25 @@ import mongoose from 'mongoose';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import axios from 'axios';
+import path from 'path';
 import { marked } from 'marked';
+import commentsRoute from '../api/comments.js';
+import uploadAvatarRoute from '../api/upload-avatar.js';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/comments', commentsRoute);
+app.use('/api/upload-avatar', uploadAvatarRoute);
 
 app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
@@ -134,6 +141,8 @@ app.post('/api/submit-form', contactFormLimiter, async (req, res) => {
     res.status(500).json({ message: 'An error occurred while submitting the form.' });
   }
 });
+
+
 
 // Start the server
 app.listen(port, () => {
