@@ -4,10 +4,10 @@ import mongoose from 'mongoose';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import axios from 'axios';
-import path from 'path';
 import { marked } from 'marked';
-import commentsRoute from '../api/comments.js';
-import uploadAvatarRoute from '../api/upload-avatar.js';
+// import commentsRoute from '../api/comments.js';
+// import uploadAvatarRoute from '../api/upload-avatar.js';
+// import path from 'path';
 
 dotenv.config();
 
