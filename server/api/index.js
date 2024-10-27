@@ -57,7 +57,7 @@ app.get('/api/comments', async (req, res) => {
 app.post('/api/comments', limiter, async (req, res) => {
   const { content, color, speed } = req.body;
 
-  if (!content || content.length > 30) {
+  if (!content || content.length > 100) {
     return res.status(400).json({ error: 'Invalid comment' });
   }
 
