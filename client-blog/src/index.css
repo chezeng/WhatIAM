@@ -75,3 +75,12 @@
   border-radius: 10px;
   backdrop-filter: blur(10px);
 }
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

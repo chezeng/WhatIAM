@@ -37,6 +37,8 @@ function CommentsPage({ theme }) {
   useEffect(() => {
     fetchComments();
     setLoaded(true);
+    const intervalId = setInterval(fetchComments, 15000); 
+    return () => clearInterval(intervalId); 
   }, []);
 
   const fetchComments = async () => {
@@ -106,13 +108,13 @@ function CommentsPage({ theme }) {
       <div className="absolute inset-0 overflow-hidden z-0">
         {loaded && comments.map((comment) => (
           <div
-            key={comment.id}
+            key={uuidv4()} 
             className="absolute whitespace-nowrap text-white font-semibold text-lg"
             style={{
               color: comment.color,
-              top: getRandomPosition(), // Non-overlapping vertical position
-              right: '-100%', // Start from off-screen on the right
-              animation: `marquee ${comment.speed}s linear infinite`,
+              top: getRandomPosition(), 
+              right: '-100%', 
+              animation: `marquee ${comment.speed || getRandomSpeed()}s linear infinite`,
             }}
           >
             {comment.content}
@@ -148,18 +150,6 @@ function CommentsPage({ theme }) {
           <div className="text-red-500 text-sm mt-4">{error}</div>
         )}
       </div>
-
-      {/* CSS for marquee animation */}
-      <style jsx>{`
-        @keyframes marquee {
-          from {
-            transform: translateX(100%);
-          }
-          to {
-            transform: translateX(-100%);
-          }
-        }
-      `}</style>
     </div>
   );  
 }

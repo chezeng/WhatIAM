@@ -36,7 +36,6 @@ const commentSchema = new mongoose.Schema({
   speed: Number,
 });
 
-
 const Contact = mongoose.model('Contact', ContactSchema);
 const Comment = mongoose.model('Comment', commentSchema);
 
@@ -105,7 +104,7 @@ async function getArticleContent(id) {
 // API endpoints
 app.get('/api/articles', async (req, res) => {
   try {
-    const articles = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');
+    const articles = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json').data;
     if (!articles || articles.length === 0) {
       return res.status(404).json({ message: 'No articles found' });
     }
