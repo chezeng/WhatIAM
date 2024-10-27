@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import { marked } from 'marked';
+import { v4 as uuidv4 } from 'uuid';
 
 dotenv.config();
 
@@ -41,7 +42,7 @@ const Comment = mongoose.model('Comment', commentSchema);
 
 const limiter = rateLimit({
   windowMs: 60 * 1000, 
-  max: 1,
+  max: 10,
   message: { error: 'Too many requests from this IP, please try again after a minute.' },
 });
 
@@ -62,6 +63,7 @@ app.post('/api/comments', limiter, async (req, res) => {
   }
 
   const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+  
   if (bannedWords.some((word) => content.toLowerCase().includes(word))) {
     return res.status(400).json({ error: 'Your comment contains inappropriate words.' });
   }

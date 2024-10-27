@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
+const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -12,23 +14,29 @@ function getRandomColor() {
 }
 
 function getRandomSpeed() {
-  return Math.random() * 5 + 2; // 2 to 7 seconds
+  return Math.random() * 5 + 5; // 5 to 10 seconds for a slower, visible animation
 }
 
-const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+function isGibberish(content) {
+  const excessiveRepeats = /(.)\1{3,}/;
+  const repetitiveWords = /\b(\w+)\b(?:.*\b\1\b){2,}/; 
+  return excessiveRepeats.test(content) || repetitiveWords.test(content);
+}
 
 function containsProfanity(content) {
   return bannedWords.some((word) => content.toLowerCase().includes(word));
 }
 
-function CommentsPage() {
+function CommentsPage({ theme }) {
   const [comments, setComments] = useState([]);
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
-  const commentContainerRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+  const usedPositions = useRef(new Set()); // Keep track of used positions to avoid overlap
 
   useEffect(() => {
     fetchComments();
+    setLoaded(true);
   }, []);
 
   const fetchComments = async () => {
@@ -36,14 +44,36 @@ function CommentsPage() {
     setComments(response.data);
   };
 
+  const getRandomPosition = () => {
+    // Generate a random vertical position between 5% and 95% to avoid edges
+    let top;
+    do {
+      top = Math.floor(Math.random() * 90) + 5;
+    } while (usedPositions.current.has(top) && usedPositions.current.size < 90);
+
+    usedPositions.current.add(top);
+    setTimeout(() => usedPositions.current.delete(top), 10000); // Free position after 10 seconds
+    return `${top}%`;
+  };
+
   const handleSend = async () => {
-    if (content.trim().length > 30) {
-      setError('Please keep your comment under 30 words.');
+    if (content.trim() === '') {
+      setError('Content cannot be empty.');
+      return;
+    }
+
+    if (content.length > 50) {
+      setError('Content should not exceed 50 characters.');
       return;
     }
 
     if (containsProfanity(content)) {
       setError('Your comment contains inappropriate words.');
+      return;
+    }
+
+    if (isGibberish(content)) {
+      setError('Your comment seems like gibberish. Please write meaningful content.');
       return;
     }
 
@@ -65,45 +95,73 @@ function CommentsPage() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-800 text-white min-h-screen p-4">
-      <div
-        className="relative w-full h-96 overflow-hidden bg-gray-900 rounded-lg"
-        ref={commentContainerRef}
-      >
-        {comments.map((comment) => (
+    <div
+      className="relative min-h-screen overflow-hidden"
+      style={{
+        background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`,
+        color: '#1a1a1a',
+      }}
+    >
+      {/* Background layer for comments animation */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        {loaded && comments.map((comment) => (
           <div
             key={comment.id}
-            className="absolute whitespace-nowrap"
+            className="absolute whitespace-nowrap text-white font-semibold text-lg"
             style={{
               color: comment.color,
-              animationDuration: `${comment.speed}s`,
+              top: getRandomPosition(), // Non-overlapping vertical position
+              right: '-100%', // Start from off-screen on the right
+              animation: `marquee ${comment.speed}s linear infinite`,
             }}
           >
             {comment.content}
           </div>
         ))}
       </div>
-
-      <div className="w-full max-w-md mt-4">
-        <input
-          type="text"
-          placeholder="Enter your comment (1 per minute)"
-          className="w-full p-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+  
+      {/* Main content container */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 text-center">
+        {/* Title and Subtitle */}
+        <h1 className="text-4xl font-extrabold text-white mb-2">Comment System</h1>
+        <p className="text-lg font-medium text-gray-300 mb-8">Leave your comments</p>
+  
+        {/* Input box with frosted glass effect */}
+        <div className="flex items-center bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg space-x-4 max-w-lg w-full">
+          <input
+            type="text"
+            placeholder="Type your comment here (max 50 characters)"
+            className="w-full p-3 bg-transparent placeholder-gray-300 text-white focus:outline-none"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button
+            onClick={handleSend}
+            className="px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out"
+          >
+            Send
+          </button>
+        </div>
+  
+        {/* Error message */}
         {error && (
-          <div className="text-red-500 text-sm mb-2">{error}</div>
+          <div className="text-red-500 text-sm mt-4">{error}</div>
         )}
-        <button
-          onClick={handleSend}
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Send
-        </button>
       </div>
+
+      {/* CSS for marquee animation */}
+      <style jsx>{`
+        @keyframes marquee {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
     </div>
-  );
+  );  
 }
 
 export default CommentsPage;
