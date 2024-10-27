@@ -2,19 +2,30 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+const bannedWords = [
+  "anal", "anus", "arse", "ass", "ballsack", "balls", "bastard", "bitch",
+  "biatch", "bloody", "blowjob", "blow job", "bollock", "bollok", "boner",
+  "boob", "bugger", "bum", "butt", "buttplug", "clitoris", "cock", "coon",
+  "crap", "cunt", "damn", "dick", "dildo", "dyke", "fag", "feck", "fellate",
+  "fellatio", "felching", "fuck", "f u c k", "fudgepacker", "fudge packer",
+  "flange", "Goddamn", "God damn", "hell", "homo", "jerk", "jizz", "knobend",
+  "knob end", "labia", "lmao", "lmfao", "muff", "nigger", "nigga", "omg",
+  "penis", "piss", "poop", "prick", "pube", "pussy", "queer", "scrotum",
+  "sex", "shit", "s hit", "sh1t", "slut", "smegma", "spunk", "tit", "tosser",
+  "turd", "twat", "vagina", "wank", "whore", "wtf"
+];
+
 
 function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  // Generating softer, more pastel colors for message backgrounds
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = 25 + Math.random() * 25; // 25-50%
+  const lightness = 75 + Math.random() * 15;  // 75-90%
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
 function getRandomSpeed() {
-  return Math.random() * 5 + 5; // 5 to 10 seconds for a slower, visible animation
+  return Math.random() * 5 + 5;
 }
 
 function isGibberish(content) {
@@ -33,17 +44,38 @@ function CommentsPage({ theme }) {
   const [error, setError] = useState('');
   const [loaded, setLoaded] = useState(false);
   const usedPositions = useRef(new Set());
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    // Apply glitch effect to title
+    const glitchEffect = setInterval(() => {
+      if (titleRef.current) {
+        const letters = titleRef.current.textContent.split('');
+        const glitchedLetters = letters.map(letter => 
+          Math.random() > 0.40 ? `<span class="${theme.card.text}" shadow-xl>${letter}</span>` : letter
+        );
+        titleRef.current.innerHTML = glitchedLetters.join('');
+      }
+    }, 500);
+
+    return () => clearInterval(glitchEffect);
+  }, []);
 
   useEffect(() => {
     fetchComments();
     setLoaded(true);
-    const intervalId = setInterval(fetchComments, 15000); 
+    const intervalId = setInterval(fetchComments, 9999999); 
     return () => clearInterval(intervalId); 
   }, []);
 
   const fetchComments = async () => {
-    const response = await axios.get('https://server.chengzeng.dev/api/comments');
-    setComments(response.data);
+    try {
+      const response = await axios.get('https://server.chengzeng.dev/api/comments');
+      setComments(response.data);
+    } catch (err) {
+      console.error('Failed to fetch comments:', err);
+      // Don't set error state here to avoid disrupting the UI
+    }
   };
 
   const getRandomPosition = () => {
@@ -58,6 +90,8 @@ function CommentsPage({ theme }) {
   };
 
   const handleSend = async () => {
+    setError('');
+
     if (content.trim() === '') {
       setError('Content cannot be empty.');
       return;
@@ -80,18 +114,28 @@ function CommentsPage({ theme }) {
 
     const newComment = {
       id: uuidv4(),
-      content,
-      color: getRandomColor(),
+      content: content.trim(),
+      timestamp: new Date().toISOString(),
+      backgroundColor: getRandomColor(),
       speed: getRandomSpeed(),
     };
 
     try {
-      await axios.post('https://server.chengzeng.dev/api/comments', newComment);
+      await axios.post('https://server.chengzeng.dev/api/comments', {
+        content: newComment.content,
+        id: newComment.id,
+        timestamp: newComment.timestamp
+      });
+      
       setComments([...comments, newComment]);
       setContent('');
-      setError('');
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to send comment.');
+      console.error('Error sending comment:', err);
+      if (err.response?.status === 400) {
+        setError('Invalid comment format. Please try again.');
+      } else {
+        setError('Failed to send comment. Please try again later.');
+      }
     }
   };
 
@@ -113,6 +157,11 @@ function CommentsPage({ theme }) {
               transform: translateX(-100%);
             }
           }
+          
+          .message-bubble {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+          }
         `}
       </style>
       
@@ -120,11 +169,12 @@ function CommentsPage({ theme }) {
         {loaded && comments.map((comment) => (
           <div
             key={uuidv4()} 
-            className="absolute whitespace-nowrap text-white font-semibold text-lg"
+            className="absolute whitespace-nowrap message-bubble px-6 py-3 rounded-xl font-extrabold "
             style={{
-              color: comment.color,
+              backgroundColor: comment.backgroundColor || getRandomColor(),
               top: getRandomPosition(),
               animation: `marquee ${comment.speed || getRandomSpeed()}s linear infinite`,
+              color: '#000',
             }}
           >
             {comment.content}
@@ -132,20 +182,27 @@ function CommentsPage({ theme }) {
         ))}
       </div>
   
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 text-center">
-        <h1 className="text-4xl font-extrabold text-white mb-10">Leave your comments!</h1> 
+      <div className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 text-center">
+        <h1 
+        ref={titleRef}
+        className="text-4xl font-extrabold text-white mb-10">Leave your comments!</h1> 
   
         <div className="flex items-center bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-3xl shadow-lg space-x-4 max-w-lg w-full">
           <input
             type="text"
-            placeholder="Type your comment here (max 50 characters)"
-            className="w-full p-3 bg-transparent placeholder-white italic text-white focus:outline-none"
+            placeholder="Type your comment here (max 100 characters)"
+            className="w-full p-3 bg-transparent placeholder-slate-600 italic text-black focus:outline-none"
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleSend();
+              }
+            }}
           />
           <button
             onClick={handleSend}
-            className={`bg-slate-200 text-white font-bold px-6 py-3 text-xl rounded-xl bg-opacity-30 hover:scale-101 transition 
+            className={`bg-slate-200 text-white hover:text-inherit font-extrabold px-6 py-3 text-xl rounded-xl bg-opacity-30 hover:scale-101 transition 
               ease-in-out duration-300 ${theme.card.ring} hover:ring-inherit ring-4 backdrop-blur-lg shadow-lg`}
           >
             Send
@@ -153,7 +210,9 @@ function CommentsPage({ theme }) {
         </div>
   
         {error && (
-          <div className="text-red-500 text-sm mt-4">{error}</div>
+          <div className="text-red-600 text-md font-bold italic mt-4 bg-white bg-opacity-20 backdrop-blur-md px-4 py-2 rounded-lg">
+            {error}
+          </div>
         )}
       </div>
     </div>

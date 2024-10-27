@@ -41,7 +41,7 @@ const Comment = mongoose.model('Comment', commentSchema);
 
 const limiter = rateLimit({
   windowMs: 60 * 1000, 
-  max: 10,
+  max: 5,
   message: { error: 'Too many requests from this IP, please try again after a minute.' },
 });
 
@@ -61,7 +61,18 @@ app.post('/api/comments', limiter, async (req, res) => {
     return res.status(400).json({ error: 'Invalid comment' });
   }
 
-  const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+  const bannedWords = [
+    "anal", "anus", "arse", "ass", "ballsack", "balls", "bastard", "bitch",
+    "biatch", "bloody", "blowjob", "blow job", "bollock", "bollok", "boner",
+    "boob", "bugger", "bum", "butt", "buttplug", "clitoris", "cock", "coon",
+    "crap", "cunt", "damn", "dick", "dildo", "dyke", "fag", "feck", "fellate",
+    "fellatio", "felching", "fuck", "f u c k", "fudgepacker", "fudge packer",
+    "flange", "Goddamn", "God damn", "hell", "homo", "jerk", "jizz", "knobend",
+    "knob end", "labia", "lmao", "lmfao", "muff", "nigger", "nigga", "omg",
+    "penis", "piss", "poop", "prick", "pube", "pussy", "queer", "scrotum",
+    "sex", "shit", "s hit", "sh1t", "slut", "smegma", "spunk", "tit", "tosser",
+    "turd", "twat", "vagina", "wank", "whore", "wtf"
+  ];
   
   if (bannedWords.some((word) => content.toLowerCase().includes(word))) {
     return res.status(400).json({ error: 'Your comment contains inappropriate words.' });
