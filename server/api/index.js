@@ -83,7 +83,6 @@ app.post('/api/comments', limiter, async (req, res) => {
   }
 });
 
-
 async function getArticleContent(id) {
   try {
     const url = `https://chezeng.github.io/Media/WhatIAM/articles/${id}.md`;
@@ -103,12 +102,9 @@ async function getArticleContent(id) {
   }
 }
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
-});
 
 // API endpoints
-app.get('/api/articles', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const articles = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');
     if (!articles || articles.length === 0) {
@@ -121,7 +117,7 @@ app.get('/api/articles', async (req, res) => {
   }
 });
 
-app.get('/api/articles/:id', async (req, res) => {
+app.get('/:id', async (req, res) => {
   try {
     const article = await getArticleContent(req.params.id);
     if (!article) {
