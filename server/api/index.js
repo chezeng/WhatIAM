@@ -102,9 +102,8 @@ async function getArticleContent(id) {
   }
 }
 
-
 // API endpoints
-app.get('/', async (req, res) => {
+app.get('/api/articles', async (req, res) => {
   try {
     const articles = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');
     if (!articles || articles.length === 0) {
@@ -117,7 +116,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.get('/:id', async (req, res) => {
+app.get('/api/articles/:id', async (req, res) => {
   try {
     const article = await getArticleContent(req.params.id);
     if (!article) {

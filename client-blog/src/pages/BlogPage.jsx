@@ -71,6 +71,19 @@ function BlogPage({ theme }) {
       });
   }, []);
 
+  app.get('/api/articles/:id', async (req, res) => {
+    try {
+      const article = await getArticleContent(req.params.id);
+      if (!article) {
+        return res.status(404).json({ message: 'Article not found' });
+      }
+      res.json(article);
+    } catch (error) {
+      console.error('Error fetching article content:', error);
+      res.status(500).json({ message: 'Error fetching article content' });
+    }
+  });
+
   useEffect(() => {
     const filterByLabels = (articles) => {
       if (selectedLabels.length === 0) return articles;
