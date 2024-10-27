@@ -41,7 +41,7 @@ const Comment = mongoose.model('Comment', commentSchema);
 
 const limiter = rateLimit({
   windowMs: 60 * 1000, 
-  max: 3,
+  max: 1,
   message: {
     message: 'Too many requests from this IP, please wait for a minute.' 
   },
