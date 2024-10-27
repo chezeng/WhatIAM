@@ -82,6 +82,17 @@ app.post('/api/comments', limiter, async (req, res) => {
   }
 });
 
+// Helper functions
+async function getArticlePreviews() {
+  try {
+    const response = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching article previews:', error);
+    return [];
+  }
+}
+
 async function getArticleContent(id) {
   try {
     const url = `https://chezeng.github.io/Media/WhatIAM/articles/${id}.md`;
@@ -100,15 +111,18 @@ async function getArticleContent(id) {
     throw error;
   }
 }
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
+});
 
 // API endpoints
 app.get('/api/articles', async (req, res) => {
   try {
-    const articles = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json').data;
+    const articles = await getArticlePreviews();
     if (!articles || articles.length === 0) {
       return res.status(404).json({ message: 'No articles found' });
     }
-    res.json(articles); 
+    res.json(articles);
   } catch (error) {
     console.error('Error fetching article previews:', error);
     res.status(500).json({ message: 'Error fetching article previews' });
