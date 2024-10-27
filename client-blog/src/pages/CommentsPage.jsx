@@ -131,10 +131,10 @@ function CommentsPage({ theme }) {
       setContent('');
     } catch (err) {
       console.error('Error sending comment:', err);
-      if (err.response?.status === 500) {
-        setError('Too many messages! Please wait for a minute to send more messages.');
+      if (err.response?.status === 400) {
+        setError('Server error! Please try again later.');
       } else {
-        setError('Failed to send comment. Please try again later.');
+        setError('Too many messages! Please wait for a minute to send more messages.');
       }
     }
   };
