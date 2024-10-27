@@ -97,7 +97,7 @@ function ArticlePage( { theme }) {
           ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
           ← Previous Article</button></Link>
         <p className='text-black font-bold italic'>Current Article: <span className='underline'>"{article.title}"</span> </p>
-        <Link to={`/${article.id < articleNum ? article.id + 1 : ""}`}><button className={`bg-white text-black font-bold px-6 py-3 rounded-xl bg-opacity-30 hover:scale-101 transition 
+        <Link to={`/${article.id < articleNum ? article.id + 1 : ""}`}><button className={`mt-10 md:mt-0 bg-white text-black font-bold px-6 py-3 rounded-xl bg-opacity-30 hover:scale-101 transition 
           ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
             → Next Article</button></Link>
       </div>
