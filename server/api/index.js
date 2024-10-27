@@ -42,7 +42,21 @@ const Comment = mongoose.model('Comment', commentSchema);
 const limiter = rateLimit({
   windowMs: 60 * 1000, 
   max: 3,
-  message: { error: 'Too many requests from this IP, please wait for a minute.' },
+  message: {
+    message: 'Too many requests from this IP, please wait for a minute.' 
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const contactFormLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 1,
+  message: {
+    message: 'Too many requests from this IP, please try again after a minute.'
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 app.get('/api/comments', async (req, res) => {
@@ -58,7 +72,7 @@ app.post('/api/comments', limiter, async (req, res) => {
   const { content, color, speed } = req.body;
 
   if (!content || content.length > 100) {
-    return res.status(400).json({ error: 'Invalid comment' });
+    return res.status(400).json({ error: 'Content should not exceed 100 characters.' });
   }
 
   const bannedWords = [
@@ -78,18 +92,12 @@ app.post('/api/comments', limiter, async (req, res) => {
     return res.status(400).json({ error: 'Your comment contains inappropriate words.' });
   }
 
-  const newComment = new Comment({
-    id: uuidv4(),
-    content,
-    color,
-    speed,
-  });
-
   try {
+    const newComment = new Comment({ id: uuidv4(), content, color, speed});
     await newComment.save();
-    res.status(201).json(newComment);
+    res.status(200).json({ message: 'Comment submitted successfully!' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to save comment' });
+    res.status(500).json({ message: 'Failed to save comment' });
   }
 });
 
@@ -161,17 +169,6 @@ app.get('/api/quotes', async (req, res) => {
     console.error('Error fetching quotes:', error);
     res.status(500).json({ message: 'Error fetching quotes' });
   }
-});
-
-// Rate limiting for contact form submissions
-const contactFormLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 1,
-  message: {
-    message: 'Too many requests from this IP, please try again after a minute.'
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
 });
 
 app.post('/api/submit-form', contactFormLimiter, async (req, res) => {
