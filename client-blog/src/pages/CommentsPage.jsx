@@ -32,7 +32,7 @@ function CommentsPage({ theme }) {
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
   const [loaded, setLoaded] = useState(false);
-  const usedPositions = useRef(new Set()); // Keep track of used positions to avoid overlap
+  const usedPositions = useRef(new Set());
 
   useEffect(() => {
     fetchComments();
@@ -47,14 +47,13 @@ function CommentsPage({ theme }) {
   };
 
   const getRandomPosition = () => {
-    // Generate a random vertical position between 5% and 95% to avoid edges
     let top;
     do {
       top = Math.floor(Math.random() * 90) + 5;
     } while (usedPositions.current.has(top) && usedPositions.current.size < 90);
 
     usedPositions.current.add(top);
-    setTimeout(() => usedPositions.current.delete(top), 10000); // Free position after 10 seconds
+    setTimeout(() => usedPositions.current.delete(top), 10000);
     return `${top}%`;
   };
 
@@ -64,8 +63,8 @@ function CommentsPage({ theme }) {
       return;
     }
 
-    if (content.length > 50) {
-      setError('Content should not exceed 50 characters.');
+    if (content.length > 100) {
+      setError('Content should not exceed 100 characters.');
       return;
     }
 
@@ -104,7 +103,19 @@ function CommentsPage({ theme }) {
         color: '#1a1a1a',
       }}
     >
-      {/* Background layer for comments animation */}
+      <style>
+        {`
+          @keyframes marquee {
+            from {
+              transform: translateX(100vw);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+        `}
+      </style>
+      
       <div className="absolute inset-0 overflow-hidden z-0">
         {loaded && comments.map((comment) => (
           <div
@@ -112,8 +123,7 @@ function CommentsPage({ theme }) {
             className="absolute whitespace-nowrap text-white font-semibold text-lg"
             style={{
               color: comment.color,
-              top: getRandomPosition(), 
-              right: '-100%', 
+              top: getRandomPosition(),
               animation: `marquee ${comment.speed || getRandomSpeed()}s linear infinite`,
             }}
           >
@@ -122,30 +132,26 @@ function CommentsPage({ theme }) {
         ))}
       </div>
   
-      {/* Main content container */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 text-center">
-        {/* Title and Subtitle */}
-        <h1 className="text-4xl font-extrabold text-white mb-2">Comment System</h1>
-        <p className="text-lg font-medium text-gray-300 mb-8">Leave your comments</p>
+        <h1 className="text-4xl font-extrabold text-white mb-10">Leave your comments!</h1> 
   
-        {/* Input box with frosted glass effect */}
-        <div className="flex items-center bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg space-x-4 max-w-lg w-full">
+        <div className="flex items-center bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-3xl shadow-lg space-x-4 max-w-lg w-full">
           <input
             type="text"
             placeholder="Type your comment here (max 50 characters)"
-            className="w-full p-3 bg-transparent placeholder-gray-300 text-white focus:outline-none"
+            className="w-full p-3 bg-transparent placeholder-white italic text-white focus:outline-none"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
           <button
             onClick={handleSend}
-            className="px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out"
+            className={`bg-slate-200 text-white font-bold px-6 py-3 text-xl rounded-xl bg-opacity-30 hover:scale-101 transition 
+              ease-in-out duration-300 ${theme.card.ring} hover:ring-inherit ring-4 backdrop-blur-lg shadow-lg`}
           >
             Send
           </button>
         </div>
   
-        {/* Error message */}
         {error && (
           <div className="text-red-500 text-sm mt-4">{error}</div>
         )}
