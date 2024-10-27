@@ -41,7 +41,7 @@ const Footer = () => {
                 </li>
                 </ul>
 
-                <a href="https://blog.chengzeng.dev" className="underline italic text-sm text-white font-extrabold mt-6 mr-6" rel="noopener noreferrer">
+                <a href="https://blog.chengzeng.dev" className="underline italic text-sm text-blue-400 font-extrabold mt-6 mr-6" rel="noopener noreferrer">
                   【My World】
                 </a>
             </div>
