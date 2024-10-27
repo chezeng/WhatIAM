@@ -191,7 +191,7 @@ function CommentsPage({ theme }) {
         <div className="flex items-center bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-3xl shadow-lg space-x-4 max-w-lg w-full">
           <input
             type="text"
-            placeholder="Max 3 messages per minute"
+            placeholder="I want to say..."
             className="w-full p-3 bg-transparent placeholder-slate-400 italic text-black"
             value={content}
             onChange={(e) => setContent(e.target.value)}
