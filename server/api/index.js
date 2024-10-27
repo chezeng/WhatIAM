@@ -5,19 +5,12 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import { marked } from 'marked';
-import commentsRoute from '../api/comments.js';
-import uploadAvatarRoute from '../api/upload-avatar.js';
-import path from 'path';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI;~
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/api/comments', commentsRoute);
-app.use('/api/upload-avatar', uploadAvatarRoute);
+const MONGODB_URI = process.env.MONGODB_URI;
 
 app.use(cors());
 app.use(express.json());
@@ -35,7 +28,59 @@ const ContactSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+const commentSchema = new mongoose.Schema({
+  id: String,
+  content: String,
+  color: String,
+  speed: Number,
+});
+
+
 const Contact = mongoose.model('Contact', ContactSchema);
+const Comment = mongoose.model('Comment', commentSchema);
+
+const limiter = rateLimit({
+  windowMs: 60 * 1000, 
+  max: 1,
+  message: { error: 'Too many requests from this IP, please try again after a minute.' },
+});
+
+app.get('/api/comments', async (req, res) => {
+  try {
+    const comments = await Comment.find();
+    res.json(comments);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch comments' });
+  }
+});
+
+app.post('/api/comments', limiter, async (req, res) => {
+  const { content, color, speed } = req.body;
+
+  if (!content || content.length > 30) {
+    return res.status(400).json({ error: 'Invalid comment' });
+  }
+
+  const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+  if (bannedWords.some((word) => content.toLowerCase().includes(word))) {
+    return res.status(400).json({ error: 'Your comment contains inappropriate words.' });
+  }
+
+  const newComment = new Comment({
+    id: uuidv4(),
+    content,
+    color,
+    speed,
+  });
+
+  try {
+    await newComment.save();
+    res.status(201).json(newComment);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to save comment' });
+  }
+});
+
 
 async function getArticleContent(id) {
   try {
@@ -55,7 +100,6 @@ async function getArticleContent(id) {
     throw error;
   }
 }
-
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Cheng Zeng \'s API realm.' });
@@ -120,8 +164,6 @@ app.post('/api/submit-form', contactFormLimiter, async (req, res) => {
     res.status(500).json({ message: 'An error occurred while submitting the form.' });
   }
 });
-
-
 
 // Start the server
 app.listen(port, () => {

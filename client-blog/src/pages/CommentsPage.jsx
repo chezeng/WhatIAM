@@ -2,13 +2,29 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-function CommentsPage( { theme }) {
-  const [comments, setComments] = useState([]); 
-  const [username, setUsername] = useState('');
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function getRandomSpeed() {
+  return Math.random() * 5 + 2; // 2 to 7 seconds
+}
+
+const bannedWords = ['spamword1', 'badword', 'siteisbad'];
+
+function containsProfanity(content) {
+  return bannedWords.some((word) => content.toLowerCase().includes(word));
+}
+
+function CommentsPage() {
+  const [comments, setComments] = useState([]);
   const [content, setContent] = useState('');
-  const [avatar, setAvatar] = useState(null);
-  const [color, setColor] = useState('#ffffff'); 
-  const [speed, setSpeed] = useState(5);
+  const [error, setError] = useState('');
   const commentContainerRef = useRef(null);
 
   useEffect(() => {
@@ -16,93 +32,76 @@ function CommentsPage( { theme }) {
   }, []);
 
   const fetchComments = async () => {
-    const response = await axios.get('/api/comments');
+    const response = await axios.get('https://server.chengzeng.dev/api/comments');
     setComments(response.data);
-  };
-
-  const handleAvatarUpload = async (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append('avatar', file);
-
-    const response = await axios.post('/api/upload-avatar', formData);
-    setAvatar(response.data.avatarUrl);
   };
 
   const handleSend = async () => {
     if (content.trim().length > 30) {
-      alert('Please keep your comment under 30 words.');
+      setError('Please keep your comment under 30 words.');
+      return;
+    }
+
+    if (containsProfanity(content)) {
+      setError('Your comment contains inappropriate words.');
       return;
     }
 
     const newComment = {
       id: uuidv4(),
-      username,
       content,
-      avatar,
-      color,
-      speed,
+      color: getRandomColor(),
+      speed: getRandomSpeed(),
     };
 
-    await axios.post('/api/comments', newComment);
-    setComments([...comments, newComment]);
-    setContent('');
+    try {
+      await axios.post('https://server.chengzeng.dev/api/comments', newComment);
+      setComments([...comments, newComment]);
+      setContent('');
+      setError('');
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to send comment.');
+    }
   };
 
   return (
-    // <div className="h-svh grid grid-rows-2 md:space-y-40 lg:space-y-0 sm:grid-cols-2 px-20 items-center pt-20 sm:pt-48" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}}>
-      <div className="comments-page">
-        <div className="comments-container" ref={commentContainerRef}>
-          {comments.map((comment) => (
-            <div
-              key={comment.id}
-              className="comment-bubble"
-              style={{
-                color: comment.color,
-                animationDuration: `${comment.speed}s`,
-              }}
-            >
-              <img src={comment.avatar} alt="avatar" className="avatar" />
-              <div className="comment-content">
-                <div className="username">{comment.username}</div>
-                <div className="content">{comment.content}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="flex flex-col items-center bg-gray-800 text-white min-h-screen p-4">
+      <div
+        className="relative w-full h-96 overflow-hidden bg-gray-900 rounded-lg"
+        ref={commentContainerRef}
+      >
+        {comments.map((comment) => (
+          <div
+            key={comment.id}
+            className="absolute whitespace-nowrap"
+            style={{
+              color: comment.color,
+              animationDuration: `${comment.speed}s`,
+            }}
+          >
+            {comment.content}
+          </div>
+        ))}
+      </div>
 
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="Name"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="file"
-            onChange={handleAvatarUpload}
-            accept="image/*"
-          />
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value={speed}
-            onChange={(e) => setSpeed(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder=""
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <button onClick={handleSend}>Send</button>
-        </div>
+      <div className="w-full max-w-md mt-4">
+        <input
+          type="text"
+          placeholder="Enter your comment (1 per minute)"
+          className="w-full p-2 mb-2 border rounded focus:outline-none focus:border-blue-500"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        {error && (
+          <div className="text-red-500 text-sm mb-2">{error}</div>
+        )}
+        <button
+          onClick={handleSend}
+          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 }
