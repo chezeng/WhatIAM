@@ -97,7 +97,7 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
       onMouseMove={handleMouseMove}>
       <Title title='Contact'/>
       <h2 data-aos="fade-up" data-aos-delay="50" className="text-center mt-10 md:mt-20 text-lg md:text-4xl">
-        Feel free to contact me and I will respond <span className='gradient bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent inline font-bold'>as soon as possible</span>. <br></br>
+        Feel free to contact me and I will respond <span className="gradient bg-gradient-to-b from-blue-300 to-blue-700 bg-clip-text text-transparent font-bold">as soon as possible</span>. <br></br>
       </h2>   
       
       <div data-aos="fade-up" data-aos-delay="50" className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full contact-form">
