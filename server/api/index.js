@@ -95,7 +95,7 @@ app.post('/api/comments', limiter, async (req, res) => {
   try {
     const newComment = new Comment({ id: uuidv4(), content, color, speed});
     await newComment.save();
-    res.status(200).json({ message: 'Comment submitted successfully!' });
+    res.status(200).json(newComment);
   } catch (error) {
     res.status(500).json({ message: 'Failed to save comment' });
   }
