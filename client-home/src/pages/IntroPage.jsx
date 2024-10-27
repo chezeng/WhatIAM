@@ -76,8 +76,8 @@ const Intro = () => {
                 color: titleArray.current[titleIndex].color,
                 textShadow: titleArray.current[titleIndex].shadow
             }}>
-            <span id="glitch" ref={glitch.ref}>
-                {titleArray.current[titleIndex].text}.
+            <span id="glitch" ref={glitch.ref} className='underline'>
+                <a href="https://blog.chengzeng.dev" target="_blank" rel="noopener noreferrer">{titleArray.current[titleIndex].text}</a>.
             </span>
             </h2>
             <div className="relative top-80 flex justify-center scroll-indicator">
