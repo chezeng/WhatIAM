@@ -1,5 +1,6 @@
 import '../styles/FancyButton.css';
 import PropTypes from 'prop-types';
+//FancyButton.jsx
 
 const FancyButton = ({ color, children }) => {
   const onMouseMove = (e) => {
