@@ -95,7 +95,7 @@ function BlogPage({ theme }) {
     <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`, color: '#1a1a1a', }}>
       <div id='top' className="container mx-auto p-16 pt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
         <aside className="space-y-8 col-span-1">
-          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <div className="w-24 h-24 mx-auto">
               <img className='rounded-full' src='https://chezeng.github.io/Media/WhatIAM/Profile.jpg' alt="Profile" />
             </div>
@@ -113,7 +113,7 @@ function BlogPage({ theme }) {
           </div>
 
           {/* Daily Quote Section */}
-          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             {quote ? (
               <div>
                 <p className='italic'>"{quote.text}"</p>
@@ -126,7 +126,7 @@ function BlogPage({ theme }) {
           </div>
           
           {/* Labels Section */}
-          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4  p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <h3 className="text-lg font-semibold mb-2">Labels</h3>
             <div className="flex flex-wrap justify-center gap-2">
               {Object.keys(labelColors).map((label, index) => (
@@ -145,7 +145,7 @@ function BlogPage({ theme }) {
         {/* Main Articles */}
         <main className="col-span-2 space-y-8">
           {/* Search Bar */}
-          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <input 
               type="text" 
               placeholder="Search..." 
@@ -159,14 +159,14 @@ function BlogPage({ theme }) {
           <div className="space-y-8">
             {filteredArticles.length > 0 ? (
               filteredArticles.map(article => (
-                <article key={article.id} className={`${theme.card.bg} ${theme.card.ring} hover:ring-4  p-6 bg-opacity-90 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+                <article key={article.id} className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
                   <div 
                     className="absolute inset-0 bg-cover bg-center filter blur-xl opacity-20 -z-10"
                     style={{ backgroundImage: `url(${article.image})` }}
                   ></div>
 
                   <div className="relative w-full h-48 overflow-hidden rounded-lg cursor-pointer">
-                  <Link to={`/articles/${article.id}`}><img
+                  <Link to={`/${article.id}`}><img
                       src={article.image}
                       alt={article.title}
                       className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105" 
@@ -184,7 +184,7 @@ function BlogPage({ theme }) {
                     ))}
                   </div>
                   <p className="mt-2">{article.preview}</p>
-                  <Link to={`/articles/${article.id}`} className="text-blue-400 hover:underline mt-4 block ">
+                  <Link to={`/${article.id}`} className="text-blue-400 hover:underline mt-4 block ">
                     Read more
                   </Link>
                 </article>

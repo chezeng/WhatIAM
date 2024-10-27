@@ -72,7 +72,7 @@ function App() {
         <Route path="/" element={<BlogPage theme={theme} />} />
         <Route path="/about" element={<AboutPage theme={theme} />} />
         <Route path="/comments" element={<CommentsPage theme={theme}/>} />
-        <Route path="/articles/:id" element={<ArticlePage theme={theme}/>} />
+        <Route path="/:id" element={<ArticlePage theme={theme}/>} />
       </Routes>
       <Footer theme={theme}/>
     </Router>

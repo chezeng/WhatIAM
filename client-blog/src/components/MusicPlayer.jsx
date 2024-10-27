@@ -14,8 +14,8 @@ const MusicPlayer = () => {
     fetch('https://chezeng.github.io/Media/WhatIAM/music/music.json')
       .then((response) => response.json())
       .then((data) => {
-        setMusicList(data);  // Store the music list
-        render(data[0]);     // Render the first song initially
+        setMusicList(data);  
+        render(data[0]);    
       })
       .catch((error) => {
         console.error('Error fetching music list:', error);
@@ -24,7 +24,6 @@ const MusicPlayer = () => {
 
   const render = (data) => {
     if (audioRef.current) {
-      // Update the audio source with the absolute URL
       audioRef.current.src = `https://chezeng.github.io/Media/WhatIAM/music/${encodeURIComponent(data.id)}.mp3`;
     }
   };
@@ -83,7 +82,7 @@ const MusicPlayer = () => {
     <div>
       {/* Player Container */}
       <motion.div
-        className="fixed top-48 md:top-12 ssm:right-0 s400:right-4 xl:right-1 z-50 flex items-center"
+        className="fixed top-12 md:top-48 ssm:right-0 s400:right-4 xl:right-1 z-50 flex items-center"
         initial={{ x: 'calc(100% - 3rem)', opacity: 1 }}
         animate={{ x: isExpanded ? 0 : 'calc(100% - 3rem)' }}
         transition={{ type: 'spring', stiffness: 50 }}
@@ -123,7 +122,7 @@ const MusicPlayer = () => {
 
         {/* Music Player */}
         <motion.div
-          className="select-none bg-white bg-opacity-70 backdrop-blur-lg p-4 shadow-2xl rounded-xl"
+          className="select-none bg-white bg-opacity-50 backdrop-blur-lg p-4 shadow-2xl rounded-xl"
           initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: 1, x: isExpanded ? 0 : '100%' }}
           transition={{ type: 'spring', stiffness: 100 }}

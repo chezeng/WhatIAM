@@ -5,19 +5,19 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import { marked } from 'marked';
-// import commentsRoute from '../api/comments.js';
-// import uploadAvatarRoute from '../api/upload-avatar.js';
-// import path from 'path';
+import commentsRoute from '../api/comments.js';
+import uploadAvatarRoute from '../api/upload-avatar.js';
+import path from 'path';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;~
 
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-// app.use('/api/comments', commentsRoute);
-// app.use('/api/upload-avatar', uploadAvatarRoute);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/comments', commentsRoute);
+app.use('/api/upload-avatar', uploadAvatarRoute);
 
 app.use(cors());
 app.use(express.json());
@@ -36,17 +36,6 @@ const ContactSchema = new mongoose.Schema({
 });
 
 const Contact = mongoose.model('Contact', ContactSchema);
-
-// Helper functions
-async function getArticlePreviews() {
-  try {
-    const response = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching article previews:', error);
-    return [];
-  }
-}
 
 async function getArticleContent(id) {
   try {
@@ -75,11 +64,11 @@ app.get('/', (req, res) => {
 // API endpoints
 app.get('/api/articles', async (req, res) => {
   try {
-    const articles = await getArticlePreviews();
+    const articles = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');
     if (!articles || articles.length === 0) {
       return res.status(404).json({ message: 'No articles found' });
     }
-    res.json(articles);
+    res.json(articles); 
   } catch (error) {
     console.error('Error fetching article previews:', error);
     res.status(500).json({ message: 'Error fetching article previews' });
@@ -106,16 +95,6 @@ app.get('/api/quotes', async (req, res) => {
   } catch (error) {
     console.error('Error fetching quotes:', error);
     res.status(500).json({ message: 'Error fetching quotes' });
-  }
-});
-
-app.get('/api/music', async (req, res) => {
-  try {
-    const response = await axios.get('https://chezeng.github.io/Media/WhatIAM/music/music.json');
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error fetching music:', error);
-    res.status(500).json({ message: 'Error fetching music' });
   }
 });
 

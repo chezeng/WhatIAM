@@ -40,12 +40,12 @@ const NavBar = ( { theme }) => {
             </div>
 
             <button className="sm:hidden absolute w-7 h-7 cursor-pointer right-7" onClick={() => setToggle(!toggle)}>
-                <div className={`absolute w-full h-[2px] bg-black rounded-full transform transition duration-500 ${toggle ? "rotate-90" : "top-1.5"}`} />
-                <div className={`absolute w-full h-[2px] bg-black rounded-full transform transition duration-505 ${toggle ? "rotate-90" : "top-3.5"}`} />
-                <div className={`absolute w-full h-[2px] bg-black rounded-full transform transition duration-510 ${toggle ? "rotate-90" : "top-5.5"}`} />
+                <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-500 ${toggle ? "rotate-90" : "top-1.5"}`} />
+                <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-505 ${toggle ? "rotate-90" : "top-3.5"}`} />
+                <div className={`absolute w-full h-[2px] bg-white rounded-full transform transition duration-510 ${toggle ? "rotate-90" : "top-5.5"}`} />
             </button>
 
-            <div style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}} className={`sm:hidden absolute text-center flex-col items-center space-y-3 top-24 -right-24 w-32 px-3 py-5 rounded-xl bg-white border-black border-2 transition transform duration-300 ease-in-out ${!toggle ? 'translate-x-20' : '-translate-x-full'}`}>
+            <div className={`${theme.card.bg} sm:hidden absolute text-center flex-col items-center space-y-3 top-24 -right-24 w-32 px-3 py-5 rounded-xl bg-opacity-50 backdrop-blur-lg shadow-lg border-white border-4 transition transform duration-300 ease-in-out ${!toggle ? 'translate-x-20' : '-translate-x-full'}`}>
                 <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/">Home</Link></p>
                 <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/About">About</Link></p>
                 <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/Comments">Comments</Link></p>
