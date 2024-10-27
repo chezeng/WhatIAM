@@ -7,7 +7,7 @@ function AboutPage({ theme }) {
             <li>I am continuously learning new <span className="bg-yellow-300 px-1">software technologies</span>.</li>
             <li>I dream to fully utilize <span className="bg-yellow-300 px-1">AI + software applications</span> to create impact.</li>
             <li>I created a personal portfolio website at <span className="bg-yellow-300 px-1"><a href="https://www.chengzeng.dev" target="_blank" rel="noopener noreferrer" className="text-blue-500">chengzeng.dev</a></span>.</li>
-            <li className-"text-md text-slate-400">P.S. You can try to refresh the webpage to change the theme!</li>
+            <li className="text-md text-slate-400">P.S. You can try to refresh the webpage to change the theme!</li>
           </ul>
         </div>
 
