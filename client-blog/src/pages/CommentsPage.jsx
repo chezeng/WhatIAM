@@ -141,8 +141,8 @@ function CommentsPage({ theme }) {
 
   return (
     <div
-      id="top",
-      className="relative min-h-screen overflow-hidden",
+      id="top"
+      className="relative min-h-screen overflow-hidden"
       style={{
         background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`,
         color: '#1a1a1a',
