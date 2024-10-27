@@ -191,7 +191,7 @@ function CommentsPage({ theme }) {
           <input
             type="text"
             placeholder="Max 3 messages per minute"
-            className="w-full p-3 bg-transparent placeholder-slate-400 italic text-black border-transparent focus:border-black border-2"
+            className="w-full p-3 bg-transparent placeholder-slate-400 italic text-black border-transparent focus:border-white border-2"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             onKeyPress={(e) => {
