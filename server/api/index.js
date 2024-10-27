@@ -97,7 +97,7 @@ app.post('/api/comments', limiter, async (req, res) => {
     await newComment.save();
     res.status(200).json(newComment);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to save comment' });
+    res.status(500).json({ message: 'Too many requests! Please wait for a minute to resend mesaages!' });
   }
 });
 
