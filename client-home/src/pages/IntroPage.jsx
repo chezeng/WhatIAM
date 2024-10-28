@@ -8,8 +8,8 @@ import wall3 from '../assets/wall3.png';
 const titles = [
     { text: "Software Developer", color: "#FF0000", shadow: "0 0 10px #FF0000" },
     { text: "AI Enthusiast", color: "#00FFFF", shadow: "0 0 10px #00FFFF" },
-    { text: "Computer Science Student", color: "#FFD3B5", shadow: "0 0 10px #FFD3B5" },
-    { text: "Infamous Youtuber", color: "#00FF00", shadow: "0 0 10px #00FF00" },
+    { text: "Critical Thinker", color: "#FFD3B5", shadow: "0 0 10px #FFD3B5" },
+    { text: "Artistic Engineer", color: "#00FF00", shadow: "0 0 10px #00FF00" },
     { text: "Cool Video Editor", color: "#FFFF00", shadow: "0 0 10px #FFFF00" },
     { text: "Music Composer", color: "#71B3FF", shadow: "0 0 10px #71B3FF" },
 ];
