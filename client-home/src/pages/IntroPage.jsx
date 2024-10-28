@@ -3,6 +3,7 @@ import { FaArrowDown } from 'react-icons/fa';
 import { useGlitch } from 'react-powerglitch';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import wall3 from '../assets/wall3.png';
 
 const titles = [
     { text: "Software Developer", color: "#FF0000", shadow: "0 0 10px #FF0000" },
@@ -63,7 +64,7 @@ const Intro = () => {
       }, [text]);
 
     return (
-        <section data-aos="zoom-out" data-aos-delay="100" id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(${'https://chezeng.github.io/Media/WhatIAM/wall3.png'})`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
+        <section data-aos="zoom-out" data-aos-delay="100" id='intro' className="relative w-screen h-screen bg-center bg-cover" style={{backgroundImage: `url(${wall3})`, backgroundBlendMode: 'multiply', backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
             <h1 className="relative top-60 flex justify-center text-4xl md:text-7xl text-slate-200 font-bold">
                 {text.split('').map((char, index) => (
                 <span key={index} style={charStyles[index]}>

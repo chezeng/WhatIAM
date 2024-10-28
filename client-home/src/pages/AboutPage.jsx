@@ -4,6 +4,7 @@ import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Title from '../components/Title';
+import ProfileImage from '../assets/Profile.jpg';
 
 const About = () => {
   useEffect(() => {
@@ -48,7 +49,8 @@ const About = () => {
           </div>
 
           <div className='hover:scale-105 transition ease-in-out duration-300'>
-            <img className="floating rounded-3xl w-50 h-50 md:w-4/5 md:h-4/5 mt-10 ml-0 md:ml-20 lg:ml-40" src='https://chezeng.github.io/Media/WhatIAM/Profile.jpg'></img>
+            <img className="floating rounded-3xl w-50 h-50 md:w-4/5 md:h-4/5 mt-10 ml-0 md:ml-20 lg:ml-40" 
+            src={ProfileImage}></img>
           </div>
 
         </div>  
