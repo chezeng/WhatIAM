@@ -166,8 +166,11 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
                   <button className='card-content-button rounded-3xl cursor-pointer'>
                     <p className="text-center text-xl lg:text-2xl font-bold">Send me off!</p>
                   </button>  
-              </div>
-            </div>
+                </div>
+          </div>
+          <p className='italic text-slate-400 text-center'>Passing by? Say hi <a className='underline text-white'href='https://blog.chengzeng.dev/Comments' target="_blank" rel="noopener noreferrer">here</a>!</p>
+
+         
         </form>
 
         {successMessage && (
