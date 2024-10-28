@@ -61,7 +61,7 @@ function getRandomGradient() {
 }
 
 function App() {
-  const [theme, setTheme] = useState(getRandomGradient());
+  const [theme] = useState(getRandomGradient());
   
   return (
     <div className='bg-white'>

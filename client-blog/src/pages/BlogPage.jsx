@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 import profile from '../assets/profile.jpg';
@@ -12,6 +14,7 @@ const labelColors = {
   "Experience": "bg-teal-500",
 };
 
+// eslint-disable-next-line react/prop-types
 function BlogPage({ theme }) {
   const [quote, setQuote] = useState(null); 
   const [articles, setArticles] = useState([]);
