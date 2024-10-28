@@ -200,8 +200,8 @@ const MusicPlayer = () => {
           </div>
 
           <div className="mt-4">
-            <div className="text-black font-semibold">{musicList[currentIndex]?.name}</div>
-            <div className="text-gray-600">{musicList[currentIndex]?.singer}</div>
+            <div className="text-black text-lg font-extrabold">{musicList[currentIndex]?.name}</div>
+            <div className="text-gray-500">{musicList[currentIndex]?.singer}</div>
             <div className="mt-2">
               <div className="flex justify-between text-blue-500">
                 <span className="current-time">00:00</span>
@@ -233,7 +233,7 @@ const MusicPlayer = () => {
                 {musicList.map((item, index) => (
                   <li
                     key={index}
-                    className={`flex justify-between items-center p-2 rounded-lg cursor-pointer ${index === currentIndex ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-blue-100 '}`}
+                    className={`flex justify-between font-bold items-center p-2 rounded-lg cursor-pointer ${index === currentIndex ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-blue-100 '}`}
                     onClick={() => {
                       if (index !== currentIndex) {
                         setCurrentIndex(index);
