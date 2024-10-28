@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { FaAngleLeft, FaAngleRight, FaStop, FaBars, FaPlay } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft, FaSyncAlt, FaStop, FaBars, FaPlay } from "react-icons/fa";
 import { motion } from 'framer-motion';
 
 const MusicPlayer = () => {
@@ -8,6 +8,9 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false); 
   const [isListVisible, setIsListVisible] = useState(false);
+  const [isLooping, setIsLooping] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -67,7 +70,47 @@ const MusicPlayer = () => {
   };
 
   const handleEnded = () => {
-    setIsPlaying(false);
+    if (isLooping) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    } else {
+      const nextIndex = (currentIndex + 1) % musicList.length; 
+      setCurrentIndex(nextIndex);
+      render(musicList[nextIndex]);
+  
+      if (nextIndex !== 0 || musicList.length === 1) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      } else {
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const handleSeekStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleSeek = (e) => {
+    if (audioRef.current) {
+      const bar = e.currentTarget;
+      const rect = bar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const newProgress = (clickX / rect.width) * 100;
+      setProgress(newProgress);
+    }
+  };
+
+  const handleSeekEnd = (e) => {
+    if (audioRef.current) {
+      const bar = e.currentTarget;
+      const rect = bar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const newTime = (clickX / rect.width) * audioRef.current.duration;
+      audioRef.current.currentTime = newTime;
+      setProgress((newTime / audioRef.current.duration) * 100);
+    }
+    setIsDragging(false);
   };
 
   const togglePlayer = () => {
@@ -78,11 +121,15 @@ const MusicPlayer = () => {
     setIsListVisible(!isListVisible);
   };
 
+  const toggleLoop = () => {
+    setIsLooping(!isLooping);
+  };
+
   return (
     <div>
       {/* Player Container */}
       <motion.div
-        className="fixed top-12 md:top-48 ssm:right-0 s400:right-4 xl:right-1 z-50 flex items-center"
+        className="fixed top-28 right-3 z-50 flex items-center"
         initial={{ x: 'calc(100% - 3rem)', opacity: 1 }}
         animate={{ x: isExpanded ? 0 : 'calc(100% - 3rem)' }}
         transition={{ type: 'spring', stiffness: 50 }}
@@ -91,30 +138,14 @@ const MusicPlayer = () => {
         <motion.div
           className="flex justify-center items-center bg-slate-200 transition ease-in-out hover:bg-white text-gray-700 cursor-pointer p-2 shadow-lg rounded-xl opacity-80 iphone:mr-3 ssm:mr-0"
           onClick={togglePlayer}
-          transition={{
-            type: 'spring',
-            stiffness: 100,
-            damping: 10,
-            repeat: 1,
-            repeatType: 'mirror',
-          }}>
-
+          transition={{ type: 'spring', stiffness: 100, damping: 10, repeat: 1, repeatType: 'mirror' }}
+        >
           {isExpanded ? (
-            <motion.div
-              initial={{ rotate: 0 }}
-              animate={{
-                rotate: isExpanded ? 0 : 180,
-                transition: { type: 'spring', stiffness: 100 },
-              }}>
+            <motion.div initial={{ rotate: 0 }} animate={{ rotate: isExpanded ? 0 : 180 }}>
               <FaAngleRight className="text-2xl" />
             </motion.div>
           ) : (
-            <motion.div
-              initial={{ rotate: 0 }}
-              animate={{
-                rotate: isExpanded ? 0 : 360,
-                transition: { type: 'spring', stiffness: 100 },
-              }}>
+            <motion.div initial={{ rotate: 0 }} animate={{ rotate: isExpanded ? 0 : 360 }}>
               <FaAngleLeft className="text-2xl" />
             </motion.div>
           )}
@@ -138,17 +169,7 @@ const MusicPlayer = () => {
             </div>
 
             <div className="flex space-x-4">
-              <button onClick={handlePrev} className="text-xl p-2 text-gray-700 hover:bg-gray-200 rounded-full transition ease-in-out duration-200">
-                <motion.div
-                  initial={{ rotate: 0 }}
-                  animate={{
-                    rotate: isExpanded ? 0 : 360,
-                    transition: { type: 'spring', stiffness: 100 },
-                  }}>
-                  <FaAngleLeft />
-                </motion.div>
-              </button>
-              <button onClick={handlePlayPause} className="text-xl p-2 text-gray-700 hover:bg-gray-200 rounded-full transition ease-in-out duration-200">
+              <button onClick={handlePlayPause} className="ml-4 text-xl p-2 text-gray-700 hover:bg-gray-200 rounded-full transition ease-in-out duration-200">
                 <motion.div
                   initial={{ rotate: 0 }}
                   animate={{
@@ -158,16 +179,13 @@ const MusicPlayer = () => {
                   {isPlaying ? <FaStop /> : <FaPlay />}
                 </motion.div>
               </button>
-              <button onClick={handleNext} className="text-xl p-2 text-gray-700 hover:bg-gray-200 rounded-full transition ease-in-out duration-200">
-                <motion.div
-                  initial={{ rotate: 0 }}
-                  animate={{
-                    rotate: isExpanded ? 0 : 360,
-                    transition: { type: 'spring', stiffness: 100 },
-                  }}>
-                  <FaAngleRight />
+
+              <button onClick={toggleLoop} className={`text-xl p-2 rounded-full transition ease-in-out duration-200 ${isLooping ? 'text-blue-500' : 'text-gray-700 hover:bg-gray-200'}`}>
+                <motion.div initial={{ rotate: 0 }} animate={{ rotate: isExpanded ? 0 : 360 }}>
+                  <FaSyncAlt />
                 </motion.div>
               </button>
+
               <button onClick={toggleListVisibility} className="text-2xl p-2 text-gray-700 hover:bg-gray-200 rounded-full transition ease-in-out duration-200">
                 <motion.div
                   initial={{ rotate: 0 }}
@@ -189,8 +207,16 @@ const MusicPlayer = () => {
                 <span className="current-time">00:00</span>
                 <span className="time">{musicList[currentIndex]?.time}</span>
               </div>
-              <div className="relative mt-1 h-1 bg-gray-300 rounded-full music_progress_bar">
-                <div className="absolute top-0 left-0 h-full bg-blue-500 music_progress_line" style={{ width: '0%' }}></div>
+              <div
+                className="relative mt-1 h-1 bg-gray-300 rounded-full music_progress_bar"
+                onMouseDown={handleSeekStart}
+                onMouseMove={(e) => isDragging && handleSeek(e)}
+                onMouseUp={handleSeekEnd}
+              >
+                <div
+                  className="absolute top-0 left-0 h-full bg-blue-500 music_progress_line"
+                  style={{ width: `${progress}%` }}
+                ></div>
               </div>
             </div>
           </div>
@@ -222,7 +248,7 @@ const MusicPlayer = () => {
                   </li>
                 ))}
               </ul>
-              <p className='text-slate-300 italic mt-5 ml-14'>Originated by Cheng</p>
+              <p className='text-slate-300 italic mt-5 ml-9'>Originated by Cheng</p>
             </motion.div>
           )}
         </motion.div>
