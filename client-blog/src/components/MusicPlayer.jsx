@@ -207,7 +207,7 @@ const MusicPlayer = () => {
                 {musicList.map((item, index) => (
                   <li
                     key={index}
-                    className={`flex justify-between items-center p-2 rounded-lg cursor-pointer ${index === currentIndex ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-blue-100 '}`}
+                    className={`flex justify-between font-extrabold items-center p-2 rounded-lg cursor-pointer ${index === currentIndex ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-blue-100 '}`}
                     onClick={() => {
                       if (index !== currentIndex) {
                         setCurrentIndex(index);
@@ -222,7 +222,7 @@ const MusicPlayer = () => {
                   </li>
                 ))}
               </ul>
-              <p className='text-slate-300 italic mt-5 ml-14'>Originated by Cheng</p>
+              <p className='text-slate-300 italic mt-5 ml-14'>Designed by Cheng</p>
             </motion.div>
           )}
         </motion.div>
