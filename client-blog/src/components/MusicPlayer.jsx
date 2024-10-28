@@ -11,7 +11,7 @@ const MusicPlayer = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    fetch('https://chezeng.github.io/Media/WhatIAM/music/music.json')
+    fetch('https://chezeng.github.io/Media/WhatIAM/quotes/music.json')
       .then((response) => response.json())
       .then((data) => {
         setMusicList(data);  
@@ -24,7 +24,7 @@ const MusicPlayer = () => {
 
   const render = (data) => {
     if (audioRef.current) {
-      audioRef.current.src = `https://chezeng.github.io/Media/WhatIAM/music/${encodeURIComponent(data.id)}.mp3`;
+      audioRef.current.src = `https://chezeng.github.io/Media/WhatIAM/quotes/${encodeURIComponent(data.id)}.mp3`;
     }
   };
 
