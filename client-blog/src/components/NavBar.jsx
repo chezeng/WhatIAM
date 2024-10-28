@@ -46,9 +46,9 @@ const NavBar = ( { theme }) => {
             </button>
 
             <div className={`${theme.card.bg} sm:hidden absolute text-center flex-col items-center space-y-3 top-24 -right-24 w-32 px-3 py-5 rounded-xl bg-opacity-50 backdrop-blur-lg shadow-lg border-white border-4 transition transform duration-300 ease-in-out ${!toggle ? 'translate-x-20' : '-translate-x-full'}`}>
-                <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/">Home</Link></p>
-                <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/About">About</Link></p>
-                <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`}><Link to="/Comments">Comments</Link></p>
+                <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`} onClick={() => setToggle(!toggle)}><Link to="/">Home</Link></p>
+                <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`} onClick={() => setToggle(!toggle)}><Link to="/About">About</Link></p>
+                <p className={`hover:text-black font-extrabold cursor-pointer ${theme.card.text} hover:scale-105 transition`} onClick={() => setToggle(!toggle)}><Link to="/Comments">Comments</Link></p>
             </div>        
         </nav>
     );
