@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
+import profile from '../assets/profile.jpg';
 
 const labelColors = {
   "Software": "bg-blue-500",
@@ -97,7 +98,7 @@ function BlogPage({ theme }) {
         <aside className="space-y-8 col-span-1">
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <div className="w-24 h-24 mx-auto">
-              <img className='rounded-full' src='https://chezeng.github.io/Media/WhatIAM/Profile.jpg' alt="Profile" />
+              <img className='rounded-full' src={profile} alt="Profile" />
             </div>
             <h2 className={`${theme.card.text} mt-4 mb-2 text-2xl font-extrabold`}>Cheng Zeng</h2>
             <p className='italic font-bold text-lg'>"An Artistic Engineer."</p>
