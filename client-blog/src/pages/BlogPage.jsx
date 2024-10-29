@@ -5,12 +5,10 @@ import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 const labelColors = {
+  "Soliloquy": "bg-yellow-400",
+  "Dialogue": "bg-green-400",
   "Software": "bg-blue-500",
-  "Audio-Visual": "bg-red-500",
-  "Music": "bg-purple-500",
-  "Philosophy": "bg-green-500",
-  "Gaming": "bg-yellow-500",
-  "Experience": "bg-teal-500",
+  "Resonance": "bg-purple-500",
 };
 
 // eslint-disable-next-line react/prop-types
