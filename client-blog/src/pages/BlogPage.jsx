@@ -146,55 +146,35 @@ function BlogPage({ theme }) {
         {/* Main Articles */}
         <main className="col-span-2 space-y-8">
           {/* Search Bar */}
-          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={`${theme.card.bg} ${theme.card.ring} focus:ring-4 w-full p-2 px-3 shadow-lg rounded-lg focus:outline-none`}
-            />
+          <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+            <input type="text" 
+                   placeholder="Search..." 
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}
+                   className="w-full p-2 px-3 shadow-lg rounded-lg focus:outline-none" />
           </div>
 
-          {/* Articles */}
+          {/* Articles List */}
           <div className="space-y-8">
             {filteredArticles.length > 0 ? (
               filteredArticles.map(article => (
-                <article key={article.id} className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center filter blur-xl opacity-20 -z-10"
-                    style={{ backgroundImage: `url(${article.image})` }}
-                  ></div>
-
-                  <div className="relative w-full h-48 overflow-hidden rounded-lg cursor-pointer">
-                  <Link to={`/${article.id}`}><img
-                      src={article.image}
-                      alt={article.title}
-                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105" 
-                    ></img></Link>
-                  </div>
+                <article key={article.id} 
+                         className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+                  <Link to={`/${article.id}`}>
+                    <img src={article.image} 
+                         alt={article.title} 
+                         className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300 ease-in-out"/>
+                  </Link>
                   <h2 className="mt-3 text-2xl font-semibold">{article.title}</h2>
                   <p className="text-gray-400">{article.date}</p>
-                  <div className="flex space-x-2 mt-2">
-                    {article.labels.map((label, index) => (
-                      <span key={index} 
-                        className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer  transition duration-300 ease-in-out ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-black  transition duration-300 ease-in-out' : ''}`}
-                        onClick={() => handleLabelClick(label)}>
-                        {label}
-                      </span>
-                    ))}
-                  </div>
                   <p className="mt-2">{article.preview}</p>
-                  <Link to={`/${article.id}`} className="text-blue-400 hover:underline mt-4 block ">
-                    Read more
-                  </Link>
+                  <Link to={`/${article.id}`} className="text-blue-400 hover:underline mt-4 block">Read more</Link>
                 </article>
               ))
             ) : (
               <p>No articles found...</p>
             )}
           </div>
-
           
         </main>
       </div>
