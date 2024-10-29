@@ -167,6 +167,15 @@ function BlogPage({ theme }) {
                   </Link>
                   <h2 className="mt-3 text-2xl font-semibold">{article.title}</h2>
                   <p className="text-gray-400">{article.date}</p>
+                  <div className="flex space-x-2 mt-2">
+                    {article.labels.map((label, index) => (
+                      <span key={index} 
+                        className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer  transition duration-300 ease-in-out ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-black  transition duration-300 ease-in-out' : ''}`}
+                        onClick={() => handleLabelClick(label)}>
+                        {label}
+                      </span>
+                    ))}
+                  </div>
                   <p className="mt-2">{article.preview}</p>
                   <Link to={`/${article.id}`} className="text-blue-400 hover:underline mt-4 block">Read more</Link>
                 </article>

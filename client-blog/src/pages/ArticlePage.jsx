@@ -78,8 +78,22 @@ function ArticlePage( { theme }) {
           />
         </div>
       )}
+
+    <div className="space-x-2 mt-2 mb-4">
+        {article.labels && article.labels.map((label, index) => (
+          <span key={index} 
+            className={`text-white text-lg px-3 py-2 rounded-full cursor-pointer ${labelColors[label]}`}>
+            {label}
+          </span>
+        ))}
+      </div>
+      <hr className='h-[3px] bg-black mb-20'></hr>
+      <div className={`prose lg:prose-xl bg-white p-10 rounded-2xl bg-opacity-30 hover:scale-101 transition ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
+        <ReactMarkdown components={renderers}>{articleContent}</ReactMarkdown>
+      </div>
+
       
-    <div className="flex-col md:flex space-y-10 text-center justify-between mt-20 text-xl">
+      <div className="flex-col md:flex space-y-10 text-center justify-between mt-20 text-xl">
         {prevArticle && (
           <Link to={`/${prevArticle.id}`}>
             <button
