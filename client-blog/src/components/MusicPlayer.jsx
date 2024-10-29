@@ -248,7 +248,7 @@ const MusicPlayer = () => {
                   </li>
                 ))}
               </ul>
-              <p className='text-slate-300 italic mt-5 ml-9'>Designed by Cheng</p>
+              <p className='text-slate-300 italic mt-5 ml-10'>Designed by Cheng</p>
             </motion.div>
           )}
         </motion.div>
