@@ -4,13 +4,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
-const labelColors = {
-  "Soliloquy": "bg-black",
-  "Dialogue": "bg-green-400",
-  "Software": "bg-blue-500",
-  "Resonance": "bg-purple-500",
-};
-
 // eslint-disable-next-line react/prop-types
 function BlogPage({ theme }) {
   const [quote, setQuote] = useState(null); 
@@ -18,6 +11,13 @@ function BlogPage({ theme }) {
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+
+  const labelColors = {
+    "Soliloquy": "bg-yellow-600",
+    "Dialogue": "bg-green-400",
+    "Software": "bg-blue-500",
+    "Resonance": "bg-purple-500",
+  };
 
   // Get the number of articles for each label
   const labelCounts = articles.reduce((acc, article) => {
