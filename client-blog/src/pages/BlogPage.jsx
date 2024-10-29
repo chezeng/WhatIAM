@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 const labelColors = {
-  "Soliloquy": "bg-yellow-400",
+  "Soliloquy": "bg-black",
   "Dialogue": "bg-green-400",
   "Software": "bg-blue-500",
   "Resonance": "bg-purple-500",
