@@ -14,7 +14,7 @@ function BlogPage({ theme }) {
 
   const labelColors = {
     "Soliloquy": "bg-yellow-600",
-    "Dialogue": "bg-green-400",
+    "Dialogue": "bg-green-500",
     "Software": "bg-blue-500",
     "Resonance": "bg-purple-500",
   };
