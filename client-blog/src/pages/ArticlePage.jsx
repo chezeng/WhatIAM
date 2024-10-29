@@ -11,12 +11,10 @@ function ArticlePage( { theme }) {
   const [modalImage, setModalImage] = useState(null);
 
   const labelColors = {
+    "Soliloquy": "bg-yellow-600",
+    "Dialogue": "bg-green-500",
     "Software": "bg-blue-500",
-    "Audio-Visual": "bg-red-500",
-    "Music Critique": "bg-purple-500",
-    "Philosophy": "bg-green-500",
-    "Gaming": "bg-yellow-500",
-    "Experience": "bg-teal-500",
+    "Resonance": "bg-purple-500",
   };
 
   const openModal = (src) => {
