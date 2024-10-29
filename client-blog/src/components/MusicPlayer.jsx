@@ -200,7 +200,7 @@ const MusicPlayer = () => {
           </div>
 
           <div className="mt-4">
-            <div className="text-black text-xl font-extrabold">{musicList[currentIndex]?.name}</div>
+            <div className="text-black text-lg font-extrabold">{musicList[currentIndex]?.name}</div>
             <div className="text-gray-500">{musicList[currentIndex]?.singer}</div>
             <div className="mt-2">
               <div className="flex justify-between text-blue-500">
@@ -248,7 +248,7 @@ const MusicPlayer = () => {
                   </li>
                 ))}
               </ul>
-              <p className='text-slate-300 italic mt-5 ml-10'>Designed by Cheng</p>
+              <p className='text-slate-300 italic mt-5 ml-11'>Designed by Cheng</p>
             </motion.div>
           )}
         </motion.div>
