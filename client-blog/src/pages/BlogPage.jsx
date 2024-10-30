@@ -151,7 +151,7 @@ function BlogPage({ theme }) {
                    placeholder="Search..." 
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
-                   className="w-full p-2 px-3 shadow-lg rounded-lg focus:outline-none" />
+                   className={`${theme.card.bg} ${theme.card.ring} focus:ring-4 w-full p-2 px-3 shadow-lg rounded-lg focus:outline-none`} />
           </div>
 
           {/* Articles List */}
