@@ -160,11 +160,13 @@ function BlogPage({ theme }) {
               filteredArticles.map(article => (
                 <article key={article.id} 
                          className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
+                  <div className="relative w-full h-48 overflow-hidden rounded-lg cursor-pointer">
                   <Link to={`/${article.id}`}>
                     <img src={article.image} 
                          alt={article.title} 
-                         className="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300 ease-in-out"/>
+                         className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105"/>
                   </Link>
+                  </div>
                   <h2 className="mt-3 text-2xl font-semibold">{article.title}</h2>
                   <p className="text-gray-400">{article.date}</p>
                   <div className="flex space-x-2 mt-2">
