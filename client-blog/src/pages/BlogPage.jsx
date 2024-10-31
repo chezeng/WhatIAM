@@ -128,12 +128,11 @@ function BlogPage({ theme }) {
           
           {/* Labels Section */}
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
-            <h3 className="text-lg font-semibold mb-2">Labels</h3>
             <div className="flex flex-wrap justify-center gap-2">
               {Object.keys(labelColors).map((label, index) => (
                 <span
                   key={index}
-                  className={`text-white px-3 py-2 rounded-full cursor-pointer transition duration-300 ease-in-out ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-black scale-105 transition duration-300 ease-in-out' : ''}`}
+                  className={`text-white font-bold px-3 py-2 rounded-full cursor-pointer transition duration-300 ease-in-out ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-black scale-105 transition duration-300 ease-in-out' : ''}`}
                   onClick={() => handleLabelClick(label)}
                 >
                   {label} ({labelCounts[label] || 0})
@@ -167,18 +166,18 @@ function BlogPage({ theme }) {
                          className="object-cover w-full h-full transition-transform duration-300 ease-in-out scale-100 hover:scale-105"/>
                   </Link>
                   </div>
-                  <h2 className="mt-3 text-2xl font-semibold">{article.title}</h2>
+                  <h2 className="mt-3 text-2xl font-extrabold">{article.title}</h2>
                   <p className="text-gray-400">{article.date}</p>
                   <div className="flex space-x-2 mt-2">
                     {article.labels.map((label, index) => (
                       <span key={index} 
-                        className={`text-white text-sm px-2 py-1 rounded-full cursor-pointer  transition duration-300 ease-in-out ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-black  transition duration-300 ease-in-out' : ''}`}
+                        className={`text-white font-bold text-sm px-2 py-1 rounded-full cursor-pointer transition duration-300 ease-in-out ${labelColors[label]} ${selectedLabels.includes(label) ? 'ring-2 ring-black  transition duration-300 ease-in-out' : ''}`}
                         onClick={() => handleLabelClick(label)}>
                         {label}
                       </span>
                     ))}
                   </div>
-                  <p className="mt-2">{article.preview}</p>
+                  <p className="mt-2 italic">{article.preview}</p>
                   <Link to={`/${article.id}`} className="text-blue-400 hover:underline mt-4 block">Read more</Link>
                 </article>
               ))
