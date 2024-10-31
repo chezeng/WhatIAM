@@ -94,7 +94,7 @@ function BlogPage({ theme }) {
 
   return (
     <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`, color: '#1a1a1a', }}>
-      <div id='top' className="container mx-auto p-16 pt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div id='top' className="container mx-auto p-16 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         <aside className="space-y-8 col-span-1">
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <div className="w-24 h-24 mx-auto">
@@ -117,9 +117,9 @@ function BlogPage({ theme }) {
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center space-y-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             {quote ? (
               <div>
-                <p className='italic'>"{quote.text}"</p>
+                <p className='italic font-semibold'>"{quote.text}"</p>
                 <br></br>
-                <p className="italic font-bold">- {quote.author}</p>
+                <p className="font-bold text-xl">- {quote.author}</p>
               </div>
             ) : (
               <p>Loading quote...</p>
