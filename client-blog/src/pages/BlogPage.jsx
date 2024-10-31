@@ -119,7 +119,7 @@ function BlogPage({ theme }) {
               <div>
                 <p className='italic font-semibold'>"{quote.text}"</p>
                 <br></br>
-                <p className="font-bold">- {quote.author}</p>
+                <p className="font-bold text-lg">- {quote.author}</p>
               </div>
             ) : (
               <p>Loading quote...</p>
