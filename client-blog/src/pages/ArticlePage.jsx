@@ -82,7 +82,7 @@ function ArticlePage( { theme }) {
     <div className="space-x-2 mt-2 mb-4">
         {article.labels && article.labels.map((label, index) => (
           <span key={index} 
-            className={`text-white text-lg px-3 py-2 rounded-full cursor-pointer ${labelColors[label]}`}>
+            className={`text-white font-bold text-lg px-3 py-2 rounded-full cursor-pointer ${labelColors[label]}`}>
             {label}
           </span>
         ))}
