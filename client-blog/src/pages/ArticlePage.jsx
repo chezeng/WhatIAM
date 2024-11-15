@@ -88,7 +88,7 @@ function ArticlePage( { theme }) {
         ))}
       </div>
       <hr className='h-[3px] bg-black mb-20'></hr>
-      <div className={`prose lg:prose-xl bg-white p-10 rounded-2xl bg-opacity-30 hover:scale-101 transition ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
+      <div className={`prose lg:prose-xl bg-white p-10 rounded-2xl bg-opacity-30 transition ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
         <ReactMarkdown components={renderers}>{articleContent}</ReactMarkdown>
       </div>
 
