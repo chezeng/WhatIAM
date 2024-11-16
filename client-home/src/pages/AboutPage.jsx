@@ -37,7 +37,7 @@ const About = () => {
                 </a>
             </div>
 
-            <div className="flex justify-center md:justify-start">
+{/*             <div className="flex justify-center md:justify-start">
               <div className='card-wrapper-button font-bold h-[5rem] w-[15rem] hover:scale-105 transition ease-in-out duration-500'>
                 <a href={'https://chezeng.github.io/Media/WhatIAM/ChengResume.pdf'} target="_blank" rel="noopener noreferrer">
                   <button className='card-content-button rounded-3xl cursor-pointer'>
@@ -45,7 +45,7 @@ const About = () => {
                   </button>
                 </a> 
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className='hover:scale-105 transition ease-in-out duration-300'>
