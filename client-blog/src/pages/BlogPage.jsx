@@ -1,10 +1,29 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
-// eslint-disable-next-line react/prop-types
+/**
+ * BlogPage.jsx
+ * 
+ * BlogPage component displays a blog page with articles, a sidebar with profile information,
+ * a daily quote, and labels for filtering articles.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.theme - The theme object containing styling information.
+ * @param {string} props.theme.from - The starting color of the background gradient.
+ * @param {string} props.theme.to - The ending color of the background gradient.
+ * @param {Object} props.theme.card - The card styling object.
+ * @param {string} props.theme.card.bg - The background color of the card.
+ * @param {string} props.theme.card.ring - The ring color of the card.
+ * @param {string} props.theme.card.text - The text color of the card.
+ *
+ * @returns {JSX.Element} The BlogPage component.
+ *
+ * @example
+ * <BlogPage theme={{ from: '#ffffff', to: '#000000', card: { bg: 'bg-white', ring: 'ring-black', text: 'text-black' } }} />
+ */
+
 function BlogPage({ theme }) {
   const [quote, setQuote] = useState(null); 
   const [articles, setArticles] = useState([]);
@@ -51,6 +70,7 @@ function BlogPage({ theme }) {
       .catch(error => console.error('Error fetching quote:', error));
   }, []);
 
+  // Fetch and set articles from the server
   useEffect(() => {
     fetch(`https://server.chengzeng.dev/api/articles`)
       .then(response => {
@@ -72,6 +92,7 @@ function BlogPage({ theme }) {
       });
   }, []);
 
+  // Filter articles by selected labels and search query
   useEffect(() => {
     const filterByLabels = (articles) => {
       if (selectedLabels.length === 0) return articles;
@@ -95,6 +116,7 @@ function BlogPage({ theme }) {
   return (
     <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`, color: '#1a1a1a', }}>
       <div id='top' className="container mx-auto p-16 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Sidebar Section */}
         <aside className="space-y-8 col-span-1">
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <div className="w-24 h-24 mx-auto">

@@ -29,6 +29,7 @@ const ContactSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+// Comment schema and model
 const commentSchema = new mongoose.Schema({
   id: String,
   content: String,
@@ -39,6 +40,7 @@ const commentSchema = new mongoose.Schema({
 const Contact = mongoose.model('Contact', ContactSchema);
 const Comment = mongoose.model('Comment', commentSchema);
 
+// Rate limiting middleware for API endpoints
 const limiter = rateLimit({
   windowMs: 60 * 1000, 
   max: 1,
@@ -49,6 +51,7 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Rate limiting middleware for contact form
 const contactFormLimiter = rateLimit({
   windowMs: 60 * 1000,
   max: 1,
@@ -101,7 +104,7 @@ app.post('/api/comments', limiter, async (req, res) => {
   }
 });
 
-// Helper functions
+// Async helper functions
 async function getArticlePreviews() {
   try {
     const response = await axios.get('https://chezeng.github.io/Media/WhatIAM/articles/articles.json');

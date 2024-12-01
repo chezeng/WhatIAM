@@ -1,3 +1,17 @@
+
+/**
+ * AboutPage.jsx
+ * 
+ * AboutPage component renders the About page with a theme-based background gradient.
+ * It displays a list of personal statements and an image.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.theme - The theme object containing gradient colors.
+ * @param {string} props.theme.from - The starting color of the gradient.
+ * @param {string} props.theme.to - The ending color of the gradient.
+ * @returns {JSX.Element} The rendered AboutPage component.
+ */
+
 function AboutPage({ theme }) {
   return (
     <div id="top" className="h-svh grid grid-rows-2 space-y-28 lg:space-y-0 sm:grid-cols-2 px-20 items-center pt-52 pb-0 iphone:pb-20 sm:pb-0 lg:pt-52" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`}}>

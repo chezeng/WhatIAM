@@ -14,7 +14,25 @@ import chatGPT from '../assets/ChatGPT.svg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+/**
+ * 
+ * ProjectsPage.jsx
+ * 
+ * Projects component displays a list of project cards with details and links to their respective GitHub repositories.
+ * Each card includes an image, title, description, and a set of technology icons with tooltips.
+ * The component uses AOS (Animate On Scroll) library for scroll animations.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Projects />
+ * )
+ *
+ * @returns {JSX.Element} The rendered Projects component.
+ */
+
 const Projects = () => {
+  // IconWithTooltip component displays an icon with a tooltip on hover.
   const IconWithTooltip = ({ icon: Icon, label }) => {
     return (
       <div className="relative group flex items-center mx-1">
@@ -26,6 +44,7 @@ const Projects = () => {
     );
   };
 
+  // Initialize AOS
   useEffect(() => {
     AOS.init({
         duration: 1000,
@@ -35,7 +54,10 @@ const Projects = () => {
 
   return (
     <section id='projects' data-aos="fade-up" data-aos-delay="50" className='p-28'>
+      { /* Title component */ }
       <Title title="Projects"/>
+
+      { /* Project cards */ }
       <div className='-ml-28 galaxy:-ml-24 iphone:-ml-21 s400:-ml-16 s450:-ml-8 s500:-ml-2 s550:ml-0 grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center'>
         <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
@@ -216,6 +238,7 @@ const Projects = () => {
           </div>
         </div>
 
+        { /* To be continued... (Optional) */ }
         {/* <div className='card-wrapper h-[32rem] w-[20rem] hover:scale-105 transition ease-in-out mt-20'>
           <div className='card-content'>
               <div className="relative h-56">
@@ -235,7 +258,6 @@ const Projects = () => {
           </div>
         </div> */}
       </div>
-
     </section>
     );
 }

@@ -8,6 +8,18 @@ ParallaxText.propTypes = {
   baseVelocity: PropTypes.number
 };
 
+/**
+ * ParallaxText.jsx
+ * 
+ * ParallaxText component creates a parallax scrolling effect for its children elements.
+ * 
+ * @param {Object} props - The properties object.
+ * @param {React.ReactNode} props.children - The content to be displayed within the parallax effect.
+ * @param {number} [props.baseVelocity=100] - The base velocity for the parallax scrolling effect.
+ * 
+ * @returns {JSX.Element} The rendered ParallaxText component.
+ */
+
 const ParallaxText = ({ children, baseVelocity = 100 }) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();

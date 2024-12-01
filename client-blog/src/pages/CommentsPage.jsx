@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
+// List of banned words for profanity filter
 const bannedWords = [
   "anal", "anus", "arse", "ass", "ballsack", "balls", "bastard", "bitch",
   "biatch", "bloody", "blowjob", "blow job", "bollock", "bollok", "boner",
@@ -14,7 +15,6 @@ const bannedWords = [
   "sex", "shit", "s hit", "sh1t", "slut", "smegma", "spunk", "tit", "tosser",
   "turd", "twat", "vagina", "wank", "whore", "wtf"
 ];
-
 
 function getRandomColor() {
   // Generating softer, more pastel colors for message backgrounds
@@ -89,6 +89,7 @@ function CommentsPage({ theme }) {
     return `${top}%`;
   };
 
+  // Send a new comment to the server and update the UI
   const handleSend = async () => {
     setError('');
 
@@ -140,8 +141,7 @@ function CommentsPage({ theme }) {
   };
 
   return (
-    <div
-      id="top"
+    <div id="top"
       className="relative min-h-screen overflow-hidden"
       style={{
         background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`,
@@ -166,6 +166,7 @@ function CommentsPage({ theme }) {
         `}
       </style>
       
+      {/* Comments */}
       <div className="absolute inset-0 overflow-hidden z-0">
         {loaded && comments.map((comment) => (
           <div
@@ -182,11 +183,10 @@ function CommentsPage({ theme }) {
           </div>
         ))}
       </div>
-  
+        
+      {/* Comment input */}
       <div className="relative z-0 flex flex-col items-center justify-center min-h-screen p-4 text-center">
-        <h1 
-        ref={titleRef}
-        className="text-4xl font-extrabold text-white mb-10">Leave your comments!</h1> 
+        <h1 ref={titleRef} className="text-4xl font-extrabold text-white mb-10">Leave your comments!</h1> 
   
         <div className="flex items-center bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-3xl shadow-lg space-x-4 max-w-lg w-full">
           <input

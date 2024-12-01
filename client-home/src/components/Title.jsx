@@ -1,15 +1,31 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const TitleAnimationComponent = ({ title }) => {
+/**
+ * Title.jsx
+ * 
+ * Title component animates a title and lines on scroll.
+ * It uses the AOS (Animate On Scroll) library to initialize animations
+ * and adds custom scroll-based animations to the title, left line, right line, and dot elements.
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.title - The title text to display
+ * 
+ * @example
+ * <Title title="My Animated Title" />
+ */
+
+const Title = ({ title }) => {
+  // Configuration for each animated element of the title
   const titleRef = useRef(null);
   const leftLineRef = useRef(null);
   const rightLineRef = useRef(null);
   const dotRef = useRef(null);
 
   useEffect(() => {
+    // Initialize AOS library with custom configuration
     AOS.init({
       duration: 500,
       once: false,
@@ -21,6 +37,7 @@ const TitleAnimationComponent = ({ title }) => {
       const rightLineElement = rightLineRef.current;
       const dotElement = dotRef.current;
 
+      // Check if the title is visible in the viewport. If so, add animation classes
       if (titleElement.getBoundingClientRect().top < window.innerHeight) {
         dotElement.classList.add('animate-dot');
         leftLineElement.classList.add('animate-line-left');
@@ -50,4 +67,4 @@ const TitleAnimationComponent = ({ title }) => {
   );
 };
 
-export default TitleAnimationComponent;
+export default Title;

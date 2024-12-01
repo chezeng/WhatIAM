@@ -4,10 +4,28 @@ import Title from '../components/Title';
 
 import 'react-vertical-timeline-component/style.min.css';
 
+/**
+ * ExperiencePage.jsx
+ * 
+ * This component renders the Experience section of the application, showcasing various experiences and achievements 
+ * in a vertical timeline format. Each experience is represented by a VerticalTimelineElement, which includes details 
+ * such as the title, duration, and description of the experience. The timeline elements are styled with radial gradients 
+ * and include icons to visually differentiate between different types of experiences.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Experience />
+ * )
+ */
+
 const Experience = () => {
     return (
     <section className='px-28 md:py-28 w-screen h-200rem'>
+      {/* Title */}
       <Title title='Experience'/>
+
+      {/* Vertical Timeline */}
         <VerticalTimeline className='mt-10 md:mt-24 w-full ssm:w-85 s450:w-100 s550:w-125 sm:w-125 s650:w-150 right-26 iphone:right-22 s400:right-18 s500:right-16 lg:right-0 md:right-0'>
           <VerticalTimelineElement
               className="mt-20"

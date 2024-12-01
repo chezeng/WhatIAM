@@ -4,9 +4,23 @@ import Title from '../components/Title';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Typewriter from 'typewriter-effect';
-import FancyButton from '../components/FancyButton';
+
+/**
+ * ContactPage.jsx
+ * 
+ * Contact component renders a contact form with validation and submission functionality.
+ * It includes fields for name, email, and message, and provides feedback on form submission.
+ * The component also tracks cursor position for a visual effect and uses AOS for animations.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Contact />
+ * )
+ */
 
 const Contact = () => {
+  // Initialize AOS
   useEffect(() => {
     AOS.init({
         duration: 500,
@@ -19,11 +33,23 @@ const [formData, setFormData] = useState({
   email: '',
   message: ''
 });
+
 const [errors, setErrors] = useState({});
 const [successMessage, setSuccessMessage] = useState('');
 const [errorMessage, setErrorMessage] = useState('');
+// This array is used for the typewriter effect
+const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", "Efficient", "Performant", "User-friendly", "Elegant", "Optimized" ]
+
+// This state is used to track the cursor position for a visual effect
 const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
+const handleMouseMove = (e) => {
+  const x = e.pageX - e.currentTarget.offsetLeft;
+  const y = e.pageY - e.currentTarget.offsetTop;
+  setCursorPosition({ x, y });
+};
+
+// Validate form fields in case of empty, invalid input or spamming
 const validateForm = () => {
   let newErrors = {};
   if (!formData.name.trim() || !/^[a-zA-Z\s]+$/.test(formData.name)) {
@@ -39,6 +65,7 @@ const validateForm = () => {
   return Object.keys(newErrors).length === 0;
 };
 
+// Handle input changes and update form data and errors
 const handleChange = (e) => {
   const { name, value } = e.target;
   setFormData(prevState => ({
@@ -48,6 +75,7 @@ const handleChange = (e) => {
   setErrors(prev => ({ ...prev, [name]: '' }));
 };
 
+// Handle form submission and send POST request to the server 
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (validateForm()) {
@@ -64,11 +92,13 @@ const handleSubmit = async (e) => {
         const errorData = await response.json();
         throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
-      
+
+      // Reset form data and show success message
       setSuccessMessage('Message received! I\'ll be in touch as soon as possible.');
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setSuccessMessage(''), 5000);
     } catch (error) {
+      // Handle error and prevent spamming
       if (error.message.includes('Too many requests')) {
         setErrors({ submit: 'Messages are sent too quickly.' });
         setErrorMessage('You\'re sending messages too quickly. Please wait a minute before trying again.');
@@ -80,14 +110,6 @@ const handleSubmit = async (e) => {
   }
 };
 
-const handleMouseMove = (e) => {
-  const x = e.pageX - e.currentTarget.offsetLeft;
-  const y = e.pageY - e.currentTarget.offsetTop;
-  setCursorPosition({ x, y });
-};
-
-const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", "Efficient", "Performant", "User-friendly", "Elegant", "Optimized" ]
-
   return (
     <section id='contact' className='py-28 px-10 md:px-28 w-full relative'
       style={{
@@ -95,12 +117,17 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
         '--y': `${cursorPosition.y}px`,
       }}
       onMouseMove={handleMouseMove}>
+      {/* Title */}
       <Title title='Contact'/>
+
       <h2 data-aos="fade-up" data-aos-delay="50" className="text-center mt-10 md:mt-20 text-lg md:text-4xl">
         Feel free to contact me and I will respond <span className="gradient bg-gradient-to-b from-blue-300 to-blue-700 bg-clip-text text-transparent font-bold">as soon as possible</span>. <br></br>
       </h2>   
       
+      {/* Contact Form */}
       <div data-aos="fade-up" data-aos-delay="50" className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg mt-10 w-full contact-form">
+        
+        {/* Visual effect */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-3xl"
           style={{
             background: `radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.3), transparent)`,
@@ -109,6 +136,8 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
           }}></div>
         <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold paragraph text-white mb-8">Let's Craft Something
         <span className="sm:inline-block ml-2">
+          
+          {/* Typewriter effect */}
           <Typewriter
             options={{
               strings: titles,
@@ -119,6 +148,8 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
               pauseFor: 2000,
             }}
           /></span></h1>
+
+        {/* Form fields about name, email and message */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
@@ -133,6 +164,7 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
             />
             {errors.name && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.name}</p>}
           </div>
+          
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
             <input
@@ -146,6 +178,7 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
             />
             {errors.email && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.email}</p>}
           </div>
+          
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Your Message</label>
             <textarea
@@ -159,8 +192,11 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
             ></textarea>
             {errors.message && <p className="mt-1 text-sm text-red-500 flex items-center"><FaExclamationCircle size={16} className="mr-1" /> {errors.message}</p>}
           </div>
-
+          
+          {/* Submit button v1 (Optional)*/}
           {/* <FancyButton color="cyan">SEND ME OFF!</FancyButton> */}
+
+          {/* Submit button v2 */}
           <div className="flex justify-center md:justify-start">
               <div className='card-wrapper-button font-bold h-[4rem] w-[15rem] hover:scale-105 transition ease-in-out duration-500'>
                   <button className='card-content-button rounded-3xl cursor-pointer'>
@@ -172,7 +208,8 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
 
          
         </form>
-
+        
+        {/* Success and error messages */}
         {successMessage && (
           <div className="mt-4 p-3 bg-green-600 text-white rounded-md flex items-center">
             <FaCheckCircle size={20} className="mr-2" />
@@ -187,7 +224,8 @@ const titles = ["Cutting-edge", "Unprecedented", "Reliable", "Well-documented", 
           </div>
         )}
       </div>
-
+      
+      {/* An impressive handshake icon! */}
       <div className='absolute bottom-2/3 left-0 w-full flex justify-center opacity-20 pointer-events-none'>
         <FaHandshake className="w-40 h-40 md:w-80 md:h-80 lg:h-100" />
       </div>

@@ -27,6 +27,7 @@ function ArticlePage( { theme }) {
     document.body.style.overflow = 'auto'; 
   };
 
+  // Fetch article metadata and content from JSON and Markdown files
   useEffect(() => {
     fetch(`https://chezeng.github.io/Media/WhatIAM/articles/articles.json`)
       .then(response => response.json())
@@ -47,6 +48,7 @@ function ArticlePage( { theme }) {
       .catch(error => console.error('Error fetching article content:', error));
   }, [id]);
   
+  // Define custom renderers for ReactMarkdown
   const renderers = {
     img: ({ src, alt }) => (
       <img
@@ -58,6 +60,7 @@ function ArticlePage( { theme }) {
     ),
   };
 
+  // Render loading message if article is not loaded
   if (!article) return <div>Loading...</div>;
 
   const currentIndex = articles.findIndex(a => a.id === id);
@@ -92,7 +95,6 @@ function ArticlePage( { theme }) {
         <ReactMarkdown components={renderers}>{articleContent}</ReactMarkdown>
       </div>
 
-      
       <div className="flex-col md:flex space-y-10 text-center justify-between mt-20 text-xl">
         {prevArticle && (
           <Link to={`/${prevArticle.id}`}>
