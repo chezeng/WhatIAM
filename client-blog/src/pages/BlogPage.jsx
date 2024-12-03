@@ -32,10 +32,11 @@ function BlogPage({ theme }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const labelColors = {
-    "Soliloquy": "bg-yellow-600",
-    "Dialogue": "bg-green-500",
-    "Software": "bg-blue-500",
-    "Resonance": "bg-purple-500",
+    "Life 人生观": "bg-gradient-to-r from-green-400 to-blue-500",
+    "Values 价值观": "bg-gradient-to-r from-yellow-400 to-orange-500",
+    "World 世界观": "bg-gradient-to-r from-indigo-500 to-purple-600",
+    "Art 诗物语": "bg-gradient-to-r from-pink-400 to-red-500",
+    "Tools 知识库": "bg-gradient-to-r from-gray-400 to-gray-700",
   };
 
   // Get the number of articles for each label

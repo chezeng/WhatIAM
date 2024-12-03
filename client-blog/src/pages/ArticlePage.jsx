@@ -11,10 +11,11 @@ function ArticlePage( { theme }) {
   const [modalImage, setModalImage] = useState(null);
 
   const labelColors = {
-    "Soliloquy": "bg-yellow-600",
-    "Dialogue": "bg-green-500",
-    "Software": "bg-blue-500",
-    "Resonance": "bg-purple-500",
+    "Life 人生观": "bg-gradient-to-r from-green-400 to-blue-500",
+    "Values 价值观": "bg-gradient-to-r from-yellow-400 to-orange-500",
+    "World 世界观": "bg-gradient-to-r from-indigo-500 to-purple-600",
+    "Art 诗物语": "bg-gradient-to-r from-pink-400 to-red-500",
+    "Tools 知识库": "bg-gradient-to-r from-gray-400 to-gray-700",
   };
 
   const openModal = (src) => {
@@ -91,7 +92,7 @@ function ArticlePage( { theme }) {
         ))}
       </div>
       <hr className='h-[3px] bg-black mb-20'></hr>
-      <div className={`prose lg:prose-xl bg-white p-10 rounded-2xl bg-opacity-30 transition ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
+      <div className={`max-w-full ml-8 md:ml-4 lg:ml-0 prose lg:prose-xl bg-white p-10 rounded-2xl bg-opacity-30 transition ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
         <ReactMarkdown components={renderers}>{articleContent}</ReactMarkdown>
       </div>
 
