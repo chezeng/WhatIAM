@@ -94,6 +94,22 @@ function ArticlePage( { theme }) {
         onClick={() => openModal(src)}
       />
     ),
+
+    hr: ({}) => (
+      <hr className="border-t-2 border-black my-4" />
+    ),
+
+    li: ({ children }) => (
+      <li className="list-disc list-inside text-black">
+        <span className="text-black">{children}</span>
+      </li>
+    ),
+
+    ol: ({ children }) => (
+      <ol className="list-decimal list-inside text-black">
+      {children}
+      </ol>
+    ),
   };
 
   // Render loading message if article is not loaded
