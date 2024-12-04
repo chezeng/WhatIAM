@@ -19,8 +19,8 @@ function AboutPage({ theme }) {
           <ul className="list-disc space-y-5 text-left text-xl md:text-3xl text-black font-bold italic">
             <li>I am always learning <span className="bg-yellow-300 px-1">Computer Science</span>.</li>
             <li>I aspire to fully utilize <span className="bg-yellow-300 px-1">AI + software applications</span> to create impact.</li>
-            <li>I have a personal website at <span className="bg-yellow-300 px-1"><a href="https://www.chengzeng.dev" target="_blank" rel="noopener noreferrer" className="text-blue-500">chengzeng.dev</a></span>.</li>
-            <li>You can refresh the webpage to <span className="bg-yellow-300 px-1">change the theme</span>!</li>
+            <li>I have a personal website at <span className="bg-yellow-300 px-1"><a href="https://www.chengzeng.dev" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">chengzeng.dev</a></span>.</li>
+            <li>You can refresh to <span className={`bg-yellow-300 ${theme.card.text} underline px-1 font-extrabold`}>change the theme</span>!</li>
           </ul>
         </div>
 

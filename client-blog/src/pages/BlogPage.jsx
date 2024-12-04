@@ -30,6 +30,7 @@ function BlogPage({ theme }) {
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const labelColors = {
     "Life 人生观": "bg-gradient-to-r from-green-400 to-blue-500",
@@ -73,6 +74,7 @@ function BlogPage({ theme }) {
 
   // Fetch and set articles from the server
   useEffect(() => {
+    setLoading(true); 
     fetch(`https://server.chengzeng.dev/api/articles`)
       .then(response => {
         if (!response.ok) {
@@ -84,6 +86,7 @@ function BlogPage({ theme }) {
         if (Array.isArray(data)) {
           setArticles(data);
           setFilteredArticles(data);
+          setLoading(false);
         } else {
           throw new Error('Received data is not an array');
         }
@@ -118,7 +121,7 @@ function BlogPage({ theme }) {
     <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${theme.from}, ${theme.to})`, color: '#1a1a1a', }}>
       <div id='top' className="container mx-auto p-16 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Sidebar Section */}
-        <aside className="space-y-8 col-span-1">
+        <aside className="space-y-8 col-span-1 ml-8 md:ml-0">
           <div className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 text-center p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
             <div className="w-24 h-24 mx-auto">
               <img className='rounded-full' src={`https://chezeng.github.io/Media/WhatIAM/Profile.jpg`} alt="Profile" />
@@ -145,7 +148,7 @@ function BlogPage({ theme }) {
                 <p className="font-bold">- {quote.author}</p>
               </div>
             ) : (
-              <p>Loading quote...</p>
+              <p className='font-bold italic flex justify-center'>Loading quote...</p>
             )}
           </div>
           
@@ -178,7 +181,9 @@ function BlogPage({ theme }) {
 
           {/* Articles List */}
           <div className="space-y-8">
-            {filteredArticles.length > 0 ? (
+          {loading ? ( 
+            <p className="font-bold italic flex justify-center text-2xl mt-40">Loading articles...</p>
+            ) : filteredArticles.length > 0 ? (
               filteredArticles.map(article => (
                 <article key={article.id} 
                          className={`${theme.card.bg} ${theme.card.ring} hover:ring-4 p-6 bg-opacity-60 backdrop-blur-lg shadow-lg rounded-xl hover:scale-102 duration-300 transition ease-in-out`}>
@@ -205,7 +210,7 @@ function BlogPage({ theme }) {
                 </article>
               ))
             ) : (
-              <p>No articles found...</p>
+              <p className='font-bold italic flex justify-center text-2xl mt-40'>No articles found...</p>
             )}
           </div>
           

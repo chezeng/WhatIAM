@@ -90,7 +90,8 @@ const Footer = () => {
             href="https://blog.chengzeng.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-400 font-extrabold mt-6 mr-6 hover:underline"
+            className="hover:scale-105 transition-all duration-200 ease-in-out text-sm bg-clip-text text-transparent font-extrabold mt-6 mr-6
+            bg-gradient-to-r from-pink-500 to-yellow-500"
           >
             【My World】
           </a>

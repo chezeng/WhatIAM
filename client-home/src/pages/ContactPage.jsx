@@ -134,7 +134,7 @@ const handleSubmit = async (e) => {
             opacity: 0.5,
             transition: '0.5s',
           }}></div>
-        <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold paragraph text-white mb-8">Let's Craft Something
+        <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold paragraph text-white mb-8 ">Let's Craft Something
         <span className="sm:inline-block ml-2">
           
           {/* Typewriter effect */}
@@ -152,7 +152,7 @@ const handleSubmit = async (e) => {
         {/* Form fields about name, email and message */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
+            <label htmlFor="name" className="block text-lg font-medium text-gray-300 mb-1">Your Name</label>
             <input
               type="text"
               id="name"
@@ -166,7 +166,7 @@ const handleSubmit = async (e) => {
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
+            <label htmlFor="email" className="block text-lg font-medium text-gray-300 mb-1">Your Email</label>
             <input
               type="email"
               id="email"
@@ -180,7 +180,7 @@ const handleSubmit = async (e) => {
           </div>
           
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Your Message</label>
+            <label htmlFor="message" className="block text-lg font-medium text-gray-300 mb-1">Your Message</label>
             <textarea
               id="message"
               name="message"
@@ -204,7 +204,7 @@ const handleSubmit = async (e) => {
                   </button>  
                 </div>
           </div>
-          <p className='italic text-slate-400 text-center'>Passing by? Say hi <a className='underline text-white'href='https://blog.chengzeng.dev/Comments' target="_blank" rel="noopener noreferrer">here</a>!</p>
+          <p className='italic text-slate-400 font-bold text-center'>Passing by? Say hi <a className='underline text-white hover:text-blue-500'href='https://blog.chengzeng.dev/Comments' target="_blank" rel="noopener noreferrer">here</a>!</p>
 
          
         </form>
