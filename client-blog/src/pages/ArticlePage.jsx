@@ -165,7 +165,7 @@ function ArticlePage( { theme }) {
         <ReactMarkdown components={renderers}>{articleContent}</ReactMarkdown>
       </div>
 
-      <div className="flex-col md:flex space-y-10 text-center justify-between mt-20 text-xl">
+      <div className="flex-col md:flex space-y-10 text-center justify-between mt-10 text-xl">
         {prevArticle && (
           <Link to={`/${prevArticle.id}`}>
             <button className={`bg-white ${theme.card.text} font-bold px-6 py-3 rounded-xl bg-opacity-30 hover:scale-101 transition ease-in-out duration-300 ${theme.card.ring} hover:ring-white ring-4 backdrop-blur-lg shadow-lg`}>
