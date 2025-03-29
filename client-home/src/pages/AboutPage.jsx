@@ -46,13 +46,13 @@ const About = () => {
 
             {/* Social media links */}
             <div className="flex justify-center md:justify-start space-x-8"> 
-                <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/cchengzeng" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="tech-icons"/>
                 </a>
                 <a href="https://github.com/chezeng" target="_blank" rel="noopener noreferrer">
                     <FaGithub className="tech-icons"/>
                 </a>
-                <a href="https://www.youtube.com/@chezeng" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.youtube.com/@cchengzeng" target="_blank" rel="noopener noreferrer">
                     <FaYoutube className="tech-icons"/>
                 </a>
             </div>
