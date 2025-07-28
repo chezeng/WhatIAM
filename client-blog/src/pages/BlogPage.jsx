@@ -130,11 +130,11 @@ function BlogPage({ theme }) {
             <p className='italic font-bold text-lg'>"An Artistic Engineer."</p>
             <hr className="border-t border-black my-4" />
             <div className="flex justify-center space-x-4">
-              <a href="https://www.linkedin.com/in/chezeng" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/cchengzeng" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className={` hover:text-black text-gray-600 w-7 h-7 hover:scale-110 transition duration-100 ease-out`}/></a>
               <a href="https://github.com/chezeng" target="_blank" rel="noopener noreferrer">
                 <FaGithub className={`text-gray-600 w-7 h-7 hover:text-black hover:scale-110 transition duration-100 ease-out`}/></a>
-              <a href="https://www.youtube.com/@chezeng" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.youtube.com/@ccc-cheng" target="_blank" rel="noopener noreferrer">
                 <FaYoutube className="text-gray-600 w-7 h-7 hover:text-black hover:scale-110 transition duration-100 ease-out"/></a>
             </div>
           </div>
