@@ -7,7 +7,7 @@
 ### 1. Clone the project
 
 ```
-git clone https://github.com/ch3ngZ/WhatIAM.git
+git clone https://github.com/chezeng/WhatIAM.git
 ```
 
 ### 2. Go to the project directory
